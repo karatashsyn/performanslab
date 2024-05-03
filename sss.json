@@ -1,0 +1,148 @@
+[
+  {
+    "markDefs": [],
+    "children": [
+      {
+        "text": "Fitness salonlarinda yapılan antrenmanlarda eğitmenlerin kullandığı yöntemler bazen belirlenen hedeflere ulaşmak için kısa yolları tercih edebiliyorlar. Burada karşımıza iki yol çıkıyor planlı antrenman diyet veya anabolik steroidler.",
+        "_key": "50fe0389eed40",
+        "_type": "span",
+        "marks": []
+      }
+    ],
+    "_type": "block",
+    "style": "normal",
+    "_key": "14914fdc61f9"
+  },
+  {
+    "_type": "block",
+    "style": "normal",
+    "_key": "f8d3d26cfd81",
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Sportif performans için antrenman planlamasında belirli dönemler ve genelde bir sporcu sezon çok uzun. Steroidlerin uzun kullanımı ve yarattığı deformasyon herkes için gözle görülebilir bir durum.",
+        "_key": "0558505cdecf0"
+      }
+    ]
+  },
+  {
+    "children": [
+      {
+        "_key": "94555f3896050",
+        "_type": "span",
+        "marks": [],
+        "text": "Ne yapalım ?"
+      }
+    ],
+    "_type": "block",
+    "style": "h1",
+    "_key": "30c003619501",
+    "markDefs": []
+  },
+  {
+    "style": "blockquote",
+    "_key": "eb24ae643f46",
+    "markDefs": [],
+    "children": [
+      {
+        "text": "Sporcunun kondisyonel özellikleri aşamalar halinde planlanarak geliştirilir ise steroidin kısa zamanda avantajlı ama uzun zamanda yılıcı etkilerinden korunabilir miyiz ?Evet",
+        "_key": "b9772956d1730",
+        "_type": "span",
+        "marks": []
+      }
+    ],
+    "_type": "block"
+  },
+  {
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Bilindiği gibi fitness salonlarina sağlık için egzersiz hedefiyle gelen kişilere bu tarz uzun vadeli planlamalar yapmak tabiiki her zaman etkin ve gerçekçi değil. Genellikle eğitmenlerin aklındaki şey kisiye farklı egzersizler sunarak onun antrenman yaparken eğlenmeai ve ticari kaygılarla antrenman devamlılığını saglayabilmesi. Bunun sonucunda popüler yöntemler asıl hedeflerin ve planlamanin önüne geçiyor.",
+        "_key": "6faa346bc1910"
+      }
+    ],
+    "_type": "block",
+    "style": "normal",
+    "_key": "3776350483f8"
+  },
+  {
+    "style": "normal",
+    "_key": "669a936317ec",
+    "markDefs": [],
+    "children": [
+      {
+        "text": "Örnek olarak spor salonuna “ sizde TRX var mi?” sorusuyla gelen birine fonksiyonel TRX egzersizleri yaptırmak veya obez birine ilk antrenmanda koordinasyon merdivenini acarak koordinasyon antrenmanları yaptırmak öncelikleri pas gecmek anlamına gelir. Kişilerin medyada gördükleri popüler egzersiz araclarını kullanmak hevesleri tabiki göz ardi edilemez. Ancak bu ekipmanlari antrenman planı dahilinde yerlestirirken kendi içkerinde bir planlama yapılması ve kademeli olarak ileri seviye antrenmanlara yükseltilmesi gereklidir. Aksi halde istenen hedeflere ulasmak planlanandan uzun sürebilir ve antrenmanlar sportif yaralanmaya neden olabilir. Buna en basit örnek; hazır olmayan birini Box Jump ve Pliometrik tarzda antrenmanlara başlatmak diyebiliriz.",
+        "_key": "60f0c3a2c3aa0",
+        "_type": "span",
+        "marks": []
+      }
+    ],
+    "_type": "block"
+  },
+  {
+    "markDefs": [
+      {
+        "_type": "link",
+        "href": "http://performanslab.com/planlamanin-klasik-temelleri/",
+        "_key": "7080a328cf67"
+      }
+    ],
+    "children": [
+      {
+        "_type": "span",
+        "marks": ["7080a328cf67"],
+        "text": "Daha detaylı bilgi için planlamanın klasik temelleri yazısına tıklayabilirsiniz",
+        "_key": "2e40fade5aec0"
+      }
+    ],
+    "_type": "block",
+    "style": "blockquote",
+    "_key": "0d5242ee74f9"
+  },
+  {
+    "_key": "7a36bb04d50d",
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Hiç spor yapmamis veya uzun süre ara vermiş kişi veya sporcular başlangıç antrenmanlarında test yapilincaya kadar popülist yaklaşımlarla değil bilimsel, planlı ve fazla iddialı olmayan süreçlerle hazır hale gelebilir.",
+        "_key": "49f2ace91aa00"
+      }
+    ],
+    "_type": "block",
+    "style": "normal"
+  },
+  {
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "İyi antrenör antrenmanda her ekipmanı kullanan değil planlamaya göre dogru ekipmanı kullanan antrenördür demek yanlış olmaz.",
+        "_key": "d8f8536d9e860"
+      }
+    ],
+    "_type": "block",
+    "style": "normal",
+    "_key": "d6fb89193ad2",
+    "markDefs": []
+  },
+  {
+    "_key": "0772bd450d15",
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Fatih özkan",
+        "_key": "843f851ac8310"
+      }
+    ],
+    "_type": "block",
+    "style": "normal"
+  }
+]
