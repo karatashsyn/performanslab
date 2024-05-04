@@ -1,8 +1,8 @@
 import { Noto_Serif as mainfont } from "next/font/google";
 import "./../globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/composite/Navbar";
 import Footer from "@/components/composite/Footer";
-import PaddedContainer from "@/components/PaddedContainer";
+import PaddedContainer from "@/components/composite/PaddedContainer";
 import GradientPage from "@/components/composite/GradientPage";
 
 const NotoSerif = mainfont({
@@ -27,8 +27,9 @@ export default function RootLayout({ children }) {
         background: "#181818",
       }}
     >
-      {/* <Navbar transparent={true} /> */}
+      {/*  */}
       <body className={NotoSerif.className}>
+        {/*  */}
         <GradientPage topEnabled={true} bottomEnabled={true} bg={"#181818"}>
           <header>
             <Navbar transparent={true} />

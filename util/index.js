@@ -14,3 +14,7 @@ export const getFormattedDate = (date) => {
   };
   return new Date(date).toLocaleDateString("tr-TR", options);
 };
+
+export const shuffleArray = (array) => {
+  return array.sort(() => Math.random() - 0.5);
+};

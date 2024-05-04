@@ -1,11 +1,9 @@
-"use client";
-import useWidth from "@/hooks/useWidth";
+/* eslint-disable @next/next/no-img-element */
 import { cropText } from "@/util";
 import Link from "next/link";
 import React from "react";
 
 export default function BlogCard({ blog }) {
-  const { width } = useWidth();
   return (
     <Link
       href={`/${blog.slug}`}
@@ -30,9 +28,9 @@ export default function BlogCard({ blog }) {
       </div>
       <div className="flex items-start h-full">
         <span
-          className={` font-bold tracking-[-0px] text-black  transition-opacity duration-100 max-sm:text-[0.8rem]  md:text-[1.1rem]`}
+          className={`max-w-[196px] font-normal tracking-[-0px] text-black  transition-opacity duration-100  md:text-[1.1rem]`}
         >
-          {width > 720 ? cropText(blog.title, 42) : blog.title}
+          {cropText(blog.title, 120)}
         </span>
       </div>
     </Link>

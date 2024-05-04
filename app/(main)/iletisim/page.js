@@ -1,4 +1,4 @@
-import SocialBoxes from "@/components/composite/SocialBoxes";
+import SocialBoxes from "@/components/SocialBoxes";
 import ContactSection from "@/views/ContactSection";
 import React from "react";
 

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import ContactBox from "../ContactBox";
+import ContactBox from "./ContactBox";
 
 export default function SocialBoxes() {
   const pointerRef = useRef(null);

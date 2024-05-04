@@ -49,7 +49,7 @@ export default function Navbar({ transparent }) {
   );
 
   return (
-    <PaddedContainer className={`${transparent ? " " : " !bg-black"} arial`}>
+    <PaddedContainer className={`${transparent ? " " : " !bg-black"}  arial`}>
       <nav className="relative flex justify-between items-center !z-[20]">
         <Link href={"/"} className="z-[20] flex items-center gap-4">
           <img

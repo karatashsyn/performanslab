@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React from "react";
-import PaddedContainer from "../PaddedContainer";
+import PaddedContainer from "./PaddedContainer";
 
 export default function Footer({ darkMode = false }) {
   return (

@@ -5,9 +5,10 @@ export default function GradientPage({
   bottomEnabled = true,
   children,
   bg,
+  className,
 }) {
   return (
-    <div style={{ background: bg }} className="relative ww">
+    <div style={{ background: bg }} className={"relative gradientPage"}>
       <div
         className={`${
           !topEnabled ? "hidden" : ""

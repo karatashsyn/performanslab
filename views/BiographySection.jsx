@@ -15,17 +15,16 @@ export default function BiographySection() {
           className={`basis-full hover:backdrop-blur-[10px] flex  arial text-[1.4rem] font-bold border-[1.5px] border-[rgba(60,60,60,1)] active:scale-[.95] active:border-[rgba(0,0,0,0)]  hover:bg-neutral-800/65  bg-neutral-900/65 relative h-full  transition-all duration-200  items-center justify-center p-6  hover:bg-nv-red cursor-pointer overflow-hidden`}
         >
           <svg
-            className="absolute top-4 left-4"
+            className="absolute top-4 left-4 icon icon-tabler icons-tabler-outline icon-tabler-news"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-news"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" />
@@ -42,17 +41,16 @@ export default function BiographySection() {
           className={`hover:backdrop-blur-[10px] basis-full arial text-[1.4rem] font-bold border-y-[1.5px] max-md:border-y-[0] max-md:border-x-[1.5px] border-[rgba(60,60,60,1)] active:scale-[.95] active:border-[rgba(0,0,0,0)]  hover:bg-neutral-800/65  bg-neutral-900/65 relative h-full flex  transition-all duration-200  items-center justify-center p-6  hover:bg-nv-red cursor-pointer overflow-hidden`}
         >
           <svg
-            className="absolute top-4 left-4"
+            className="absolute top-4 left-4 icon icon-tabler icons-tabler-outline icon-tabler-calendar-clock"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-clock"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M10.5 21h-4.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3" />
@@ -70,17 +68,16 @@ export default function BiographySection() {
           className={`hover:backdrop-blur-[10px] basis-full arial text-[1.4rem] font-bold border-[1.5px] border-[rgba(60,60,60,1)] active:scale-[.95] active:border-[rgba(0,0,0,0)]  hover:bg-neutral-800/65  bg-neutral-900/65 relative h-full flex  transition-all duration-200  items-center justify-center p-6  hover:bg-nv-red cursor-pointer overflow-hidden`}
         >
           <svg
-            className="absolute top-4 left-4"
+            className="absolute top-4 left-4 icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />

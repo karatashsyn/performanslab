@@ -1,9 +1,9 @@
 import { Noto_Serif as mainfont } from "next/font/google";
 import { Inter as secondaryFont } from "next/font/google";
 import "./../globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/composite/Navbar";
 import Footer from "@/components/composite/Footer";
-import PaddedContainer from "@/components/PaddedContainer";
+import PaddedContainer from "@/components/composite/PaddedContainer";
 
 const NotoSerif = mainfont({
   subsets: ["latin"],
@@ -28,8 +28,7 @@ export default function RootLayout({ children }) {
         background: "#fff",
       }}
     >
-      {/* <Navbar transparent={true} /> */}
-      <body className={NotoSerif.className}>
+      <body className={Inter.className}>
         <header className="fixed top-0 z-[20]">
           <Navbar transparent={false} />
         </header>

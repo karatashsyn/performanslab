@@ -4,11 +4,15 @@ import { getBlogs } from "@/services/blog";
 import BlogCard2 from "@/components/BlogCard2";
 import { Inter } from "../layout";
 import ContactSection from "@/views/ContactSection";
+import { notFound } from "next/navigation";
 
 export const revalidate = 3600;
 
 export default async function Blog({ searchParams }) {
   const blogs = await getBlogs(searchParams.s);
+  if (!blogs.length) {
+    notFound();
+  }
 
   return (
     <>
