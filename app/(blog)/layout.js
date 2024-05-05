@@ -29,10 +29,12 @@ export default function RootLayout({ children }) {
       }}
     >
       <body className={Inter.className}>
-        <header className="fixed top-0 z-[20]">
+        {/* <header className="fixed top-0 z-[20]"> */}
+        <header className="">
           <Navbar transparent={false} />
         </header>
-        <PaddedContainer className={"pt-[80px] max-sm:pt-[50px]"}>
+        {/* <PaddedContainer className={"pt-[80px] max-sm:pt-[50px]"}> */}
+        <PaddedContainer className={""}>
           <div className="!min-h-[100vh]">
             <main>
               <article>{children}</article>

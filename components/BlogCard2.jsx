@@ -25,20 +25,20 @@ export default function BlogCard2({ blog, className }) {
         />
       </div>
       <div className="flex flex-col   justify-between">
-        <div className=" items-start w-full  p-5 flex flex-col gap-1 ">
+        <div className=" items-start w-full  px-4 pt-2 pb-4 flex flex-col gap-1 ">
           <span
             style={{
               lineHeight: "1",
             }}
             className={`
         
-            font-semibold  text-[#09090b] tracking-tight  transition-opacity duration-100  text-[1.2rem] lg:text-[1.3rem]`}
+            font-medium  text-[#09090b] tracking-tight  transition-opacity duration-100  text-[1.2rem] lg:text-[1.3rem]`}
           >
             {blog.title}
           </span>
 
           <span className=" text-[0.8rem] text-[#777]">
-            {/* {getFormattedDate(blog.date)} */}
+            {getFormattedDate(blog.date)}
           </span>
           <hr className="mt-1 mb-2 w-full opacity-5" />
           {/* <p className="text-[#484848] mt-2">
