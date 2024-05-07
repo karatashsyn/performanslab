@@ -7,11 +7,11 @@ import Image from "next/image";
 
 export default function Home(params) {
   return (
-    <main className="">
+    <>
       <HeroSection />
       <TreatmentsView />
       <BiographySection />
       <ContactSection />
-    </main>
+    </>
   );
 }

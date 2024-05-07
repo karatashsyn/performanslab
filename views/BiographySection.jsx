@@ -87,12 +87,12 @@ export default function BiographySection() {
           Instagram
         </Link>
       </div>
-      <h1 className="text-primary-white max-sm:text-[2rem] arial text-[3.06rem] leading-[0.72]  font-bold">
+      <h4 className="text-primary-white max-sm:text-[2rem] arial text-[3.06rem] leading-[0.72]  font-bold">
         Fatih Özkan <br />
         <span className="!leading-[0] !text-[0.75em] font-normal whitespace-nowrap">
           Kimdir?
         </span>
-      </h1>
+      </h4>
 
       <div className=" flex justify-between gap-20 h-auto max-sm:mt-[4rem] mt-[6rem]">
         <div

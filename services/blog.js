@@ -2,7 +2,7 @@ import sanityClient, { imgUrlBuilder } from "@/lib/sanityClient";
 import { cache } from "react";
 export const getBlogs = cache(async (searchKey = "") => {
   const res = await sanityClient.fetch(
-    `*[_type=='blog' && categories[] == null || !('performans-testi' in categories[]->value) ]  | order(orderRank asc) {
+    `*[_type=='blog' ]  | order(orderRank asc) {
           title, smallDescription, "titleImage": titleImage.asset->url,"slug":slug.current, 'categories': categories[]->{title, value}, 'date':_updatedAt, orderRank
         }`
   );

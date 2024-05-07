@@ -21,12 +21,12 @@ export default function HeroSection() {
         alt=""
       />
       <div className="max-sm:text-center ">
-        <h1 className="text-bright-red animate-fade-in  max-sm:text-[2rem] arial text-[4.6rem] leading-[1.04] max-sm:leading-[1.2] font-bold">
+        <h2 className="text-bright-red animate-fade-in  max-sm:text-[2rem] arial text-[4.6rem] leading-[1.04] max-sm:leading-[1.2] font-bold">
           PerformansLab <br className="leading-[0]" />
           <span className="leading-[0] text-[1.14em] whitespace-nowrap">
             Personal Training
           </span>
-        </h1>
+        </h2>
         <div className=" mt-[1rem] animate-fade-in-neutral">
           Size uygun Fonksiyonel antrenmanlar,
           <br />

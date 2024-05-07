@@ -9,9 +9,9 @@ export default function ContactSection({
     <section id="fatih-ozkan" className=" mt-64  ">
       {!titleHidden && (
         <div className="w-full flex items-center justify-between">
-          <h1 className="text-primary-white max-sm:text-[2rem] arial text-[2.25rem] leading-[0.72]  font-bold">
+          <h2 className="text-primary-white max-sm:text-[2rem] arial text-[2.25rem] leading-[0.72]  font-bold">
             İletişim
-          </h1>
+          </h2>
           <a
             href="https://www.instagram.com/performanslab.levent/"
             target="_blank"
@@ -38,7 +38,7 @@ export default function ContactSection({
             frameBorder="0"
           ></iframe>
         </div>
-        <div className="pt-4 flex flex-col max-sm:items-start max-sm:w-full gap-10 basis-full">
+        <ul className="pt-4 flex flex-col max-sm:items-start max-sm:w-full gap-10 basis-full">
           <ContactInfo
             textClass={lightMode ? "!text-[#09090b] arial" : ""}
             labelClass={lightMode ? "!text-[#555] arial" : ""}
@@ -60,7 +60,7 @@ export default function ContactSection({
             label={"Adres"}
             icon="/pin.svg"
           />
-        </div>
+        </ul>
         <div className="basis-full max-sm:hidden rounded-md overflow-hidden bg-gray-500 max-sm:w-[90%]">
           <iframe
             className="w-full rounded-md sm:aspect-[666/307]"

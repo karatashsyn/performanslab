@@ -12,7 +12,7 @@ export default async function BlogSuggestion() {
     <div className="mt-16">
       <div className="text-[1.2rem] text-[#000]">Diğer Yazılar</div>
       <hr className="my-3 mb-6" />
-      <div className=" flex max-md:flex-col max-md:gap-10 md:items-center gap-4 flex-wrap justify-between">
+      <div className=" sm:grid sm:gap-12 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 max-sm:flex max-sm:flex-col max-sm:gap-10 sm:items-center gap-4 flex-wrap justify-between">
         {blogs.map((blog) => (
           <BlogCard key={blog.slug} blog={blog} />
         ))}

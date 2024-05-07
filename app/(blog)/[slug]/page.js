@@ -17,9 +17,34 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const blog = await getBlogBySlug(params.slug);
   return {
-    title: blog ? blog.title + " -" : "YAZILAR -",
-    //TODO:
-    description: blog ? blog.description : "Sayfa bulunamadı",
+    title: blog ? blog.title + " -" : "Spor ve Performans",
+    description: blog?.description ? blog.description : "antrenman spor",
+    modifiedTime: blog?.date ? blog.date : "",
+    openGraph: {
+      siteName: "- Gerekli, Anlaşılabilir, Bilimsel Bilgi",
+      locale: "tr_TR",
+      type: "article",
+      title: blog ? blog.title + " -" : "Spor ve Performans",
+      description: blog ? blog.description : "antrenman spor",
+      url: "https://performanslab.com/" + blog.slug,
+      modifiedTime: blog?.date ? blog.date : "",
+      article: {
+        modifiedTime: blog?.date ? blog.date : "",
+      },
+      images: [
+        {
+          url: blog
+            ? blog.titleImage
+            : "https://performanslab.com/opengraph-image.png",
+          width: 800,
+          height: 600,
+          alt: blog ? blog.title : "Spor ve Performans",
+        },
+      ],
+    },
+    article: {
+      modifiedTime: blog?.date ? blog.date : "",
+    },
   };
 }
 
@@ -30,7 +55,7 @@ export default async function BlogDetail({ params }) {
   }
   return (
     <>
-      <div className="w-full flex items-center justify-end">
+      <div className="content w-full flex items-center justify-end">
         <div className="flex items-center gap-2 pt-4">
           <a
             target="_blank"
@@ -50,12 +75,14 @@ export default async function BlogDetail({ params }) {
           <ShareButton />
         </div>
       </div>
-      <div className={"mt-12 flex justify-center " + Inter.className}>
+      <div className={"mt-0 flex justify-center " + Inter.className}>
         <div className=" prose  blog-content bg-white">
-          <h1 className="text-center font-normal">{blog?.title}</h1>
+          <header>
+            <h1 className="text-center font-normal">{blog?.title}</h1>
+          </header>
           <div className="w-full flex justify-center">
             <img
-              className=" !w-full max-h-[300px] object-cover object-center rounded-md"
+              className=" !w-[100%] max-h-[280px] object-cover object-center rounded-md"
               src={blog?.titleImage}
               alt="blog-topic"
             />
