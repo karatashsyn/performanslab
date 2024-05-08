@@ -18,7 +18,12 @@ export async function generateMetadata({ params }) {
   const blog = await getBlogBySlug(params.slug);
   return {
     title: blog ? blog.title + " -" : "Spor ve Performans",
-    description: blog?.description ? blog.description : "antrenman spor",
+    description: blog?.description
+      ? blog.description
+      : blog.content.filter(
+          (item) => item._type === "block" && item.children[0]?.text
+        )[0].children[0].text,
+
     modifiedTime: blog?.date ? blog.date : "",
     openGraph: {
       siteName: "- Gerekli, Anlaşılabilir, Bilimsel Bilgi",
@@ -33,12 +38,12 @@ export async function generateMetadata({ params }) {
       },
       images: [
         {
-          url: blog
+          url: blog.titleImage
             ? blog.titleImage
             : "https://performanslab.com/opengraph-image.png",
           width: 800,
           height: 600,
-          alt: blog ? blog.title : "Spor ve Performans",
+          alt: blog.title ? blog.title : "Spor ve Performans",
         },
       ],
     },
@@ -78,7 +83,9 @@ export default async function BlogDetail({ params }) {
       <div className={"mt-0 flex justify-center " + Inter.className}>
         <div className=" prose  blog-content bg-white">
           <header>
-            <h1 className="text-center font-normal">{blog?.title}</h1>
+            <h1 className="text-[3rem] text-center font-normal">
+              {blog?.title}
+            </h1>
           </header>
           <div className="w-full flex justify-center">
             <img

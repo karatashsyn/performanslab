@@ -43,6 +43,7 @@ html {
   pointer-events: none;
   z-index: -1;
 }
+
 .blog-content {
   font-size: 1.2rem !important;
   line-height: 1.4em;
@@ -70,6 +71,14 @@ html {
   font-weight: 600;
 }
 
+.blog-content h1 strong,
+.blog-content h2 strong,
+.blog-content h3 strong,
+.blog-content h4 strong,
+.blog-content h5 strong,
+.blog-content h6 strong {
+  font-size: 2rem;
+}
 .animate-fade-in {
   animation: fadeIn 0.5s ease-in-out;
 }

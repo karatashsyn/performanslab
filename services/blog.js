@@ -3,7 +3,7 @@ import { cache } from "react";
 export const getBlogs = cache(async (searchKey = "") => {
   const res = await sanityClient.fetch(
     `*[_type=='blog' ]  | order(orderRank asc) {
-          title, smallDescription, "titleImage": titleImage.asset->url,"slug":slug.current, 'categories': categories[]->{title, value}, 'date':_updatedAt, orderRank
+          title, description, "titleImage": titleImage.asset->url,"slug":slug.current, 'categories': categories[]->{title, value}, 'date':_updatedAt, orderRank
         }`
   );
   return res.filter((b) => {
@@ -15,7 +15,7 @@ export const getBlogBySlug = cache(async (slug) => {
   if (!slug) return null;
   const res = await sanityClient.fetch(
     `*[_type=='blog' && slug.current == $slug] {
-            title,smallDescription,"titleImage": titleImage.asset->url,"slug":slug.current,"content":content[]{
+            title,description,"titleImage": titleImage.asset->url,"slug":slug.current,"content":content[]{
                 ...,
                 _type == 'image' => {
                 "url": asset->url
@@ -30,7 +30,7 @@ export const getBlogBySlug = cache(async (slug) => {
 export const getPerfTests = cache(async () => {
   const res = await sanityClient.fetch(
     `*[_type=='blog' && 'performans-testi' in categories[]->value ] | order(orderRank asc) {
-          title, "summary":smallDescription, "titleImage": titleImage.asset->url,"slug":slug.current, 'categories': categories[]->{title, value} , 'date':_updatedAt, orderRank
+          title, description, "titleImage": titleImage.asset->url,"slug":slug.current, 'categories': categories[]->{title, value} , 'date':_updatedAt, orderRank
         }`
   );
   return res;

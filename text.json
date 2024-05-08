@@ -1,0 +1,274 @@
+[
+  {
+    "style": "normal",
+    "_key": "ac4a6620331d",
+    "markDefs": [],
+    "children": [
+      {
+        "_key": "81406e86f01b0",
+        "_type": "span",
+        "marks": [],
+        "text": "Online sitelerde yapılan bir araştırma sonunda, yapılan crossfit antrenmanlarında spor yaralanmaları profili çıkarılmaya çalışılmış ve sonuçlar şöyle gözlenmiş."
+      }
+    ],
+    "_type": "block"
+  },
+  {
+    "_type": "block",
+    "style": "normal",
+    "_key": "5337aff2ed7a",
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "132 kişiden 97 kişi crossfit antrenmanlarında yaralanma yaşadıklarını beyan etmişler. % 73.",
+        "_key": "fe8bd5fe00720"
+      }
+    ]
+  },
+  {
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Rapor edilmiş 186 yaralanmanın ise 9 u cerrahi operasyon ile sonuçlanmış.% 7.",
+        "_key": "85f95292bead0"
+      }
+    ],
+    "_type": "block",
+    "style": "normal",
+    "_key": "c52422f7a8f8"
+  },
+  {
+    "_type": "block",
+    "style": "normal",
+    "_key": "5924964fb996",
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Beyana dayalı bu sistemde her 100 kişiden 73 ü bir şekilde yaralanma yaşamış tabiî ki bu bir şey ifade etmez çünkü gecikmiş kas ağrıları düşük zorlamalar profesyonel olmayan sporcular tarafından kolaylıkla yaralanma olarak algılanabilir.",
+        "_key": "3d82740c798a0"
+      }
+    ]
+  },
+  {
+    "_key": "d68b49ea2fc5",
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Bu durumu kendi içinde değil başka bir branş ile değerlendirmek gerekliliği ortaya çıkıyor.",
+        "_key": "52408d2cd2c20"
+      }
+    ],
+    "_type": "block",
+    "style": "normal"
+  },
+  {
+    "children": [
+      {
+        "text": "Crossfit in yaralanma oranı 1000 saat için 3.1 olarak hesaplanmış bu oran olimpik halterciler ve jimnastikçiler ile aynı.Futbol ve rugby gibi sporlardan ise düşük, sebebi kontak bir durum içermemesi. Araştırmanın linki ",
+        "_key": "833e39f0f6a70",
+        "_type": "span",
+        "marks": []
+      },
+      {
+        "_type": "span",
+        "marks": ["b3a54b57b0e2"],
+        "text": "http://www.ncbi.nlm.nih.gov/pubmed/24276294",
+        "_key": "833e39f0f6a71"
+      }
+    ],
+    "_type": "block",
+    "style": "normal",
+    "_key": "a66a359f7c16",
+    "markDefs": [
+      {
+        "href": "http://www.ncbi.nlm.nih.gov/pubmed/24276294",
+        "_key": "b3a54b57b0e2",
+        "_type": "link"
+      }
+    ]
+  },
+  {
+    "style": "normal",
+    "_key": "1c4d88ac865e",
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Kontak sporlarda durumu anlamak adına örnek vermek gerekir ise, yine yapılan diğer bir araştırmada Yenizelanda rugby liginde 77 antrenmanda 44 yaralanma kayıt ediliş bu 1000 saat için 22.4 bu sonuca göre kaçırılan antrenman saati 16 saat en sık rastlanan yaralanma aşırı zorlama ve cerrahi operasyon gerektirecek bir duruma rastlanmamış.",
+        "_key": "d7137eb822710"
+      }
+    ],
+    "_type": "block"
+  },
+  {
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Olimpik haltercilerde ve crossfit yapanlarda ise cerrahi operasyon gerektiren yaralanmalar yaşanmış.",
+        "_key": "5f6040429cce0"
+      }
+    ],
+    "_type": "block",
+    "style": "normal",
+    "_key": "1c9a48f8ccb5"
+  },
+  {
+    "children": [
+      { "_type": "span", "marks": [], "text": "", "_key": "879aa1abd7d70" }
+    ],
+    "_type": "block",
+    "style": "normal",
+    "_key": "951c2fc9dc88",
+    "markDefs": []
+  },
+  {
+    "style": "normal",
+    "_key": "bcd634586606",
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Ayrıca OHIO AMERIKAN EYALET ÜNİVESİTESİNDE yapılan çalışmada crossfit tabanlı yüksek yoğunluklu güç antrenmanları planlanmış ve 23 erkek ve kadına uygulanmış. (hıgh ıntensıty power traınıng kısaltması hıpt )",
+        "_key": "b3d8a85c812a0"
+      }
+    ],
+    "_type": "block"
+  },
+  {
+    "children": [
+      { "_type": "span", "marks": [], "text": "", "_key": "bff0ac2f69450" }
+    ],
+    "_type": "block",
+    "style": "normal",
+    "_key": "ac564d33cb59",
+    "markDefs": []
+  },
+  {
+    "style": "normal",
+    "_key": "c3bb932a3e97",
+    "markDefs": [],
+    "children": [
+      {
+        "marks": [],
+        "text": "Uygulamadan önce yağ oranları, maksimum oksıjen gücü (maksvo2) koşu bandında Bruce protokolüne göre ölçülmüş.HIPT gibi popüler bir kısaltma ile birlikte antrenman arzı belirtilmiş.",
+        "_key": "45904cd21db40",
+        "_type": "span"
+      }
+    ],
+    "_type": "block"
+  },
+  {
+    "_type": "block",
+    "style": "normal",
+    "_key": "bc0aa533b2e8",
+    "markDefs": [],
+    "children": [
+      {
+        "text": "Programın hareketleri olimpik kaldırışlar içinden seçilmiş ve 10 haftalık antrenman programı sonunda Tekrar testler yapılmış ve aradaki farklar belirlenmiş. Bulunan sonuçlar şöyle;",
+        "_key": "6f95f8d627120",
+        "_type": "span",
+        "marks": []
+      }
+    ]
+  },
+  {
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "MaxVo2Yağ oranıKadınlar35,9 – 40.2 %26 – %23Erkekler43.10 – 49.9% 22 – %18",
+        "_key": "af2b8b321d130"
+      }
+    ],
+    "_type": "block",
+    "style": "normal",
+    "_key": "5079aed97ccc"
+  },
+  {
+    "children": [
+      { "_key": "144092b128cb0", "_type": "span", "marks": [], "text": "" }
+    ],
+    "_type": "block",
+    "style": "normal",
+    "_key": "5554433aef21",
+    "markDefs": []
+  },
+  {
+    "markDefs": [],
+    "children": [
+      { "_type": "span", "marks": [], "text": "", "_key": "88674a0b6ec00" }
+    ],
+    "_type": "block",
+    "style": "normal",
+    "_key": "131bda328d6d"
+  },
+  {
+    "_key": "b6250c0fc9a7",
+    "markDefs": [],
+    "children": [
+      {
+        "marks": [],
+        "text": "Bu çalışmayı okuğumuzda diğer çalışmalardan farklı olduğunu hemen hissettik çünkü testler az ve yetersiz, program içeriği belirsiz ve bilimsel bir kılıf geçirilmeye çalışılmış kötü bir çalışma fakat crossfit üzerine yapılan çalışma az olduğu için değerlendirdik.Kötü bir çalışma olsa da araştırmaya devam ettik ve crossfit işletmecisi bir kişinin OHIO EYALET ÜNİVERSİTESİNE ‘’ aşırı kullanım ‘’ konu başlıklı makalenin manipüle edilmesi için para ödediği ile ilgili suçlamalar ile karşılaştik.",
+        "_key": "7c3bea3fe3d20",
+        "_type": "span"
+      }
+    ],
+    "_type": "block",
+    "style": "normal"
+  },
+  {
+    "_type": "block",
+    "style": "normal",
+    "_key": "5c12d45d53a8",
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Crossfit işletmecisi bir kişi sportıf yaralanmalar ile ilgili bir makaleyi neden yalanlarla doldurmak ister?",
+        "_key": "6738155b37e90"
+      }
+    ]
+  },
+  {
+    "_key": "9bbcdc37d3eb",
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "http://retractionwatch.com/2015/05/08/crossfit-gym-owner-sues-ohio-state-says-fraudulent-data-led-to-273-million-in-nih-grants/.",
+        "_key": "520a98ea29240"
+      }
+    ],
+    "_type": "block",
+    "style": "normal"
+  },
+  {
+    "markDefs": [],
+    "children": [
+      {
+        "_type": "span",
+        "marks": [],
+        "text": "Buradan çıkan sonuç crossfit in madalya hedefleyen bir sporcu kadar risk aldığı. Profesyonel sporun bazen geri dönülemez yaralanmalara ve dejenerasyonlara yol açtığı ortada bir durum. Profesyonel sporcunun bu işten para kazananların aldığı risk anlaşılabilir iken bir muhasebecinin böyle bir risk alma sebebini açıklamak zor.",
+        "_key": "542b909fc0450"
+      }
+    ],
+    "_type": "block",
+    "style": "normal",
+    "_key": "75ac476bdf8c"
+  }
+]
