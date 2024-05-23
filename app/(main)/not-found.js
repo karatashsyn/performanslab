@@ -14,7 +14,7 @@ export default async function Blog() {
     <>
       <div className="w-full flex justify-between  mt-8">
         <form
-          action={"http://localhost:3000/arsiv"}
+          action={"http://performanslab.com/arsiv"}
           className="w-[50%] max-sm:w-[80%] "
         >
           <div className=" max-lg:w-full flex h-[48px] max-sm:h-[36px] items-center text-black justify-between p-0 pl-2  border-[0.4px] shadowsm border-neutral-400 rounded-[3px]">

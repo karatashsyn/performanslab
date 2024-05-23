@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
       ? blog.description
       : blog.content.filter(
           (item) => item._type === "block" && item.children[0]?.text
-        )[0].children[0].text,
+        )[0]?.children[0]?.text,
 
     modifiedTime: blog?.date ? blog.date : "",
     openGraph: {
@@ -80,20 +80,19 @@ export default async function BlogDetail({ params }) {
           <ShareButton />
         </div>
       </div>
-      <div className={"mt-0 flex justify-center " + Inter.className}>
-        <div className=" prose  blog-content bg-white">
+      <div className={"mt-12  flex justify-center " + Inter.className}>
+        <div className=" prose max-md:px-0 px-[12rem]  min-w-full  blog-content bg-white">
           <header>
-            <h1 className="text-[3rem] text-center font-normal">
+            <h1 className="text-[3rem] mb-[1rem] text-center font-normal">
               {blog?.title}
             </h1>
           </header>
-          <div className="w-full flex justify-center">
-            <img
-              className=" !w-[100%] max-h-[280px] object-cover object-center rounded-md"
-              src={blog?.titleImage}
-              alt="blog-topic"
-            />
-          </div>
+          <img
+            className=" !w-[100%] mx-auto max-h-[280px] object-cover object-center rounded-md"
+            src={blog?.titleImage}
+            alt="blog-topic"
+          />
+          <div className="w-full flex "></div>
           <div className="text-[1rem]">
             <BlogText blog={blog} />
           </div>
