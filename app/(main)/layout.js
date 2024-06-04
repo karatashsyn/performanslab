@@ -4,6 +4,7 @@ import Navbar from "@/components/composite/Navbar";
 import Footer from "@/components/composite/Footer";
 import PaddedContainer from "@/components/composite/PaddedContainer";
 import GradientPage from "@/components/composite/GradientPage";
+import Script from "next/script";
 
 const NotoSerif = mainfont({
   subsets: ["latin"],
@@ -44,6 +45,17 @@ export default function RootLayout({ children }) {
           <PaddedContainer>
             <div className="!min-h-[100vh]">{children}</div>
           </PaddedContainer>
+          <Script
+            src="https://example.com/script.js"
+            strategy="beforeInteractive"
+            id="clarity-script"
+          >
+            {`  (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "mmw2pmmlb1");`}
+          </Script>
           <Footer />
         </GradientPage>
       </body>

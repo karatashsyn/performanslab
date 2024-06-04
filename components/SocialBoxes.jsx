@@ -12,26 +12,22 @@ export default function SocialBoxes() {
     {
       icon: "/whatsapp.svg",
       color: "#25D366",
+      href: "https://wa.me/905447320331",
     },
     {
       icon: "/instagram.svg",
       color: "#d62976",
-    },
-    {
-      icon: "/facebook.svg",
-      color: "#1877F2",
-    },
-    {
-      icon: "/twitter.svg",
-      color: "#fff",
+      href: "https://www.instagram.com/performanslab.levent/",
     },
     {
       icon: "/mail.svg",
-      color: "#00A3EE",
+      color: "#fff",
+      href: "mailto:ozkanmf@hotmail.com",
     },
     {
       icon: "/phone2.svg",
-      color: "#25D366",
+      color: "#1877F2",
+      href: "tel:+905447320331",
     },
   ];
 
@@ -55,7 +51,7 @@ export default function SocialBoxes() {
         setHovered(false);
       }}
       ref={boxRef}
-      className="grid grid-cols-3 grid-rows-2 relative overflow-hidden "
+      className="grid grid-cols-2 grid-rows-2 relative overflow-hidden "
     >
       <div
         style={{
@@ -74,6 +70,7 @@ export default function SocialBoxes() {
           }}
         >
           <ContactBox
+            href={link.href}
             icon={link.icon}
             color={link.color}
             className="col-span-1 row-span-1"
