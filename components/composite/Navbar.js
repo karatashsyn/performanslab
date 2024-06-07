@@ -26,7 +26,6 @@ export default function Navbar({ transparent }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navLinks = [
     { href: "/", label: "Anasayfa" },
-    { href: "/category/perftest", label: "Performans Testleri" },
     { href: "/arsiv", label: "Yazılar" },
     { href: "/iletisim", label: "İletişim" },
   ];
@@ -88,6 +87,9 @@ export default function Navbar({ transparent }) {
           }`}
         >
           {navLinks.map((nl, i) => navLink({ key: i, ...nl }))}
+          <a target="_blank" href="https://www.instagram.com/performanslab/">
+            Instagram
+          </a>
         </ul>
       </nav>
     </PaddedContainer>

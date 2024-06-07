@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function TreatmentsView() {
   return (
     <section
-      className="mt-72 flex max-md:flex-col overflow-visible justify-between gap-24 md:items-center"
+      className="sm:mt-72 max-sm:mt-24 flex max-md:flex-col overflow-visible justify-between gap-24 md:items-center"
       id="treatments"
     >
       <SlideShow />
