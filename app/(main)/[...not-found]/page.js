@@ -2,13 +2,13 @@
 import React from "react";
 import { getBlogs } from "@/services/blog";
 import BlogCard2 from "@/components/BlogCard2";
-import { Inter } from "../(blog)/layout";
+import { Inter } from "../layout";
 import ContactSection from "@/views/ContactSection";
 import { shuffleArray } from "@/util";
 
-export const revalidate = 3600;
+export const revalidate = 10800;
 
-export default async function Blog() {
+export default async function NotFound() {
   const blogs = await getBlogs();
   return (
     <>
@@ -49,8 +49,8 @@ export default async function Blog() {
           </a>
         </div>
       </div>
-      <div className="mt-6 flex text-[1.4rem] font-bold justify-center text-[#222]">
-        Aradığınız içerik bulunamadı. Şunlara göz atın
+      <div className="mt-10 flex text-[1.4rem] font-medium justify-center text-[#222]">
+        Aradığınız içerik bulunamadı, Şunlara göz atın...
       </div>
       <div
         className={

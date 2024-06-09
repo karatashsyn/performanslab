@@ -2,13 +2,13 @@
 import React from "react";
 import { getBlogs } from "@/services/blog";
 import BlogCard2 from "@/components/BlogCard2";
-import { Inter } from "../(blog)/layout";
+import { Inter } from "../layout";
 import ContactSection from "@/views/ContactSection";
 import { shuffleArray } from "@/util";
 
 export const revalidate = 10800;
 
-export default async function Blog() {
+export default async function NotFound() {
   const blogs = await getBlogs();
   return (
     <>

@@ -81,7 +81,7 @@ export default async function BlogDetail({ params }) {
         </div>
       </div>
       <div className={"mt-12  flex justify-center " + Inter.className}>
-        <div className=" prose max-md:px-0 px-[18rem]  min-w-full  blog-content bg-white">
+        <div className=" prose max-md:px-0 px-[14rem]  min-w-full  blog-content bg-white">
           <header>
             <h1 className="text-[3rem] mb-[1rem] text-center font-normal">
               {blog?.title}
