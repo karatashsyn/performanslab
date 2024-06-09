@@ -47,6 +47,11 @@ export default function RootLayout({ children }) {
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
         crossorigin="anonymous"
       ></Script>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
+        crossorigin="anonymous"
+      ></Script>
       <body className={Inter.className}>
         {/* <header className="fixed top-0 z-[20]"> */}
         <header className="">

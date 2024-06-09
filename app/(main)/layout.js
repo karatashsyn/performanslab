@@ -44,6 +44,11 @@ export default function RootLayout({ children }) {
     })(window, document, "clarity", "script", "mmw2pmmlb1");
         `}
       </Script>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
+        crossorigin="anonymous"
+      ></Script>
       <body className={NotoSerif.className}>
         <GradientPage topEnabled={true} bottomEnabled={true} bg={"#181818"}>
           <header>
