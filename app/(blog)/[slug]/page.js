@@ -81,14 +81,14 @@ export default async function BlogDetail({ params }) {
         </div>
       </div>
       <div className={"mt-12  flex justify-center " + Inter.className}>
-        <div className=" prose max-md:px-0 px-[12rem]  min-w-full  blog-content bg-white">
+        <div className=" prose max-md:px-0 px-[18rem]  min-w-full  blog-content bg-white">
           <header>
             <h1 className="text-[3rem] mb-[1rem] text-center font-normal">
               {blog?.title}
             </h1>
           </header>
           <img
-            className=" !w-[100%] mx-auto max-h-[280px] object-cover object-center rounded-md"
+            className=" !w-[80%] mx-auto object-center rounded-md"
             src={blog?.titleImage}
             alt="blog-topic"
           />
