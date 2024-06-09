@@ -16,6 +16,9 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const blog = await getBlogBySlug(params.slug);
+  if (!blog) {
+    notFound();
+  }
   return {
     title: blog ? blog.title + " -" : "Spor ve Performans",
     description: blog?.description

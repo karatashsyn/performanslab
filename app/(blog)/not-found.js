@@ -2,7 +2,7 @@
 import React from "react";
 import { getBlogs } from "@/services/blog";
 import BlogCard2 from "@/components/BlogCard2";
-import { Inter } from "../layout";
+import { Inter } from "./layout";
 import ContactSection from "@/views/ContactSection";
 import { shuffleArray } from "@/util";
 
