@@ -4,6 +4,7 @@ import "./../globals.css";
 import Navbar from "@/components/composite/Navbar";
 import Footer from "@/components/composite/Footer";
 import PaddedContainer from "@/components/composite/PaddedContainer";
+import Script from "next/script";
 
 const NotoSerif = mainfont({
   subsets: ["latin"],
@@ -32,6 +33,20 @@ export default function RootLayout({ children }) {
         background: "#fff",
       }}
     >
+      <Script strategy="lazyOnload" id="clarity-script">
+        {`
+          (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "mmw2pmmlb1");
+        `}
+      </Script>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
+        crossorigin="anonymous"
+      ></Script>
       <body className={Inter.className}>
         {/* <header className="fixed top-0 z-[20]"> */}
         <header className="">
