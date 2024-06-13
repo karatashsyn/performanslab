@@ -15,10 +15,10 @@ const images = [
   "/treat5.png",
 ];
 
-const Slide = ({ src }) => {
+const Slide = ({ src, alt = "" }) => {
   return (
     <div className="w-full h-full flex justify-center bg-neutral-700">
-      <img src={src} alt="" className="w-full h-[100%] object-cover" />
+      <img src={src} alt={alt} className="w-full h-[100%] object-cover" />
     </div>
   );
 };
@@ -58,9 +58,9 @@ export default function SlideShow({ className }) {
       spaceBetween={50}
       SlidesPerView={1}
     >
-      {images.map((src) => (
+      {images.map((src, index) => (
         <SwiperSlide key={src}>
-          <Slide src={src} />
+          <Slide alt={`Tedavi Görseli ${index + 1}`} src={src} />
         </SwiperSlide>
       ))}
       <div className="autoplay-progress absolute  top-10 bg-black rounded-full right-0 -translate-y-[60%]">

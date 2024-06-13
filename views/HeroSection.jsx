@@ -10,7 +10,7 @@ export default function HeroSection() {
       <img
         src="/glow_white.png"
         className="absolute max-sm:hidden glow left-0 z-0 pointer-events-none"
-        alt=""
+        alt="Background Glow"
       />
       <img
         style={{
@@ -18,15 +18,15 @@ export default function HeroSection() {
         }}
         src=" /glow_red.png"
         className="translate-y-12 max-sm:hidden absolute glow right-0 top-0  opacity-75"
-        alt=""
+        alt="Glow Red"
       />
       <div className="max-sm:text-center ">
-        <h2 className="text-bright-red animate-fade-in  max-sm:text-[2rem] arial text-[4.6rem] leading-[1.04] max-sm:leading-[1.2] font-bold">
+        <h1 className="text-bright-red animate-fade-in  max-sm:text-[2rem] arial text-[4.6rem] leading-[1.04] max-sm:leading-[1.2] font-bold">
           PerformansLab <br className="leading-[0]" />
           <span className="leading-[0] text-[1.14em] whitespace-nowrap">
             Personal Training
           </span>
-        </h2>
+        </h1>
         <div className=" mt-[1rem] animate-fade-in-neutral">
           Size uygun Fonksiyonel antrenmanlar,
           <br />

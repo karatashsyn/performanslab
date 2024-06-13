@@ -43,7 +43,7 @@ export default function Footer({ darkMode = false }) {
             className={`text-[1rem] ${
               darkMode ? "text-[white]" : "text-[#737373]"
             } `}
-            href={"/performans-testleri"}
+            href={"/arsiv"}
           >
             Performans Testleri
           </Link>
@@ -51,7 +51,7 @@ export default function Footer({ darkMode = false }) {
             className={`text-[1rem] ${
               darkMode ? "text-[white]" : "text-[#737373]"
             } `}
-            href={"/blog"}
+            href={"/arsiv"}
           >
             Yazılar
           </Link>

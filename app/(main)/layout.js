@@ -15,7 +15,7 @@ export const metadata = {
   title: "PL Ana Sayfa -",
   //TODO: Add description
   description:
-    "Ana Sayfa Performans Testleri Arşiv Instagram Instagram Facebook Instagram Instagram Facebook Instagram Ana Sayfa Performans Testleri Arşiv Instagram PerformansLab Personal Training PerformansLab Ne Yapar? PerformansLab, fonksiyonel antrenmanlar, performans testleri, postür düzeltici egzersizler, atletik antrenmanlar ve dahası için sizleri bilgilendirir ve size uygun antrenmanlar planlar. BİZE ULAŞIN İçerikleri okumak için buraya tıkla! Fatih Özkan Kimdir? 1984",
+    "PerformansLab, fonksiyonel antrenmanlar düzenler, beslenme programları oluşturur ve postür düzeltici egezersizler oluşturur.",
   twitter: {
     card: "summary_large_image",
   },

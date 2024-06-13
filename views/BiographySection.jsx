@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import BiographyInfo from "@/components/BiographyInfo";
 import React from "react";
@@ -8,7 +9,11 @@ export default function BiographySection() {
   return (
     <section id="fatih-ozkan" className=" mt-48">
       <div className="h-48 relative flex mb-48 max-md:flex-col max-md:h-72 overflow-hidden">
-        <img src="/plab.jpeg" className=" absolute  inset-0 opacity-50" />
+        <img
+          src="/plab.jpeg"
+          alt="Performans Lab Levent"
+          className=" absolute  inset-0 opacity-50"
+        />
 
         <Link
           href="/arsiv"
