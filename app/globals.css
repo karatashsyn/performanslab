@@ -59,6 +59,10 @@ html {
   color: #111827;
 }
 
+.blog-content li {
+  color: #111827;
+}
+
 .red-links > blockquote {
   font-style: normal;
 }
