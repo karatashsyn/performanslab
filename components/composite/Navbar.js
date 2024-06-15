@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import PaddedContainer from "./PaddedContainer";
 
-export default function Navbar({ transparent }) {
+export default function Navbar({ transparent, className }) {
   const pathName = usePathname();
   const navLink = ({ href, label, key }) => (
     <li
@@ -48,7 +48,9 @@ export default function Navbar({ transparent }) {
   );
 
   return (
-    <PaddedContainer className={`${transparent ? " " : " !bg-black"}  arial`}>
+    <PaddedContainer
+      className={`${transparent ? " " : " !bg-black"} ${className}  arial`}
+    >
       <nav className="relative flex justify-between items-center !z-[20]">
         <Link href={"/"} className="z-[20] flex items-center gap-4">
           <img
