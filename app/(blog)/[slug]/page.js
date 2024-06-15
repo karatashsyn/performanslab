@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
 
     modifiedTime: blog?.date ? blog.date : "",
     openGraph: {
-      siteName: "- Gerekli, Anlaşılabilir, Bilimsel Bilgi",
+      siteName: "Gerekli, Anlaşılabilir, Bilimsel Bilgi",
       locale: "tr_TR",
       type: "article",
       title: blog ? blog.title + " -" : "Spor ve Performans",

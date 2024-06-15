@@ -20,7 +20,7 @@ export const metadata = {
     card: "summary_large_image",
   },
   openGraph: {
-    siteName: "- Gerekli, Anlaşılabilir, Bilimsel Bilgi",
+    siteName: "Gerekli, Anlaşılabilir, Bilimsel Bilgi",
     locale: "tr_TR",
     type: "website",
     url: "https://performanslab.com/",
