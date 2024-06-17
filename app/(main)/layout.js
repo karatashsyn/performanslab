@@ -5,6 +5,7 @@ import Footer from "@/components/composite/Footer";
 import PaddedContainer from "@/components/composite/PaddedContainer";
 import GradientPage from "@/components/composite/GradientPage";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 const NotoSerif = mainfont({
   subsets: ["latin"],
@@ -51,6 +52,7 @@ export default function RootLayout({ children }) {
 
           <Footer />
         </GradientPage>
+        <Analytics />
       </body>
     </html>
   );

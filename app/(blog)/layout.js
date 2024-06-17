@@ -5,6 +5,7 @@ import Navbar from "@/components/composite/Navbar";
 import Footer from "@/components/composite/Footer";
 import PaddedContainer from "@/components/composite/PaddedContainer";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 const NotoSerif = mainfont({
   subsets: ["latin"],
@@ -57,6 +58,7 @@ export default function RootLayout({ children }) {
           </div>
         </PaddedContainer>
         <Footer darkMode={true} />
+        <Analytics />
       </body>
     </html>
   );
