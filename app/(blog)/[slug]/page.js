@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
     notFound();
   }
   return {
-    title: blog ? blog.title + " -" : "Spor ve Performans",
+    title: blog ? blog.title : "Spor ve Performans",
     description: blog?.description
       ? blog.description
       : blog.content.filter(
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }) {
       siteName: "Gerekli, Anlaşılabilir, Bilimsel Bilgi",
       locale: "tr_TR",
       type: "article",
-      title: blog ? blog.title + " -" : "Spor ve Performans",
+      title: blog ? blog.title : "Spor ve Performans",
       description: blog ? blog.description : "antrenman spor",
       url: "https://performanslab.com/" + blog.slug,
       modifiedTime: blog?.date ? blog.date : "",
