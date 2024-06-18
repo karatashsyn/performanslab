@@ -33,6 +33,7 @@ export default function ContactSection({
           alt="fatih-ozkan"
         >
           <iframe
+            title="PerformansLab Levent Haritası"
             className="w-full rounded-md aspect-[2]"
             src="https://maps.google.com/maps?q=34394%20%C5%9Ei%C5%9Fli%2F%C4%B0stanbul%20performanslab%20Levent&t=m&z=15&output=embed&iwloc=near"
             frameBorder="0"
@@ -63,6 +64,7 @@ export default function ContactSection({
         </ul>
         <div className="basis-full max-sm:hidden rounded-md overflow-hidden bg-gray-500 max-sm:w-[90%]">
           <iframe
+            title="PerformansLab Levent Haritası"
             className="w-full rounded-md sm:aspect-[666/307]"
             src="https://maps.google.com/maps?q=34394%20%C5%9Ei%C5%9Fli%2F%C4%B0stanbul%20performanslab%20Levent&t=m&z=15&output=embed&iwloc=near"
             frameBorder="0"

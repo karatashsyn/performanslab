@@ -8,11 +8,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 const images = [
-  "/treat1.png",
-  "/treat2.png",
-  "/treat3.png",
-  "/treat4.png",
-  "/treat5.png",
+  "/treat1.webp",
+  "/treat2.webp",
+  "/treat3.webp",
+  "/treat4.webp",
+  "/treat5.webp",
 ];
 
 const Slide = ({ src, alt = "" }) => {

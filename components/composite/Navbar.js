@@ -73,14 +73,6 @@ export default function Navbar({ transparent, className }) {
             className="w-[32px] h-[32px] invert "
           />
         </div>
-        {!menuOpen && (
-          <div
-            className="w-0 h-[48px] max-sm:hidden relative z-[20] mr-12"
-            style={{
-              boxShadow: "-2px 0 10px 10px rgba(0,0,0,1)",
-            }}
-          ></div>
-        )}
         <ul
           className={`flex max-sm:fixed transition-all duration-200 max-sm:inset-0 max-sm:flex-col max-sm:items-center max-sm:gap-12 max-sm:pt-24 max-sm:bg-[#181818] max-sm:overflow-hidden sm:justify-between sm:gap-[3.4rem] sm:py-[1.6rem] ${
             menuOpen
@@ -89,9 +81,11 @@ export default function Navbar({ transparent, className }) {
           }`}
         >
           {navLinks.map((nl, i) => navLink({ key: i, ...nl }))}
-          <a target="_blank" href="https://www.instagram.com/performanslab/">
-            Instagram
-          </a>
+          <li>
+            <a target="_blank" href="https://www.instagram.com/performanslab/">
+              Instagram
+            </a>
+          </li>
         </ul>
       </nav>
     </PaddedContainer>

@@ -1,14 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Link from "next/link";
+import Head from "next/head";
 export default function HeroSection() {
   return (
     <section
       id="hero"
       className=" mt-16 flex justify-center md:justify-between items-center"
     >
+      <Head>
+        <link rel="preload" href="/glow_white.webp" as="image" />
+        <link rel="preload" href="/glow_red.webp" as="image" />
+      </Head>
       <img
-        src="/glow_white.png"
+        src="/glow_white.webp"
         className="absolute max-sm:hidden glow left-0 z-0 pointer-events-none"
         alt="Background Glow"
       />
@@ -16,8 +21,8 @@ export default function HeroSection() {
         style={{
           animationDelay: "0.36ms",
         }}
-        src=" /glow_red.png"
-        className="translate-y-12 max-sm:hidden absolute glow right-0 top-0  opacity-75"
+        src=" /glow_red.webp"
+        className="translate-y-12 max-sm:hidden absolute glow right-0 top-0  opacity-75 pointer-events-none"
         alt="Glow Red"
       />
       <div className="max-sm:text-center ">

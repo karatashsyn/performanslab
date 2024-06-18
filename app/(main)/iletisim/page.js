@@ -1,10 +1,15 @@
 import SocialBoxes from "@/components/SocialBoxes";
 import ContactSection from "@/views/ContactSection";
+import Head from "next/head";
 import React from "react";
 
 export default function Iletisim() {
   return (
     <main>
+      <Head>
+        <link rel="preconnect" href="https://maps.googleapis.com" />
+        <link rel="preconnect" href="https://maps.gstatic.com" />
+      </Head>
       <h1 className="text-primary-white  text-center mb-24 w-full max-sm:text-[2rem] arial text-[2.4rem] leading-[0.72]  font-bold mt-12">
         İletişim
       </h1>
