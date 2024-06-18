@@ -41,6 +41,7 @@ export default function RootLayout({ children }) {
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
         crossorigin="anonymous"
       ></Script>
+
       <body className={NotoSerif.className}>
         <GradientPage topEnabled={true} bottomEnabled={true} bg={"#181818"}>
           <header>
@@ -52,7 +53,20 @@ export default function RootLayout({ children }) {
 
           <Footer />
         </GradientPage>
+
         <Analytics />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-90GN5TNZVK"
+        ></Script>
+        <Script id="gAnalyticsScript" strategy="afterInteractive">
+          {`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-90GN5TNZVK');`}
+        </Script>
       </body>
     </html>
   );

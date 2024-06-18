@@ -59,6 +59,18 @@ export default function RootLayout({ children }) {
         </PaddedContainer>
         <Footer darkMode={true} />
         <Analytics />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-90GN5TNZVK"
+        ></Script>
+        <Script id="gAnalyticsScript" strategy="afterInteractive">
+          {`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-90GN5TNZVK');`}
+        </Script>
       </body>
     </html>
   );
