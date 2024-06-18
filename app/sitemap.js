@@ -4,7 +4,7 @@ export default async function sitemap() {
   const blogs = await getBlogs();
   const blogEntries = blogs.map((blog) => ({
     url: `https://performanslab.com/${blog.slug}`,
-    lastModified: new Date(blog._updatedAt),
+    lastModified: new Date(),
     priority: 0.9,
     changefreq: "weekly",
   }));
