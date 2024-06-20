@@ -7,6 +7,6 @@ export default function robots() {
         disallow: "/admin",
       },
     ],
-    sitemap: "https://performanslab.com/sitemap.xml",
+    sitemap: "https://www.performanslab.com/sitemap.xml",
   };
 }
