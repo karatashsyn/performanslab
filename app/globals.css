@@ -47,10 +47,13 @@ html {
 .blog-content {
   font-size: 1.2rem !important;
   line-height: 1.4em;
+  
 }
 
-.blog-content > p {
-  font-size: 1.2rem !important;
+
+.blog-content p, .blog-content p *, .blog-content p em  {
+  font-size: 1.26rem !important;
+  line-height: 2.2rem;
   color: #111827;
 }
 

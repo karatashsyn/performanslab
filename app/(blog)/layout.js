@@ -1,4 +1,3 @@
-import { Noto_Serif as mainfont } from "next/font/google";
 import { Inter as secondaryFont } from "next/font/google";
 import "./../globals.css";
 import Navbar from "@/components/composite/Navbar";
@@ -7,10 +6,6 @@ import PaddedContainer from "@/components/composite/PaddedContainer";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
-const NotoSerif = mainfont({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
 
 export const Inter = secondaryFont({
   subsets: ["latin"],

@@ -6,9 +6,10 @@ import { notFound } from "next/navigation";
 import { Inter } from "../layout";
 import ShareButton from "@/components/ShareButton";
 import BlogSuggestion from "@/components/BlogSuggestion";
+import { NotoSerif } from "@/util/fonts";
 
 export const revalidate = 3600;
-
+ 
 export async function generateStaticParams() {
   const blogs = await getBlogs();
   return blogs.map((blog) => blog.slug);
@@ -63,7 +64,7 @@ export default async function BlogDetail({ params }) {
   }
   return (
     <>
-      <div className="content w-full flex items-center justify-end">
+      <div className="content w-full flex items-center justify-end ">
         <div className="flex items-center gap-2 pt-4">
           <a
             target="_blank"
@@ -96,7 +97,7 @@ export default async function BlogDetail({ params }) {
             alt="blog-topic"
           />
           <div className="w-full flex "></div>
-          <div className="text-[1rem]">
+          <div className={`${NotoSerif.className}`}>
             <BlogText blog={blog} />
           </div>
         </div>
