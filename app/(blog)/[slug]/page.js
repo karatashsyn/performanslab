@@ -64,7 +64,9 @@ export default async function BlogDetail({ params }) {
   }
   return (
     <>
-      <div className="content w-full flex items-center justify-end ">
+      <div className="content w-full flex items-center justify-end"
+      
+      >
         <div className="flex items-center gap-2 pt-4">
           <a
             target="_blank"

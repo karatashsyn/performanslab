@@ -6,7 +6,6 @@ import PaddedContainer from "@/components/composite/PaddedContainer";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
-
 export const Inter = secondaryFont({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
