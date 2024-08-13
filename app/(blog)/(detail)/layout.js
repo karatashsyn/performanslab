@@ -45,14 +45,11 @@ export default function RootLayout({ children }) {
         <header className="">
           <Navbar transparent={false} />
         </header>
-        {/* <PaddedContainer className={"pt-[80px] max-sm:pt-[50px]"}> */}
-        <PaddedContainer className={"blog-layout-container"}>
           <div className="!min-h-[100vh]">
             <main>
-              <article>{children}</article>
+              <article className="text-left">{children}</article>
             </main>
           </div>
-        </PaddedContainer>
         <Footer darkMode={true} />
         <Analytics />
         <Script

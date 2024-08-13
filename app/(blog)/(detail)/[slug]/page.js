@@ -7,9 +7,10 @@ import { Inter } from "../../(search)/layout";
 import ShareButton from "@/components/ShareButton";
 import BlogSuggestion from "@/components/BlogSuggestion";
 import { NotoSerif } from "@/util/fonts";
+import PaddedContainer from "@/components/composite/PaddedContainer";
 
 export const revalidate = 3600;
- 
+
 export async function generateStaticParams() {
   const blogs = await getBlogs();
   return blogs.map((blog) => blog.slug);
@@ -64,47 +65,56 @@ export default async function BlogDetail({ params }) {
   }
   return (
     <>
-      <div className="content w-full flex items-center justify-end"
-      
-      >
-        <div className="flex items-center gap-2 pt-4">
-          <a
-            target="_blank"
-            href="https://www.instagram.com/performanslab/"
-            className="instagram-button  flex items-center justify-center max-sm:h-[36px] max-sm:py-0 max-sm:px-0 max-sm:w-[36px] cursor-pointer  border-[1px] px-8 shadow-sm py-3 rounded-sm gap-1"
-          >
-            <img
-              width={15}
-              height={15}
-              className=" mt-[2px] opacity-75"
-              alt="instagram"
-              src={"/icons/colorfulinstagram.png"}
-            />
+    <PaddedContainer className={'md:px-0'}>
 
-            <span className="arial text-gray-800 max-sm:hidden">Instagram</span>
-          </a>
-          <ShareButton />
-        </div>
-      </div>
-      <div className={"mt-12  flex justify-center " + Inter.className}>
-        <div className=" prose max-md:px-0 px-[14rem]  min-w-full  blog-content bg-white">
-          <header>
-            <h1 className="text-[3rem] mb-[1rem] text-center font-normal">
-              {blog?.title}
-            </h1>
-          </header>
-          <img
-            className=" !w-[80%] mx-auto object-center rounded-md"
-            src={blog?.titleImage}
-            alt="blog-topic"
-          />
-          <div className="w-full flex "></div>
-          <div className={`${NotoSerif.className}`}>
-            <BlogText blog={blog} />
+      <article>
+        <div className="w-full flex items-center justify-end">
+          <div className="flex items-center gap-2 pt-4">
+            <a
+              target="_blank"
+              href="https://www.instagram.com/performanslab/"
+              className="instagram-button  flex items-center justify-center max-sm:h-[36px] max-sm:py-0 max-sm:px-0 max-sm:w-[36px] cursor-pointer  border-[1px] px-8  py-3 rounded-sm gap-1"
+            >
+              <img
+                width={15}
+                height={15}
+                className=" mt-[2px] opacity-75"
+                alt="instagram"
+                src={"/icons/colorfulinstagram.png"}
+              />
+
+              <span className="arial text-gray-800 max-sm:hidden">
+                Instagram
+              </span>
+            </a>
+            <ShareButton />
           </div>
         </div>
-      </div>
-      <BlogSuggestion />
+        <div className={"mt-12  flex justify-start " + Inter.className}>
+          <div className=" prose max-md:px-0 md:px-[6rem] lg:px-[10rem]  min-w-full  blog-content">
+            <header>
+              <h1 className="text-[3rem]  mb-[1rem] text-center font-bold">
+                {/* {blog?.title?.toLocaleUpperCase("tr")} */}
+                {blog?.title}
+                
+              </h1>
+            </header>
+            <img
+              className=" sm:w-[70%] mx-auto object-center rounded-md"
+              src={blog?.titleImage}
+              alt="blog-topic"
+            />
+            <div className={` text-left ${NotoSerif.className}`}>
+              <BlogText blog={blog} />
+            </div>
+          </div>
+        </div>
+      </article>
+    </PaddedContainer>
+
+      <PaddedContainer>
+        <BlogSuggestion />
+      </PaddedContainer>
     </>
   );
 }

@@ -7,7 +7,7 @@ export default function ShareButton() {
   return (
     <button
       type="button"
-      className={`flex items-center relative max-sm:h-[36px] justify-center max-sm:w-[36px] border-[1px] sm:px-4 shadow-sm sm:py-3  transition-all duration-300 ease-in-out cursor-pointer`}
+      className={`flex items-center relative max-sm:h-[36px] justify-center max-sm:w-[36px] border-[1px] sm:px-4  sm:py-3  transition-all duration-300 ease-in-out cursor-pointer`}
       onClick={() => {
         navigator.clipboard.writeText(window.location.href);
         setClicked(true);
