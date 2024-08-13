@@ -1,5 +1,5 @@
 import { Inter as secondaryFont } from "next/font/google";
-import "./../globals.css";
+import "../../globals.css";
 import Navbar from "@/components/composite/Navbar";
 import Footer from "@/components/composite/Footer";
 import PaddedContainer from "@/components/composite/PaddedContainer";
@@ -21,12 +21,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+    
+  
   return (
     <html
       lang="tr"
-      style={{
-        background: "#fff",
-      }}
+      // style={{
+      //   background: "#fff",
+      // }}
     >
       <Script
         async
@@ -44,7 +46,7 @@ export default function RootLayout({ children }) {
           <Navbar transparent={false} />
         </header>
         {/* <PaddedContainer className={"pt-[80px] max-sm:pt-[50px]"}> */}
-        <PaddedContainer className={""}>
+        <PaddedContainer className={"blog-layout-container"}>
           <div className="!min-h-[100vh]">
             <main>
               <article>{children}</article>

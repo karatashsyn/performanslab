@@ -3,7 +3,7 @@ import React from "react";
 import { getBlogBySlug, getBlogs } from "@/services/blog";
 import BlogText from "@/components/BlogText";
 import { notFound } from "next/navigation";
-import { Inter } from "../layout";
+import { Inter } from "../../(search)/layout";
 import ShareButton from "@/components/ShareButton";
 import BlogSuggestion from "@/components/BlogSuggestion";
 import { NotoSerif } from "@/util/fonts";
