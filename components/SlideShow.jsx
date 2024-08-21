@@ -9,11 +9,11 @@ import "swiper/css/navigation";
 
 const images = [
   "/treat1.webp",
+  '/treat6.webp',
   "/treat2.webp",
   "/treat3.webp",
   "/treat4.webp",
   "/treat5.webp",
-  '/treat6.webp',
 ];
 
 const Slide = ({ src, alt = "" }) => {
