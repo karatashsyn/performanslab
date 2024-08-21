@@ -13,6 +13,7 @@ const images = [
   "/treat3.webp",
   "/treat4.webp",
   "/treat5.webp",
+  '/treat6.webp',
 ];
 
 const Slide = ({ src, alt = "" }) => {
