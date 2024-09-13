@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
     <html
       lang="tr"
       style={{
-        background: "rgb(254, 254, 248)",
+        background: "rgb(254, 254, 254)",
       }}
     >
       <Script
