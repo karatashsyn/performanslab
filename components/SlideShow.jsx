@@ -8,6 +8,10 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 const images = [
+  "1.webp",
+  "2.webp",
+  "3.webp",
+  "4.webp",
   "/treat1.webp",
   '/treat6.webp',
   "/treat2.webp",
