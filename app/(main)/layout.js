@@ -6,6 +6,7 @@ import PaddedContainer from "@/components/composite/PaddedContainer";
 import GradientPage from "@/components/composite/GradientPage";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
+import WhatsAppPanel from "@/components/WhatsAppContact";
 
 const NotoSerif = mainfont({
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
         background: "#181818",
       }}
     >
+      <WhatsAppPanel />
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"

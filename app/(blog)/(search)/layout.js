@@ -5,6 +5,7 @@ import Footer from "@/components/composite/Footer";
 import PaddedContainer from "@/components/composite/PaddedContainer";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
+import WhatsAppPanel from "@/components/WhatsAppContact";
 
 export const Inter = secondaryFont({
   subsets: ["latin"],
@@ -21,15 +22,9 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-    
-  
   return (
-    <html
-      lang="tr"
-      // style={{
-      //   background: "#fff",
-      // }}
-    >
+    <html lang="tr">
+      <WhatsAppPanel />
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"

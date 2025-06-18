@@ -5,6 +5,7 @@ import Footer from "@/components/composite/Footer";
 import PaddedContainer from "@/components/composite/PaddedContainer";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
+import WhatsAppPanel from "@/components/WhatsAppContact";
 
 export const Inter = secondaryFont({
   subsets: ["latin"],
@@ -21,8 +22,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-    
-  
   return (
     <html
       lang="tr"
@@ -30,6 +29,7 @@ export default function RootLayout({ children }) {
         background: "rgb(254, 254, 254)",
       }}
     >
+      <WhatsAppPanel />
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
@@ -45,11 +45,11 @@ export default function RootLayout({ children }) {
         <header className="">
           <Navbar transparent={false} />
         </header>
-          <div className="!min-h-[100vh]">
-            <main>
-              <article className="text-left">{children}</article>
-            </main>
-          </div>
+        <div className="!min-h-[100vh]">
+          <main>
+            <article className="text-left">{children}</article>
+          </main>
+        </div>
         <Footer darkMode={true} />
         <Analytics />
         <Script
