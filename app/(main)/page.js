@@ -4,8 +4,6 @@ import ContactSection from "@/views/ContactSection";
 import HeroSection from "@/views/HeroSection";
 import TreatmentsView from "@/views/TreatmentsView";
 import Head from "next/head";
-import Image from "next/image";
-import Script from "next/script";
 
 export default function Home(params) {
   return (

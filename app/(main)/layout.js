@@ -37,13 +37,11 @@ export default function RootLayout({ children }) {
         background: "#181818",
       }}
     >
-      <WhatsAppPanel />
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
         crossorigin="anonymous"
-      ></Script>
-
+      />
       <body className={NotoSerif.className}>
         <GradientPage topEnabled={true} bottomEnabled={true} bg={"#181818"}>
           <header>
@@ -69,6 +67,7 @@ export default function RootLayout({ children }) {
 
   gtag('config', 'G-90GN5TNZVK');`}
         </Script>
+        <WhatsAppPanel />
       </body>
     </html>
   );
