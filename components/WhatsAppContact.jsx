@@ -37,7 +37,7 @@ export default function WhatsAppPanel() {
         </svg>
         <div className="flex-1">
           <p className="text-sm text-white font-semibold">
-            Bize Whatsapp'tan ulaşın
+            Bize Whatsapptan ulaşın
           </p>
         </div>
         <button className="ml-2 bg-white text-green-600 hover:bg-green-100 transition px-3 py-1 rounded-md text-sm font-semibold">
