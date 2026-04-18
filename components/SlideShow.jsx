@@ -13,7 +13,7 @@ const images = [
   "3.webp",
   "4.webp",
   "/treat1.webp",
-  '/treat6.webp',
+  "/treat6.webp",
   "/treat2.webp",
   "/treat3.webp",
   "/treat4.webp",
@@ -22,13 +22,13 @@ const images = [
 
 const Slide = ({ src, alt = "" }) => {
   return (
-    <div className="w-full h-full flex justify-center bg-neutral-700">
+    <div className="landing-slide w-full h-full flex justify-center bg-neutral-950">
       <img src={src} alt={alt} className="w-full h-[100%] object-cover" />
     </div>
   );
 };
 
-export default function SlideShow({ className }) {
+export default function SlideShow({ className = "" }) {
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
   const onAutoplayTimeLeft = (s, time, progress) => {
@@ -39,7 +39,7 @@ export default function SlideShow({ className }) {
     <Swiper
       style={{
         "--swiper-pagination-color": "#ffffff",
-        "--swiper-pagination-bullet-inactive-color": "#555",
+        "--swiper-pagination-bullet-inactive-color": "#4b4b4b",
         "--swiper-pagination-bullet-inactive-opacity": 1,
         "--swiper-navigation-size": "2.64rem",
         "--swiper-navigation-color": "#fff",
@@ -58,17 +58,17 @@ export default function SlideShow({ className }) {
         clickable: true,
       }}
       effect="fade"
-      className={`${className} sm:w-[64%] max-sm:w-[80%] fade reltive`}
+      className={`${className} landing-slideshow sm:w-[64%] max-sm:w-full fade relative`}
       modules={[Pagination, Navigation, Autoplay]}
       spaceBetween={50}
-      SlidesPerView={1}
+      slidesPerView={1}
     >
       {images.map((src, index) => (
         <SwiperSlide key={src}>
           <Slide alt={`Tedavi Görseli ${index + 1}`} src={src} />
         </SwiperSlide>
       ))}
-      <div className="autoplay-progress absolute  top-10 bg-black rounded-full right-0 -translate-y-[60%]">
+      <div className="landing-autoplay-progress autoplay-progress absolute top-10 bg-black right-0 -translate-y-[60%]">
         <svg className="absolute" viewBox="0 0 48 48" ref={progressCircle}>
           <circle cx="24" cy="24" r="20"></circle>
         </svg>

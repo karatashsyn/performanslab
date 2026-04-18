@@ -2,9 +2,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function BiographyInfo({ className, children }) {
+export default function BiographyInfo({ className = "", children }) {
   return (
-    <div className={`${className} flex gap-2`}>
+    <div className={`${className} biography-info flex gap-2`}>
       <motion.div
         initial={{
           opacity: 0,
@@ -18,7 +18,7 @@ export default function BiographyInfo({ className, children }) {
         whileInView={{
           opacity: 1,
         }}
-        className="h-full  !min-w-[2px] bg-dark-red"
+        className="biography-info__rule h-full !min-w-[2px] bg-dark-red"
       ></motion.div>
       <motion.div
         initial={{
@@ -36,7 +36,9 @@ export default function BiographyInfo({ className, children }) {
           x: 0,
         }}
       >
-        <p className="text-left text-primary-white font-normal">{children}</p>
+        <p className="biography-info__text text-left text-primary-white font-normal">
+          {children}
+        </p>
       </motion.div>
     </div>
   );

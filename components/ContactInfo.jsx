@@ -5,22 +5,22 @@ export default function ContactInfo({
   info = "",
   icon = "",
   label = "",
-  textClass,
-  labelClass,
+  textClass = "",
+  labelClass = "",
 }) {
   return (
-    <li className="flex items-center gap-3 ">
-      <div className="min-w-[19px] max-w-[19px]">
+    <li className="contact-info flex items-center gap-3">
+      <div className="contact-info__icon min-w-[19px] max-w-[19px]">
         <img className="w-full" src={icon} alt="icon" />
       </div>
       <div className="h-min flex flex-col justify-center gap-2">
         <span
-          className={`${labelClass} text-secondary-white leading-[0.22] font-normal`}
+          className={`${labelClass} contact-info__label text-secondary-white leading-[0.22] font-normal`}
         >
           {label}
         </span>
         <span
-          className={`${textClass} text-primary-white leading-[1.22] font-semibold`}
+          className={`${textClass} contact-info__text text-primary-white leading-[1.22] font-semibold`}
         >
           {info}
         </span>

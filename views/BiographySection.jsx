@@ -6,18 +6,21 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function BiographySection() {
+  const actionClass =
+    "landing-action basis-full flex arial text-[1.4rem] font-bold border-[1.5px] border-[rgba(60,60,60,1)] active:scale-[.95] active:border-[rgba(0,0,0,0)] relative h-full transition-all duration-200 items-center justify-center p-6 cursor-pointer overflow-hidden";
+
   return (
-    <section id="fatih-ozkan" className=" mt-48">
-      <div className="h-48 relative flex mb-48 max-md:flex-col max-md:h-72 overflow-hidden">
+    <section id="fatih-ozkan" className="landing-section landing-biography mt-44">
+      <div className="landing-action-strip h-48 relative flex mb-44 max-md:flex-col max-md:h-72 overflow-hidden">
         <img
           src="/plab.jpeg"
           alt="Performans Lab Levent"
-          className=" absolute  inset-0 opacity-50"
+          className="landing-action-strip__bg absolute inset-0 opacity-50"
         />
 
         <Link
           href="/arsiv"
-          className={`basis-full hover:backdrop-blur-[10px] flex  arial text-[1.4rem] font-bold border-[1.5px] border-[rgba(60,60,60,1)] active:scale-[.95] active:border-[rgba(0,0,0,0)]  hover:bg-neutral-800/65  bg-neutral-900/65 relative h-full  transition-all duration-200  items-center justify-center p-6  hover:bg-nv-red cursor-pointer overflow-hidden`}
+          className={actionClass}
         >
           <svg
             className="absolute top-4 left-4 icon icon-tabler icons-tabler-outline icon-tabler-news"
@@ -43,7 +46,7 @@ export default function BiographySection() {
         <Link
           target="_blank"
           href="https://www.instagram.com/performanslab.levent/"
-          className={`hover:backdrop-blur-[10px] basis-full arial text-[1.4rem] font-bold border-y-[1.5px] max-md:border-y-[0] max-md:border-x-[1.5px] border-[rgba(60,60,60,1)] active:scale-[.95] active:border-[rgba(0,0,0,0)]  hover:bg-neutral-800/65  bg-neutral-900/65 relative h-full flex  transition-all duration-200  items-center justify-center p-6  hover:bg-nv-red cursor-pointer overflow-hidden`}
+          className={actionClass}
         >
           <svg
             className="absolute top-4 left-4 icon icon-tabler icons-tabler-outline icon-tabler-calendar-clock"
@@ -70,7 +73,7 @@ export default function BiographySection() {
         <Link
           target="_blank"
           href="https://www.instagram.com/performanslab.levent/"
-          className={`hover:backdrop-blur-[10px] basis-full arial text-[1.4rem] font-bold border-[1.5px] border-[rgba(60,60,60,1)] active:scale-[.95] active:border-[rgba(0,0,0,0)]  hover:bg-neutral-800/65  bg-neutral-900/65 relative h-full flex  transition-all duration-200  items-center justify-center p-6  hover:bg-nv-red cursor-pointer overflow-hidden`}
+          className={actionClass}
         >
           <svg
             className="absolute top-4 left-4 icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"
@@ -92,20 +95,16 @@ export default function BiographySection() {
           Instagram
         </Link>
       </div>
-      <h4 className="text-primary-white max-sm:text-[2rem] arial text-[3.06rem] leading-[0.72]  font-bold">
+      <h4 className="landing-section-title text-primary-white max-sm:text-[2rem] arial text-[3.06rem] leading-[0.72] font-bold">
         Fatih Özkan <br />
         <span className="!leading-[0] !text-[0.75em] font-normal whitespace-nowrap">
           Kimdir?
         </span>
       </h4>
 
-      <div className=" flex justify-between gap-20 h-auto max-sm:mt-[4rem] mt-[6rem]">
+      <div className="landing-bio-grid flex justify-between gap-20 h-auto max-sm:mt-[4rem] mt-[6rem]">
         <div
-          style={{
-            background:
-              "linear-gradient(120deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 100%)",
-          }}
-          className="max-lg:hidden basis-[50%] aspect-[3/2] rounded-sm relative bg-gray-300  p-3 flex items-center "
+          className="landing-photo-panel max-lg:hidden basis-[50%] aspect-[3/2] rounded-sm relative bg-gray-300 p-3 flex items-center"
         >
           <motion.img
             initial={{
@@ -124,12 +123,12 @@ export default function BiographySection() {
                 // boxShadow: "0px 0px 12px 0px rgba(0, 0, 0, 0.6)",
               }
             }
-            className=" max-w-full h-full object-cover translate-x-0 -translate-y-0  shadow-black !z-[5]"
+            className="landing-photo-panel__image max-w-full h-full object-cover translate-x-0 -translate-y-0 shadow-black !z-[5]"
             src="/fatih-ozkan.jpeg"
             alt="fatih-ozkan"
           />
         </div>
-        <div className="flex flex-col gap-10 lg:basis-[50%]">
+        <div className="landing-bio-copy flex flex-col gap-10 lg:basis-[50%]">
           <BiographyInfo>
             1984 İstanbul doğumlu olan <strong> Fatih Özkan</strong> sporculuğa
             Şişecam Kürek Takımı’nda başlamış, sırasıyla Fenerbahçe ve Milli

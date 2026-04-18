@@ -1,38 +1,29 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Link from "next/link";
-import Head from "next/head";
+
 export default function HeroSection() {
   return (
     <section
       id="hero"
-      className=" mt-16 flex justify-center md:justify-between items-center"
+      className="landing-hero mt-10 flex justify-center md:justify-between items-center"
     >
-      <Head>
-        <link rel="preload" href="/glow_white.webp" as="image" />
-        <link rel="preload" href="/glow_red.webp" as="image" />
-      </Head>
-      <img
-        src="/glow_white.webp"
-        className="absolute max-sm:hidden glow left-0 z-0 pointer-events-none"
-        alt="Background Glow"
-      />
-      <img
-        style={{
-          animationDelay: "0.36ms",
-        }}
-        src=" /glow_red.webp"
-        className="translate-y-12 max-sm:hidden absolute glow right-0 top-0  opacity-75 pointer-events-none"
-        alt="Glow Red"
-      />
-      <div className="max-sm:text-center ">
-        <h1 className="text-bright-red animate-fade-in  max-sm:text-[2rem] arial text-[4.6rem] leading-[1.04] max-sm:leading-[1.2] font-bold">
+      <div className="landing-hero__media" aria-hidden="true">
+        <img
+          src="/hero3.jpg"
+          className="landing-hero__backdrop"
+          alt=""
+        />
+        <img src="/hero1.png" className="landing-hero__athlete" alt="" />
+      </div>
+      <div className="landing-hero__copy max-sm:text-center">
+        <h1 className="landing-title animate-fade-in max-sm:text-[2rem] arial text-[4.6rem] leading-[1.04] max-sm:leading-[1.2] font-bold">
           PerformansLab <br className="leading-[0]" />
-          <span className="leading-[0] text-[1.14em] whitespace-nowrap">
+          <span className="landing-title__accent leading-[0] text-[1.14em] whitespace-nowrap">
             Personal Training
           </span>
         </h1>
-        <div className=" mt-[1rem] animate-fade-in-neutral">
+        <div className="landing-hero__lead mt-[1rem] animate-fade-in-neutral">
           Size uygun Fonksiyonel antrenmanlar,
           <br />
           atletik antrenmanlar, postür düzeltici egzersizler,
@@ -41,7 +32,7 @@ export default function HeroSection() {
         <div className="flex gap-6 !mt-16 sm:mt-[2rem] max-sm:flex-col">
           <Link href={"/iletisim"} className="max-sm:w-full">
             <button
-              className="sm:hover:bg-white arial max-sm:w-full sm:hover:text-[#181818] font-semibold sm:hover:border-primary-white transition-all duration-300 border-[2px] border-[#2D2D2D] px-16 py-3"
+              className="landing-primary-button arial max-sm:w-full font-semibold transition-all duration-300 px-16 py-3"
               role="button"
             >
               Bize Ulaşın

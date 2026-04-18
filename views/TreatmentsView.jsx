@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 export default function TreatmentsView() {
   return (
     <section
-      className="sm:mt-72 max-sm:mt-24 flex max-md:flex-col overflow-visible justify-between gap-24 md:items-center"
+      className="landing-section landing-treatments sm:mt-28 max-sm:mt-14 flex max-md:flex-col overflow-visible justify-between gap-24 md:items-center"
       id="treatments"
     >
       <SlideShow />
 
-      <motion.div className="md:w-[60%] mb-auto   border-white">
+      <motion.div className="landing-panel md:w-[60%] mb-auto border-white">
         <motion.h2
           initial={{
             opacity: 0,
@@ -26,11 +26,11 @@ export default function TreatmentsView() {
             opacity: 1,
             translateX: 0,
           }}
-          className="max-sm:text-[1.6rem] leading-[0.8] arial text-[3.06rem] font-bold  mb-6"
+          className="landing-section-title max-sm:text-[1.6rem] leading-[0.8] arial text-[3.06rem] font-bold mb-6"
         >
           PerformansLab
           <br />
-          <span className="text-[0.72em] leading-[0] texnav-red">
+          <span className="text-[0.72em] leading-[0] text-nav-red">
             {" "}
             Ne Yapar?
           </span>
@@ -51,7 +51,7 @@ export default function TreatmentsView() {
               // borderLeftColor: "#fff",
             }
           }
-          className=" text-[1rem] border-l-[0.5px]  text-secondary-white"
+          className="landing-copy text-[1rem] border-l-[0.5px] text-secondary-white"
         >
           <motion.p
             initial={{

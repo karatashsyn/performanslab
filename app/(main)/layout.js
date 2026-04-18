@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
     <html
       lang="tr"
       style={{
-        background: "#181818",
+        background: "#050505",
       }}
     >
       <Script
@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
         crossorigin="anonymous"
       />
       <body className={NotoSerif.className}>
-        <GradientPage topEnabled={true} bottomEnabled={true} bg={"#181818"}>
+        <GradientPage topEnabled={true} bottomEnabled={true} bg={"#050505"}>
           <header>
             <Navbar transparent={true} />
           </header>

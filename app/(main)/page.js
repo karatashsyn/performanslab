@@ -1,4 +1,3 @@
-import GradientPage from "@/components/composite/GradientPage";
 import BiographySection from "@/views/BiographySection";
 import ContactSection from "@/views/ContactSection";
 import HeroSection from "@/views/HeroSection";
@@ -17,10 +16,12 @@ export default function Home(params) {
         <link rel="preload" href="/treat4.webp" as="image" />
         <link rel="preload" href="/treat5.webp" as="image" />
       </Head>
-      <HeroSection />
-      <TreatmentsView />
-      <BiographySection />
-      <ContactSection />
+      <main className="landing-page">
+        <HeroSection />
+        <TreatmentsView />
+        <BiographySection />
+        <ContactSection />
+      </main>
     </>
   );
 }
