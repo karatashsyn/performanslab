@@ -78,19 +78,19 @@ export default async function BlogDetail({ params }) {
   };
 
   return (
-    <>
+    <div className="blog-detail-page">
       <PaddedContainer className={"md:px-0"}>
-        <article>
+        <article className="blog-detail-article">
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
-          <div className="w-full flex items-center justify-end">
+          <div className="blog-detail-toolbar w-full flex items-center justify-end">
             <div className="flex items-center gap-2 pt-4">
               <a
                 target="_blank"
                 href="https://www.instagram.com/performanslab/"
-                className="instagram-button  flex items-center justify-center max-sm:h-[36px] max-sm:py-0 max-sm:px-0 max-sm:w-[36px] cursor-pointer  border-[1px] px-8  py-3 rounded-sm gap-1"
+                className="blog-detail-action instagram-button flex items-center justify-center max-sm:h-[36px] max-sm:py-0 max-sm:px-0 max-sm:w-[36px] cursor-pointer px-8 py-3 gap-1"
               >
                 <img
                   width={15}
@@ -100,7 +100,7 @@ export default async function BlogDetail({ params }) {
                   src={"/icons/colorfulinstagram.png"}
                 />
 
-                <span className="arial text-gray-800 max-sm:hidden">
+                <span className="arial max-sm:hidden">
                   Instagram
                 </span>
               </a>
@@ -108,19 +108,19 @@ export default async function BlogDetail({ params }) {
             </div>
           </div>
           <div className={"mt-12  flex justify-start " + Inter.className}>
-            <div className=" prose max-md:px-0 md:px-[6rem] lg:px-[10rem]  min-w-full  blog-content">
-              <header>
-                <h1 className="text-[3rem]  mb-[1rem] text-center font-bold">
+            <div className="blog-detail-content prose max-md:px-0 md:px-[6rem] lg:px-[10rem] min-w-full blog-content">
+              <header className="blog-detail-header">
+                <h1 className="blog-detail-title text-[3rem] mb-[1rem] text-center font-bold">
                   {/* {blog?.title?.toLocaleUpperCase("tr")} */}
                   {blog?.title}
                 </h1>
               </header>
               <img
-                className=" sm:w-[70%] mx-auto object-center rounded-md"
+                className="blog-detail-cover sm:w-[70%] mx-auto object-center"
                 src={blog?.titleImage}
                 alt="blog-topic"
               />
-              <div className={` text-left ${NotoSerif.className}`}>
+              <div className={`blog-detail-body text-left ${NotoSerif.className}`}>
                 <BlogText blog={blog} />
               </div>
             </div>
@@ -131,6 +131,6 @@ export default async function BlogDetail({ params }) {
       <PaddedContainer>
         <BlogSuggestion />
       </PaddedContainer>
-    </>
+    </div>
   );
 }

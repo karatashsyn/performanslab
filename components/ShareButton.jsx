@@ -7,7 +7,7 @@ export default function ShareButton() {
   return (
     <button
       type="button"
-      className={`flex items-center relative max-sm:h-[36px] justify-center max-sm:w-[36px] border-[1px] sm:px-4  sm:py-3  transition-all duration-300 ease-in-out cursor-pointer`}
+      className={`share-button flex items-center relative max-sm:h-[36px] justify-center max-sm:w-[36px] sm:px-4 sm:py-3 transition-all duration-300 ease-in-out cursor-pointer`}
       onClick={() => {
         navigator.clipboard.writeText(window.location.href);
         setClicked(true);
@@ -19,7 +19,7 @@ export default function ShareButton() {
         } flex absolute items-center gap-1 `}
       >
         <img src="/icons/share.svg" alt="share" width={18} />
-        <span className="max-sm:hidden arial text-[#222] text-[1rem]">
+        <span className="share-button__label max-sm:hidden arial text-[1rem]">
           Paylaş
         </span>
       </span>
@@ -32,7 +32,9 @@ export default function ShareButton() {
         }   flex items-center gap-1`}
       >
         <img src="/icons/check.svg" alt="Checkmark" width={20} />
-        <span className="max-sm:hidden text-[#168e40] arial">Kopyalandı</span>
+        <span className="share-button__copied max-sm:hidden arial">
+          Kopyalandı
+        </span>
       </span>
     </button>
   );

@@ -43,9 +43,9 @@ export default function Footer({ darkMode = false }) {
             className={`text-[1rem] ${
               darkMode ? "text-[white]" : "text-[#737373]"
             } `}
-            href={"/arsiv"}
+            href={"/uygulamamiz"}
           >
-            Performans Testleri
+            Uygulamamız
           </Link>
           <Link
             className={`text-[1rem] ${

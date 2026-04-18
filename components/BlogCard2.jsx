@@ -6,14 +6,14 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function BlogCard2({ blog, className }) {
+export default function BlogCard2({ blog, className = "" }) {
   return (
     <Link
       href={`/${blog.slug}`}
-      className={`${className} animate-fade-in bg-white hover:shadow-lg  overflow-hidden rounded-md border-[1px] transition-all duration-200 flex flex-col gap-4 items-start cursor-pointer`}
+      className={`${className} archive-card animate-fade-in overflow-hidden transition-all duration-200 flex flex-col gap-4 items-start cursor-pointer`}
     >
       <div
-        className={`
+        className={`archive-card__image
         relative w-full max-sm:min-w-16 transition-colors sm:min-w-24 !max-sm:aspect-[3/1] sm:h-48 duration-300  !aspect-square  overflow-hidden`}
       >
         <img
@@ -32,12 +32,12 @@ export default function BlogCard2({ blog, className }) {
             }}
             className={`
         
-            font-medium  text-[#09090b] tracking-tight  transition-opacity duration-100  text-[1.2rem] lg:text-[1.3rem]`}
+            archive-card__title font-medium tracking-tight transition-opacity duration-100 text-[1.2rem] lg:text-[1.3rem]`}
           >
             {blog.title}
           </span>
 
-          <span className=" text-[0.8rem] text-[#777]">
+          <span className="archive-card__date text-[0.8rem]">
             {getFormattedDate(blog.date)}
           </span>
           <hr className="mt-1 mb-2 w-full opacity-5" />

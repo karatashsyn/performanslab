@@ -10,7 +10,10 @@ export default function BiographySection() {
     "landing-action basis-full flex arial text-[1.4rem] font-bold border-[1.5px] border-[rgba(60,60,60,1)] active:scale-[.95] active:border-[rgba(0,0,0,0)] relative h-full transition-all duration-200 items-center justify-center p-6 cursor-pointer overflow-hidden";
 
   return (
-    <section id="fatih-ozkan" className="landing-section landing-biography mt-44">
+    <section
+      id="fatih-ozkan"
+      className="landing-section landing-biography mt-44"
+    >
       <div className="landing-action-strip h-48 relative flex mb-44 max-md:flex-col max-md:h-72 overflow-hidden">
         <img
           src="/plab.jpeg"
@@ -18,10 +21,7 @@ export default function BiographySection() {
           className="landing-action-strip__bg absolute inset-0 opacity-50"
         />
 
-        <Link
-          href="/arsiv"
-          className={actionClass}
-        >
+        <Link href="/arsiv" className={actionClass}>
           <svg
             className="absolute top-4 left-4 icon icon-tabler icons-tabler-outline icon-tabler-news"
             xmlns="http://www.w3.org/2000/svg"
@@ -103,9 +103,7 @@ export default function BiographySection() {
       </h4>
 
       <div className="landing-bio-grid flex justify-between gap-20 h-auto max-sm:mt-[4rem] mt-[6rem]">
-        <div
-          className="landing-photo-panel max-lg:hidden basis-[50%] aspect-[3/2] rounded-sm relative bg-gray-300 p-3 flex items-center"
-        >
+        <div className="landing-photo-panel max-lg:hidden basis-[50%] aspect-[3/2] rounded-sm relative bg-gray-300 p-3 flex items-center">
           <motion.img
             initial={{
               opacity: 0,

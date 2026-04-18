@@ -35,7 +35,15 @@ export default function HeroSection() {
               className="landing-primary-button arial max-sm:w-full font-semibold transition-all duration-300 px-16 py-3"
               role="button"
             >
-              Bize Ulaşın
+              Online Eğitim Al
+            </button>
+          </Link>
+          <Link href={"/uygulamamiz#indir"} className="max-sm:w-full">
+            <button
+              className="landing-secondary-button arial max-sm:w-full font-semibold transition-all duration-300 px-16 py-3"
+              role="button"
+            >
+              Uygulamayı İndir
             </button>
           </Link>
         </div>

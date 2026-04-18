@@ -17,7 +17,7 @@ export const metadata = {
   title: "PL Ana Sayfa -",
   //TODO: Add description
   description:
-    "PerformansLab, fonksiyonel antrenmanlar düzenler, beslenme programları oluşturur ve postür düzeltici egezersizler oluşturur.",
+    "PerformansLab, uygulama destekli postür analizi, kişiye özel online antrenman programı ve gerçek zamanlı hareket analizi sunar.",
   twitter: {
     card: "summary_large_image",
   },

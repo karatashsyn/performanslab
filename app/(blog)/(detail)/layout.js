@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
     <html
       lang="tr"
       style={{
-        background: "rgb(254, 254, 254)",
+        background: "#050505",
       }}
     >
       <WhatsAppPanel />

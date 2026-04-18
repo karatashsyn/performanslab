@@ -4,24 +4,25 @@ import React from "react";
 export default function ContactSection({
   titleHidden = false,
   lightMode = false,
+  className = "",
 }) {
   return (
-    <section id="fatih-ozkan" className="landing-section landing-contact mt-56">
+    <section
+      id="iletisim"
+      className={`${className} landing-section landing-contact mt-56`}
+    >
       {!titleHidden && (
         <div className="w-full flex items-center justify-between">
           <h2 className="landing-section-title text-primary-white max-sm:text-[2rem] arial text-[2.25rem] leading-[0.72] font-bold">
-            İletişim
+            Online Eğitim
           </h2>
-          <a
-            href="https://www.instagram.com/performanslab.levent/"
-            target="_blank"
-          >
+          <a href="/iletisim">
             <button
               className="landing-primary-button landing-contact__button transition-all duration-200 arial text-[0.88rem] h-[3rem] font-semibold px-9 py-3"
               role="button"
               style={{}}
             >
-              Randevu Oluştur
+              Online Eğitim Al
             </button>
           </a>
         </div>
@@ -54,21 +55,7 @@ export default function ContactSection({
             label={"Mail"}
             icon="/message.svg"
           />
-          <ContactInfo
-            textClass={lightMode ? "!text-[#09090b] arial" : ""}
-            labelClass={lightMode ? "!text-[#555] arial" : ""}
-            info={"Atom Sk. No:22-32, 34394 Şişli/İstanbul"}
-            label={"Adres"}
-            icon="/pin.svg"
-          />
         </ul>
-        <div className="landing-map basis-full max-sm:hidden overflow-hidden bg-gray-500 max-sm:w-[90%]">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255.0098647343109!2d29.008880689933875!3d41.07717282188019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab75094b5195f%3A0x562bfeef9f4801a7!2sPerformanslab%20Levent!5e0!3m2!1str!2str!4v1750218629408!5m2!1str!2str"
-            className="w-full sm:aspect-[666/307]"
-            title="PerformansLab Levent Haritası"
-          ></iframe>
-        </div>
       </div>
     </section>
   );

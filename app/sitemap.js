@@ -20,6 +20,11 @@ export default async function sitemap() {
       changefreq: "weekly",
     },
     {
+      url: "https://www.performanslab.com/uygulamamiz",
+      priority: 0.9,
+      changefreq: "weekly",
+    },
+    {
       url: "https://www.performanslab.com/arsiv",
       priority: 0.8,
       changefreq: "weekly",

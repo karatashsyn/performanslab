@@ -1,5 +1,5 @@
 "use client";
-import SlideShow from "@/components/SlideShow";
+import AppPreview from "@/components/AppPreview";
 import React from "react";
 import { motion } from "framer-motion";
 export default function TreatmentsView() {
@@ -8,7 +8,7 @@ export default function TreatmentsView() {
       className="landing-section landing-treatments sm:mt-28 max-sm:mt-14 flex max-md:flex-col overflow-visible justify-between gap-24 md:items-center"
       id="treatments"
     >
-      <SlideShow />
+      <AppPreview className="landing-app-preview" />
 
       <motion.div className="landing-panel md:w-[60%] mb-auto border-white">
         <motion.h2
@@ -28,11 +28,11 @@ export default function TreatmentsView() {
           }}
           className="landing-section-title max-sm:text-[1.6rem] leading-[0.8] arial text-[3.06rem] font-bold mb-6"
         >
-          PerformansLab
+          Uygulama Destekli
           <br />
           <span className="text-[0.72em] leading-[0] text-nav-red">
             {" "}
-            Ne Yapar?
+            Antrenman Programı
           </span>
         </motion.h2>
         {/* <hr className="mb-4 opacity-25" /> */}
@@ -71,9 +71,8 @@ export default function TreatmentsView() {
             }}
             className=""
           >
-            Fonksiyonel antrenmanlar, performans testleri, postür düzeltici{" "}
-            egzersizler, atletik antrenmanlar ve dahası için sizleri
-            bilgilendirir ve size uygun antrenmanlar planlar.
+            PerformansLab uygulaması postür analizini, kişiye özel antrenman
+            programını ve hareket formu takibini tek sistemde birleştirir.
           </motion.p>
           <br />
           <motion.p
@@ -93,11 +92,16 @@ export default function TreatmentsView() {
             }}
             className=" text-[1rem]"
           >
-            Kişiselleştirilmiş antrenmanlar, vücuttaki dengesizlikleri gidermeye
-            ve kasları güçlendirmeye odaklanır. Esneklik ve dayanıklılık
-            kazandırırken, aynı zamanda sakatlanma riskini azaltır.
+            Online eğitim sürecinde analiz sonuçlarına göre programın
+            hazırlanır, antrenmanların uygulama üzerinden takip edilir ve gerçek
+            zamanlı hareket analiziyle formun daha kontrollü ilerler.
           </motion.p>
         </motion.div>
+        <div className="landing-feature-row">
+          <span>Postür analizi</span>
+          <span>Kişiye özel program</span>
+          <span>Canlı hareket takibi</span>
+        </div>
       </motion.div>
     </section>
   );

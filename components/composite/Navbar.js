@@ -26,6 +26,7 @@ export default function Navbar({ transparent, className }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navLinks = [
     { href: "/", label: "Anasayfa" },
+    { href: "/uygulamamiz", label: "Uygulamamız" },
     { href: "/arsiv", label: "Yazılar" },
     { href: "/iletisim", label: "İletişim" },
   ];
@@ -74,7 +75,7 @@ export default function Navbar({ transparent, className }) {
           />
         </div>
         <ul
-          className={`flex max-sm:fixed transition-all duration-200 max-sm:inset-0 max-sm:flex-col max-sm:items-center max-sm:gap-12 max-sm:pt-24 max-sm:bg-[#181818] max-sm:overflow-hidden sm:justify-between sm:gap-[3.4rem] sm:py-[1.6rem] ${
+          className={`flex max-sm:fixed transition-all duration-200 max-sm:inset-0 max-sm:flex-col max-sm:items-center max-sm:gap-12 max-sm:pt-24 max-sm:bg-[#181818] max-sm:overflow-hidden sm:justify-between sm:gap-[1.8rem] lg:gap-[3rem] sm:py-[1.6rem] ${
             menuOpen
               ? ""
               : "max-sm:pointer-events-none max-sm:-translate-y-[2vh] max-sm:opacity-0"
