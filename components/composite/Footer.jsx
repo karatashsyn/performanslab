@@ -1,70 +1,35 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React from "react";
-import PaddedContainer from "./PaddedContainer";
 
-export default function Footer({ darkMode = false }) {
+export default function Footer() {
   return (
-    <PaddedContainer
-      className={`${darkMode ? "bg-black py-6" : " pb-12 pt-12"} mt-24  `}
+    <footer
+      className="py-8 px-8 md:px-16"
+      style={{
+        background: "#090A0D",
+        borderTop: "1px solid rgba(255,255,255,0.06)",
+      }}
     >
-      <footer className="flex justify-between  max-sm:flex-col arial ">
-        <div className="flex items-center ">
-          <span
-            className={`text-[1rem] ${
-              darkMode ? "text-[white]" : "text-[#737373]"
-            } `}
-          >
-            PerformansLab Tüm Hakları Saklıdır
-          </span>
-          <div className="w-[2px] h-[30px] bg-dark-red mx-4"></div>
-          <div className="flex gap-2 items-center">
-            <a href="">
-              <img width={22} height={28} alt="whatsapp" src={"/icon1.svg"} />
-            </a>
-            <a href="">
-              <img width={11} height={15} alt="facebook" src={"/icon3.svg"} />
-            </a>
-            <a href="">
-              <img width={24} height={30} alt="instagram" src={"/icon2.svg"} />
-            </a>
-          </div>
+      <div className="max-w-[1400px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <img
+            src="/logo-for-white-bg.png"
+            alt="PerformansLab"
+            className="h-8 w-auto object-contain"
+            style={{ filter: "brightness(0) invert(1)" }}
+          />
         </div>
-        <div className="flex  gap-[1rem] sm:gap-[2rem] max-sm:flex-col max-sm:pt-12">
-          <Link
-            href={"/"}
-            className={`text-[1rem] ${
-              darkMode ? "text-[white]" : "text-[#737373]"
-            } `}
-          >
-            Anasayfa
-          </Link>
-          <Link
-            className={`text-[1rem] ${
-              darkMode ? "text-[white]" : "text-[#737373]"
-            } `}
-            href={"/arsiv"}
-          >
-            Performans Testleri
-          </Link>
-          <Link
-            className={`text-[1rem] ${
-              darkMode ? "text-[white]" : "text-[#737373]"
-            } `}
-            href={"/arsiv"}
-          >
-            Yazılar
-          </Link>
-          <Link
-            className={`text-[1rem] ${
-              darkMode ? "text-[white]" : "text-[#737373]"
-            } `}
-            href={"/iletisim"}
-          >
-            İletişim
-          </Link>
-        </div>
-      </footer>
-    </PaddedContainer>
+        <span
+          className="text-sm"
+          style={{
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            color: "rgba(255,255,255,0.4)",
+          }}
+        >
+          PerformansLab tüm hakları saklıdır · 2026
+        </span>
+      </div>
+    </footer>
   );
 }

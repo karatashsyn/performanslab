@@ -1,26 +1,17 @@
-import GradientPage from "@/components/composite/GradientPage";
-import BiographySection from "@/views/BiographySection";
-import ContactSection from "@/views/ContactSection";
 import HeroSection from "@/views/HeroSection";
+import ReviewsSection from "@/views/ReviewsSection";
+import CalendarSection from "@/views/CalendarSection";
 import TreatmentsView from "@/views/TreatmentsView";
-import Head from "next/head";
+import AppSection from "@/views/AppSection";
 
-export default function Home(params) {
+export default function Home() {
   return (
     <>
-      <Head>
-        <link rel="preconnect" href="https://maps.googleapis.com" />
-        <link rel="preconnect" href="https://maps.gstatic.com" />
-        <link rel="preload" href="/treat1.webp" as="image" />
-        <link rel="preload" href="/treat2.webp" as="image" />
-        <link rel="preload" href="/treat3.webp" as="image" />
-        <link rel="preload" href="/treat4.webp" as="image" />
-        <link rel="preload" href="/treat5.webp" as="image" />
-      </Head>
       <HeroSection />
+      <ReviewsSection />
+      <CalendarSection />
       <TreatmentsView />
-      <BiographySection />
-      <ContactSection />
+      <AppSection />
     </>
   );
 }

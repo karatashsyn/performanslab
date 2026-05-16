@@ -1,104 +1,95 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import SlideShow from "@/components/SlideShow";
-import React from "react";
-import { motion } from "framer-motion";
-export default function TreatmentsView() {
-  return (
-    <section
-      className="sm:mt-72 max-sm:mt-24 flex max-md:flex-col overflow-visible justify-between gap-24 md:items-center"
-      id="treatments"
-    >
-      <SlideShow />
+import { useState } from "react";
+import Link from "next/link";
 
-      <motion.div className="md:w-[60%] mb-auto   border-white">
-        <motion.h2
-          initial={{
-            opacity: 0,
-            translateX: -6,
+const treatments = [
+  { img: "/treat1.webp", name: "Emre, 28", desc: "Atletik performans antrenmanları ve özel beslenme programı sonrası" },
+  { img: "/treat2.webp", name: "Burak, 32", desc: "Postür iyileşmesi için antrenmanlar ve uygun diyetler sonra" },
+  { img: "/treat3.webp", name: "Kemal, 35", desc: "Fonksiyonel antrenmanlar ve yağ yakma programı sonrası" },
+  { img: "/treat4.webp", name: "Ali, 41", desc: "Kondisyon ve kas geliştirme programı sonrası" },
+  { img: "/treat5.webp", name: "Serkan, 38", desc: "Rehabilitasyon ve güç antrenmanları sonrası" },
+];
+
+export default function TreatmentsView() {
+  const [active, setActive] = useState(1);
+
+  return (
+    <section className="py-24 overflow-hidden" style={{ background: "#fff" }}>
+      <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+        <h2
+          className="font-bold text-center mb-14"
+          style={{
+            fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+            color: "#111",
+            fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
           }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.7,
-            ease: "easeOut",
-            delay: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-            translateX: 0,
-          }}
-          className="max-sm:text-[1.6rem] leading-[0.8] arial text-[3.06rem] font-bold  mb-6"
         >
-          PerformansLab
-          <br />
-          <span className="text-[0.72em] leading-[0] texnav-red">
-            {" "}
-            Ne Yapar?
-          </span>
-        </motion.h2>
-        {/* <hr className="mb-4 opacity-25" /> */}
-        <motion.div
-          initial={{
-            borderLeftColor: "rgba(0,0,0,0)",
+          Değişimler
+        </h2>
+      </div>
+
+      {/* Photos carousel */}
+      <div className="flex items-end justify-center gap-4 px-4 overflow-x-auto pb-2" style={{ scrollbarWidth: "none" }}>
+        {treatments.map((t, i) => (
+          <div
+            key={i}
+            className="flex-shrink-0 cursor-pointer transition-all duration-300"
+            style={{
+              width: i === active ? "240px" : "180px",
+              opacity: Math.abs(i - active) > 1 ? 0.5 : 1,
+            }}
+            onClick={() => setActive(i)}
+          >
+            <img
+              src={t.img}
+              alt={t.name}
+              className="w-full object-cover rounded-xl"
+              style={{
+                height: i === active ? "340px" : "260px",
+                transition: "height 0.3s ease",
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Active label */}
+      <div className="text-center mt-8 px-4">
+        <p
+          className="font-bold text-lg mb-1"
+          style={{
+            fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+            color: "#111",
           }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.7,
-            ease: "easeOut",
-            delay: 0.2,
-          }}
-          whileInView={
-            {
-              // borderLeftColor: "#fff",
-            }
-          }
-          className=" text-[1rem] border-l-[0.5px]  text-secondary-white"
         >
-          <motion.p
-            initial={{
-              opacity: 0,
-              translateX: -6,
-              borderLeftColor: "rgba(0,0,0,0)",
+          {treatments[active].name}
+        </p>
+        <p
+          className="text-sm"
+          style={{
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            color: "#666",
+          }}
+        >
+          {treatments[active].desc}
+        </p>
+      </div>
+
+      {/* CTA */}
+      <div className="flex justify-center mt-10">
+        <Link href="/iletisim">
+          <button
+            className="text-white font-semibold px-8 py-3 text-sm flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all"
+            style={{
+              background: "#D2000C",
+              fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
             }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.7,
-              ease: "easeOut",
-              delay: 0.1,
-            }}
-            whileInView={{
-              opacity: 1,
-              translateX: 0,
-            }}
-            className=""
           >
-            Fonksiyonel antrenmanlar, performans testleri, postür düzeltici{" "}
-            egzersizler, atletik antrenmanlar ve dahası için sizleri
-            bilgilendirir ve size uygun antrenmanlar planlar.
-          </motion.p>
-          <br />
-          <motion.p
-            initial={{
-              opacity: 0,
-              translateX: -6,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.7,
-              ease: "easeOut",
-              delay: 0.14,
-            }}
-            whileInView={{
-              opacity: 1,
-              translateX: 0,
-            }}
-            className=" text-[1rem]"
-          >
-            Kişiselleştirilmiş antrenmanlar, vücuttaki dengesizlikleri gidermeye
-            ve kasları güçlendirmeye odaklanır. Esneklik ve dayanıklılık
-            kazandırırken, aynı zamanda sakatlanma riskini azaltır.
-          </motion.p>
-        </motion.div>
-      </motion.div>
+            Dönüşüme Şimdi Başla →
+          </button>
+        </Link>
+      </div>
     </section>
   );
 }

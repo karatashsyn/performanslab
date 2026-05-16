@@ -19,6 +19,17 @@ module.exports = {
         "bright-red": "#F20000",
         "nav-red": "#CE0000",
         "dark-red": "#692121",
+        "pl-red": "#D2000C",
+        "pl-red-dark": "#A5000A",
+        "pl-cream": "#F8F3EB",
+        "pl-dark": "#090A0D",
+      },
+      fontFamily: {
+        montserrat: ["var(--font-montserrat)", "Montserrat", "sans-serif"],
+        inter: ["var(--font-inter)", "Inter", "sans-serif"],
+      },
+      animation: {
+        "scroll-left": "scroll-left 35s linear infinite",
       },
     },
   },
