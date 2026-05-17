@@ -8,12 +8,13 @@ export default function WhatsAppPanel() {
   useEffect(() => {
     const timer = setTimeout(
       () => setVisible(true),
-      1000 + Math.random() * 1000
+      1000 + Math.random() * 1000,
     );
     return () => clearTimeout(timer);
   }, []);
 
   const whatsappUrl = "https://wa.me/+905447320331";
+  return null;
 
   if (!visible) return null;
 

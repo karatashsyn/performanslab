@@ -71,7 +71,7 @@ export default function ReviewsSection() {
       style={{ background: "#F8F3EB" }}
       className="py-20 overflow-hidden"
     >
-      <div className="max-w-[1400px] mx-auto px-8 md:px-16 mb-10">
+      <div className="max-w-[1400px] mx-auto mb-10">
         {/* Top row: heading + Google Reviews badge */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>

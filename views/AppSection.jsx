@@ -1,20 +1,42 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
-const features = [
-  "Postür Analizi",
-  "Antrenman Takibi",
-  "Beslenme Programı",
-];
+const features = ["Postür Analizi", "Antrenman Takibi", "Beslenme Programı"];
+
+function FeatureCard({ children, side, index }) {
+  const offset = index * 43;
+
+  return (
+    <div
+      className="w-[313px] px-6 py-3 text-lg font-medium"
+      style={{
+        marginLeft: side === "left" ? `${offset}px` : undefined,
+        marginRight: side === "right" ? `${offset}px` : undefined,
+        fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+        color: "#FFFFFF",
+        textAlign: side === "right" ? "right" : "left",
+        background:
+          side === "left"
+            ? "linear-gradient(90deg, rgba(80,80,80,0.58) 0%, rgba(14,14,14,0) 100%)"
+            : "linear-gradient(270deg, rgba(80,80,80,0.58) 0%, rgba(14,14,14,0) 100%)",
+        whiteSpace: "nowrap",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function AppSection() {
   return (
     <section
       id="app"
       className="py-24 overflow-hidden"
-      style={{ background: "#090A0D" }}
+      style={{
+        background: "linear-gradient(180deg, #313131 0%, #000000 100%)",
+      }}
     >
-      <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+      <div className="max-w-[1415px] mx-auto">
         {/* Heading */}
         <h2
           className="font-bold text-center text-white mb-16"
@@ -30,53 +52,31 @@ export default function AppSection() {
         </h2>
 
         {/* Three column layout */}
-        <div className="flex items-center justify-between gap-8">
+        <div className="flex items-center justify-between gap-0">
           {/* Left feature tags */}
-          <div className="hidden md:flex flex-col gap-3 flex-shrink-0">
+          <div className="hidden md:flex w-[400px] flex-shrink-0 flex-col gap-[18px]">
             {features.map((f, i) => (
-              <div
-                key={i}
-                className="px-5 py-3 text-sm font-medium"
-                style={{
-                  fontFamily: "var(--font-inter), Inter, sans-serif",
-                  color: "rgba(255,255,255,0.85)",
-                  background: "rgba(255,255,255,0.07)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: "6px",
-                  whiteSpace: "nowrap",
-                }}
-              >
+              <FeatureCard key={i} side="left" index={i}>
                 {f}
-              </div>
+              </FeatureCard>
             ))}
           </div>
 
           {/* Center: app mockup */}
-          <div className="flex-1 flex justify-center">
+          <div className="flex-[100] flex min-w-0 justify-center">
             <img
               src="/mockup-app-section.png"
               alt="PerformansLab App"
-              className="w-full max-w-[420px] drop-shadow-2xl"
+              className="w-full max-w-[420px] lg:max-w-[566px] drop-shadow-2xl"
             />
           </div>
 
           {/* Right feature tags */}
-          <div className="hidden md:flex flex-col gap-3 flex-shrink-0">
+          <div className="hidden md:flex w-[400px] flex-shrink-0 flex-col items-end gap-[18px]">
             {features.map((f, i) => (
-              <div
-                key={i}
-                className="px-5 py-3 text-sm font-medium"
-                style={{
-                  fontFamily: "var(--font-inter), Inter, sans-serif",
-                  color: "rgba(255,255,255,0.85)",
-                  background: "rgba(255,255,255,0.07)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: "6px",
-                  whiteSpace: "nowrap",
-                }}
-              >
+              <FeatureCard key={i} side="right" index={i}>
                 {f}
-              </div>
+              </FeatureCard>
             ))}
           </div>
         </div>

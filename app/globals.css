@@ -103,6 +103,25 @@ html {
   animation: fadeInNeutral 0.5s ease-in-out;
 }
 
+.hero-app-mockup {
+  animation: fadeInLeft 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.hero-app-actions {
+  animation: fadeInLeftSoft 0.48s cubic-bezier(0.22, 1, 0.36, 1) 0.78s both;
+}
+
+.hero-app-label {
+  background-image: linear-gradient(90deg, #d2000c 0%, rgba(210, 0, 12, 0) 100%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  animation: activateHeroAppLabel 0.62s cubic-bezier(0.33, 1, 0.68, 1) 1.08s forwards;
+}
+
+.hero-app-link {
+  animation: fadeInLeftSoft 0.42s cubic-bezier(0.22, 1, 0.36, 1) 1.22s both;
+}
+
 @keyframes appear {
   0% {
     opacity: 0.2;
@@ -170,5 +189,47 @@ html {
 
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-36px) scale(0.985);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes fadeInLeftSoft {
+  0% {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes activateHeroAppLabel {
+  0% {
+    background-size: 0% 100%;
+  }
+
+  100% {
+    background-size: 100% 100%;
   }
 }

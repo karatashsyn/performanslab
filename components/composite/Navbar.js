@@ -24,7 +24,7 @@ export default function Navbar() {
         borderBottom: "1px solid rgba(255,255,255,0.06)",
       }}
     >
-      <div className="max-w-[1400px] mx-auto px-8 md:px-16 flex items-center justify-between h-16">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-16 grid grid-cols-[auto_1fr_auto] items-center h-16">
         <Link href="/" className="flex-shrink-0">
           <img
             loading="eager"
@@ -35,7 +35,7 @@ export default function Navbar() {
         </Link>
 
         <ul
-          className="hidden md:flex items-center gap-10"
+          className="hidden md:flex items-center justify-center gap-10"
           style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
         >
           {navLinks.map((nl, i) => (
@@ -53,8 +53,19 @@ export default function Navbar() {
           ))}
         </ul>
 
+        <Link
+          href="/ucretsiz-araclar"
+          className="hidden md:block justify-self-end text-sm font-semibold transition-colors"
+          style={{
+            color: pathName === "/ucretsiz-araclar" ? "#ffffff" : "rgba(255,255,255,0.72)",
+            fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+          }}
+        >
+          Ücretsiz Araçlar
+        </Link>
+
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2 justify-self-end"
           onClick={() => setMenuOpen((p) => !p)}
           aria-label="Toggle menu"
         >
@@ -82,6 +93,14 @@ export default function Navbar() {
               {nl.label}
             </Link>
           ))}
+          <Link
+            href="/ucretsiz-araclar"
+            onClick={() => setMenuOpen(false)}
+            className="text-white text-lg font-medium"
+            style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+          >
+            Ücretsiz Araçlar
+          </Link>
         </div>
       )}
     </nav>

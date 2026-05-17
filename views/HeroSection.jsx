@@ -25,73 +25,95 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-16 pt-28 pb-20 lg:pb-0 lg:absolute lg:inset-x-0 lg:bottom-[170px] flex flex-col md:flex-row items-center justify-between gap-12">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 pt-28 pb-[min(17vh,200px)] lg:absolute lg:inset-0 lg:mx-auto lg:pt-0 lg:pb-0">
         {/* Left: text content */}
-        <div className="flex-1 max-w-xl">
+        <div className="lg:absolute lg:bottom-[min(17vh,200px)]">
           <h1
             className="text-white leading-none mb-4 text-[4.25rem] tracking-[-4%]"
             style={{
               fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
             }}
           >
-            Sana Özel <br />
-            <span className="whitespace-nowrap text-[4.25rem]">
+            Sana Özel <br className="max-sm:hidden" />
+            <span className="sm:whitespace-nowrap text-[4.25rem]">
               <span className="font-semibold text-[4.25rem]">Sonuç Odaklı</span>{" "}
               Antrenman
             </span>
           </h1>
 
           <p
-            className="mb-8 !font-normal text-[#D8D8D8] text-[1.5rem] leading-[1.5rem] tracking-[-2%]"
+            className="mb-8 lg:max-w-[60vw] !font-normal text-[#D8D8D8] text-xl leading-[1.5rem] tracking-[-0%]"
             style={{
               fontFamily: "var(--font-inter), Inter, sans-serif",
             }}
           >
-            Size uygun Fonksiyonel antrenmanlar, atletik antrenmanlar, postür
+            Size uygun Fonksiyonel antrenmanlar, atletik antrenmanlar, postür{" "}
+            <br />
             düzeltici egzersizler, performans testleri planlar.
           </p>
 
           <Link href="/iletisim">
             <button
-              className="font-semibold text-white px-8 py-3 text-sm hover:opacity-90 active:scale-95 transition-all"
+              className="font-semibold bg-[#D2000C] text-white px-8 py-3 hover:bg-opacity-90 "
               style={{
-                background: "#D2000C",
                 fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
               }}
             >
-              Online Eğitim Al
+              Özel Ders Al
             </button>
           </Link>
         </div>
 
-        {/* Right: iPhone mockup + badge */}
-        <div className="relative flex-shrink-0 hidden md:block w-[240px] h-[320px]">
-          <img
-            src="/mockup-hero.png"
-            alt="PerformansLab App"
-            className="absolute right-4 top-0 z-10 w-[180px] max-w-[200px]"
-          />
+        {/* Right: iPhone mockup + actions */}
+        <div className="relative flex-shrink-0 hidden w-[320px] md:block lg:absolute lg:right-16 lg:top-1/2 lg:-translate-y-[50%]">
+          <div className="hero-app-fragment flex flex-col items-center gap-9">
+            <img
+              src="/mockup-hero.png"
+              alt="PerformansLab App"
+              className="hero-app-mockup z-10 w-[200px] max-w-[200px]"
+            />
 
-          {/* Badge */}
-          <div
-            className="absolute bottom-6 left-0 z-20 px-4 py-2 flex items-center gap-3 text-white"
-            style={{ background: "#D2000C" }}
-          >
-            <span
-              className="text-sm font-semibold whitespace-nowrap"
-              style={{
-                fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
-              }}
-            >
-              Uygulamamız Yakında !
-            </span>
-            <Link
-              href="/#app"
-              className="text-xs font-medium text-white flex items-center gap-1 border-l border-white/30 pl-3 whitespace-nowrap"
-              style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
-            >
-              Erken Kayıt Ol ↗
-            </Link>
+            <div className="cursor-pointer group hero-app-actions z-20 flex flex-col items-start">
+              <Link href="/#app">
+                <span
+                  className="select-none cursor-pointer hero-app-label whitespace-nowrap px-4 py-2 text-sm font-semibold text-white"
+                  style={{
+                    fontFamily:
+                      "var(--font-montserrat), Montserrat, sans-serif",
+                  }}
+                >
+                  Uygulamamız Yakında !
+                </span>
+              </Link>
+              <div className="group-hover:opacity-50">
+                <Link
+                  href="/#app"
+                  className="hero-app-link mt-1 flex items-center gap-1 whitespace-nowrap font-semibold hover:opacity-50"
+                  style={{
+                    color: "#fff",
+                    fontFamily: "var(--font-inter), Inter, sans-serif",
+                    textShadow: "0 1px 10.9px rgba(255,255,255,0.6)",
+                  }}
+                >
+                  Erken Kayıt Ol{" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"
+                  >
+                    <path d="M7 7h10v10" />
+                    <path d="M7 17 17 7" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
