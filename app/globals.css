@@ -4,7 +4,16 @@
 
 html {
   font-size: 17px;
-  
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-width: 100%;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: visible;
+  max-width: 100%;
 }
 
 *::selection {

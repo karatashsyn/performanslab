@@ -12,7 +12,7 @@ export default function GradientPage({
       <div
         className={`${
           !topEnabled ? "hidden" : ""
-        } absolute left-0 right-0 top-0 h-[100vh]  z-[5]`}
+        } pointer-events-none absolute left-0 right-0 top-0 h-[100vh]  z-[5]`}
         style={{
           background:
             "linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%)",
@@ -21,7 +21,7 @@ export default function GradientPage({
       <div
         className={`${
           !bottomEnabled ? "hidden" : ""
-        } absolute left-0 right-0 bottom-0 h-[100vh]  z-[5]`}
+        } pointer-events-none absolute left-0 right-0 bottom-0 h-[100vh]  z-[5]`}
         style={{
           background:
             "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%)",
