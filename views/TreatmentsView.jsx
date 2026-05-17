@@ -40,6 +40,7 @@ export default function TreatmentsView() {
   const [active, setActive] = useState(1);
   const [isAutoSliding, setIsAutoSliding] = useState(true);
   const [isCenterHovered, setIsCenterHovered] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
 
   useEffect(() => {
     if (!isAutoSliding || isCenterHovered) return;
@@ -51,6 +52,17 @@ export default function TreatmentsView() {
     return () => clearInterval(timer);
   }, [isAutoSliding, isCenterHovered]);
 
+  useEffect(() => {
+    function updateViewport() {
+      setIsCompact(window.innerWidth < 768);
+    }
+
+    updateViewport();
+    window.addEventListener("resize", updateViewport);
+
+    return () => window.removeEventListener("resize", updateViewport);
+  }, []);
+
   function getOffset(index) {
     let offset = index - active;
     if (offset > treatments.length / 2) offset -= treatments.length;
@@ -58,9 +70,43 @@ export default function TreatmentsView() {
     return offset;
   }
 
+  function getSlideMetrics(offset) {
+    if (isCompact) {
+      return {
+        width: offset === 0 ? "220px" : Math.abs(offset) === 1 ? "150px" : "90px",
+        height: offset === 0 ? "280px" : Math.abs(offset) === 1 ? "200px" : "130px",
+        x:
+          offset === -2
+            ? "-270px"
+            : offset === -1
+              ? "-155px"
+              : offset === 1
+                ? "155px"
+                : offset === 2
+                  ? "270px"
+                  : "0px",
+      };
+    }
+
+    return {
+      width: offset === 0 ? "300px" : Math.abs(offset) === 1 ? "240px" : "130px",
+      height: offset === 0 ? "360px" : Math.abs(offset) === 1 ? "285px" : "180px",
+      x:
+        offset === -2
+          ? "-640px"
+          : offset === -1
+            ? "-330px"
+            : offset === 1
+              ? "330px"
+              : offset === 2
+                ? "640px"
+                : "0px",
+    };
+  }
+
   return (
-    <section className="py-24 overflow-hidden" style={{ background: "#fff" }}>
-      <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+    <section className="py-16 md:py-24 overflow-hidden" style={{ background: "#fff" }}>
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
         <h2
           className="font-bold text-center mb-14"
           style={{
@@ -77,25 +123,16 @@ export default function TreatmentsView() {
       <div className="relative mx-auto h-[390px] max-w-[1200px] overflow-hidden px-4">
         {treatments.map((t, i) => {
           const offset = getOffset(i);
+          const metrics = getSlideMetrics(offset);
 
           return (
           <div
             key={t.resultImg}
             className="group absolute left-1/2 top-1/2 cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
             style={{
-              width: offset === 0 ? "300px" : Math.abs(offset) === 1 ? "240px" : "130px",
+              width: metrics.width,
               opacity: offset === 0 ? 1 : Math.abs(offset) === 1 ? 0.68 : 0.45,
-              transform: `translateX(calc(-50% + ${
-                offset === -2
-                  ? "-640px"
-                  : offset === -1
-                    ? "-330px"
-                    : offset === 1
-                      ? "330px"
-                      : offset === 2
-                        ? "640px"
-                        : "0px"
-              })) translateY(-50%) scale(${offset === 0 ? 1 : 0.96})`,
+              transform: `translateX(calc(-50% + ${metrics.x})) translateY(-50%) scale(${offset === 0 ? 1 : 0.96})`,
               zIndex: 10 - Math.abs(offset),
             }}
             onClick={() => {
@@ -112,7 +149,7 @@ export default function TreatmentsView() {
             <div
               className="relative w-full overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
               style={{
-                height: offset === 0 ? "360px" : Math.abs(offset) === 1 ? "285px" : "180px",
+                height: metrics.height,
               }}
             >
               <img

@@ -2,7 +2,7 @@
 
 export default function CalendarSection() {
   return (
-    <section className="py-24" style={{ background: "#fff" }}>
+    <section className="py-12" style={{ background: "#fff" }}>
       <div className="max-w-[1400px] mx-auto px-8 md:px-16">
         {/* Heading */}
         <div className="text-center mb-12">
@@ -36,10 +36,7 @@ export default function CalendarSection() {
           }}
         >
           {/* Left panel */}
-          <div
-            className="flex flex-col gap-5 p-8 md:w-[320px] flex-shrink-0"
-            style={{ borderRight: "1px solid #efefef" }}
-          >
+          <div className="flex flex-col gap-5 p-6 sm:p-8 md:w-[320px] flex-shrink-0 border-b md:border-b-0 md:border-r border-[#efefef]">
             {/* <div>
               <img
                 src="/logo-for-white-bg.png"
@@ -104,7 +101,7 @@ export default function CalendarSection() {
 
           {/* Right panel: calendar placeholder */}
           <div
-            className="flex-1 flex flex-col items-center justify-center p-10 gap-4"
+            className="flex-1 flex flex-col items-center justify-center p-6 sm:p-10 gap-4"
             style={{ background: "#fafafa", minHeight: "320px" }}
           >
             {/* Simple calendar grid mockup */}
@@ -198,7 +195,7 @@ export default function CalendarSection() {
                 ))}
               </div>
             </div>
-            <p
+            {/* <p
               style={{
                 fontFamily: "var(--font-inter), Inter, sans-serif",
                 color: "#aaa",
@@ -206,7 +203,7 @@ export default function CalendarSection() {
               }}
             >
               Takvim Bölümü
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

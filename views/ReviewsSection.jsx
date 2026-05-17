@@ -71,7 +71,7 @@ export default function ReviewsSection() {
       style={{ background: "#F8F3EB" }}
       className="py-20 overflow-hidden"
     >
-      <div className="max-w-[1400px] mx-auto mb-10">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 mb-10">
         {/* Top row: heading + Google Reviews badge */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
@@ -90,7 +90,7 @@ export default function ReviewsSection() {
           </div>
 
           {/* Google Reviews badge */}
-          <div className="flex flex-col items-end gap-1">
+          <div className="flex flex-col items-start md:items-end gap-1">
             <div className="flex items-center gap-2">
               <svg width="20" height="20" viewBox="0 0 24 24">
                 <path
@@ -110,15 +110,20 @@ export default function ReviewsSection() {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
               </svg>
-              <span
-                className="text-sm font-semibold"
-                style={{
-                  color: "#111",
-                  fontFamily: "var(--font-inter), Inter, sans-serif",
-                }}
+              <a
+                target="_blank"
+                href="https://www.google.com/search?sa=X&sca_esv=6f110671a32cfd9a&rlz=1C5CHFA_enTR1100TR1100&hl=tr-TR&sxsrf=ANbL-n46tK_keHeMSkL3zhpjws9lu1unbw:1778993073292&q=Performanslab+Yorumlar&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2MzKwNDY2szA0M7YwNrI0tTQ03MDI-IpRLCC1KC2_KDcxrzgnMUkhMr-oNDcnsWgRKw4JAIsvCOVMAAAA&rldimm=6209336816383295911&tbm=lcl&ved=2ahUKEwiT88DRwb-UAxVHQ_EDHT2KBrEQ9fQKegQIUhAG&biw=1680&bih=958&dpr=1.8#lkt=LocalPoiReviews"
               >
-                Google Yorumları
-              </span>
+                <span
+                  className="text-sm font-semibold"
+                  style={{
+                    color: "#111",
+                    fontFamily: "var(--font-inter), Inter, sans-serif",
+                  }}
+                >
+                  Google Yorumları
+                </span>
+              </a>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex gap-0.5">

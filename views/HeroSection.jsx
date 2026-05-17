@@ -25,30 +25,30 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 pt-28 pb-[min(17vh,200px)] lg:absolute lg:inset-0 lg:mx-auto lg:pt-0 lg:pb-0">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 pt-28 pb-[min(17vh,200px)] lg:absolute lg:inset-0 lg:mx-auto lg:pt-0 lg:pb-0">
         {/* Left: text content */}
         <div className="lg:absolute lg:bottom-[min(17vh,200px)]">
           <h1
-            className="text-white leading-none mb-4 text-[4.25rem] tracking-[-4%]"
+            className="text-white leading-none mb-4 text-[clamp(2.6rem,12vw,4.25rem)] tracking-[-4%]"
             style={{
               fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
             }}
           >
             Sana Özel <br className="max-sm:hidden" />
-            <span className="sm:whitespace-nowrap text-[4.25rem]">
-              <span className="font-semibold text-[4.25rem]">Sonuç Odaklı</span>{" "}
+            <span className="sm:whitespace-nowrap text-[clamp(2.6rem,12vw,4.25rem)]">
+              <span className="font-semibold text-[clamp(2.6rem,12vw,4.25rem)]">Sonuç Odaklı</span>{" "}
               Antrenman
             </span>
           </h1>
 
           <p
-            className="mb-8 lg:max-w-[60vw] !font-normal text-[#D8D8D8] text-xl leading-[1.5rem] tracking-[-0%]"
+            className="mb-8 max-w-[38rem] lg:max-w-[60vw] !font-normal text-[#D8D8D8] text-base sm:text-xl leading-[1.45rem] sm:leading-[1.5rem] tracking-[-0%]"
             style={{
               fontFamily: "var(--font-inter), Inter, sans-serif",
             }}
           >
             Size uygun Fonksiyonel antrenmanlar, atletik antrenmanlar, postür{" "}
-            <br />
+            <br className="hidden sm:block" />
             düzeltici egzersizler, performans testleri planlar.
           </p>
 
@@ -103,10 +103,10 @@ export default function HeroSection() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"
                   >
                     <path d="M7 7h10v10" />
                     <path d="M7 17 17 7" />

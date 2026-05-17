@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const tools = [
   { id: "tdee", label: "TDEE / Kalori" },
@@ -867,7 +868,17 @@ function Gauge({ value }) {
 }
 
 export default function FreeToolsPage() {
-  const [active, setActive] = useState("tdee");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const toolParam = searchParams.get("tool");
+  const active = tools.some((tool) => tool.id === toolParam) ? toolParam : "tdee";
+
+  function setActiveTool(toolId) {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("tool", toolId);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  }
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] pt-16 text-[#f5f3ef]">
@@ -884,7 +895,7 @@ export default function FreeToolsPage() {
         {tools.map((tool) => (
           <button
             key={tool.id}
-            onClick={() => setActive(tool.id)}
+            onClick={() => setActiveTool(tool.id)}
             className="mb-[-1px] flex items-center gap-2 whitespace-nowrap border-b-2 px-6 py-3.5 font-montserrat text-[13px] font-semibold transition"
             style={{
               borderColor: active === tool.id ? "#D2000C" : "transparent",

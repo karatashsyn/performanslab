@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="max-w-[1400px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <img
-            src="/logo-for-white-bg.png"
+            src="/logo-black.png"
             alt="PerformansLab"
             className="h-8 w-auto object-contain"
             style={{ filter: "brightness(0) invert(1)" }}

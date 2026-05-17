@@ -2,11 +2,13 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
   const pathName = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const lastScrollY = useRef(0);
 
   const navLinks = [
     { href: "/", label: "Anasayfa" },
@@ -15,13 +17,30 @@ export default function Navbar() {
     { href: "/#app", label: "Uygulamamız" },
   ];
 
+  useEffect(() => {
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+      const isScrollingDown = currentScrollY > lastScrollY.current;
+
+      setIsHidden(isScrollingDown && currentScrollY > 80 && !menuOpen);
+      lastScrollY.current = currentScrollY;
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [menuOpen]);
+
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
       style={{
         background: "rgba(9,10,13,0.85)",
         backdropFilter: "blur(12px)",
         borderBottom: "1px solid rgba(255,255,255,0.06)",
+        opacity: isHidden ? 0 : 1,
+        pointerEvents: isHidden ? "none" : "auto",
+        transform: isHidden ? "translateY(-100%)" : "translateY(0)",
       }}
     >
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 grid grid-cols-[auto_1fr_auto] items-center h-16">
