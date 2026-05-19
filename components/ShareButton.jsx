@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useState } from "react";
+import { trackBlogShare } from "@/lib/analytics";
 
-export default function ShareButton() {
+export default function ShareButton({ blogTitle, blogSlug }) {
   const [clicked, setClicked] = useState(false);
   return (
     <button
@@ -11,6 +12,7 @@ export default function ShareButton() {
       onClick={() => {
         navigator.clipboard.writeText(window.location.href);
         setClicked(true);
+        trackBlogShare(blogTitle ?? document.title, blogSlug ?? window.location.pathname);
       }}
     >
       <span

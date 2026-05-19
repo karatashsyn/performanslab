@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
+import { trackNavClick, trackMobileMenuToggle } from "@/lib/analytics";
 
 export default function Navbar() {
   const pathName = usePathname();
@@ -14,7 +15,7 @@ export default function Navbar() {
     { href: "/", label: "Anasayfa" },
     { href: "/arsiv", label: "Blog" },
     { href: "/iletisim", label: "İletişim" },
-    { href: "/#app", label: "Uygulamamız" },
+    { href: "/performanslab-app", label: "Uygulamamız" },
   ];
 
   useEffect(() => {
@@ -61,6 +62,7 @@ export default function Navbar() {
             <li key={i}>
               <Link
                 href={nl.href}
+                onClick={() => trackNavClick(nl.label, nl.href)}
                 className="text-sm font-medium transition-colors"
                 style={{
                   color: pathName === nl.href ? "#ffffff" : "rgba(255,255,255,0.7)",
@@ -74,6 +76,7 @@ export default function Navbar() {
 
         <Link
           href="/ucretsiz-araclar"
+          onClick={() => trackNavClick("Ücretsiz Araçlar", "/ucretsiz-araclar")}
           className="hidden md:block justify-self-end text-sm font-semibold transition-colors"
           style={{
             color: pathName === "/ucretsiz-araclar" ? "#ffffff" : "rgba(255,255,255,0.72)",
@@ -85,7 +88,11 @@ export default function Navbar() {
 
         <button
           className="md:hidden p-2 justify-self-end"
-          onClick={() => setMenuOpen((p) => !p)}
+          onClick={() => {
+            const next = !menuOpen;
+            setMenuOpen(next);
+            trackMobileMenuToggle(next);
+          }}
           aria-label="Toggle menu"
         >
           <img
@@ -105,7 +112,7 @@ export default function Navbar() {
             <Link
               key={i}
               href={nl.href}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => { setMenuOpen(false); trackNavClick(nl.label, nl.href); }}
               className="text-white text-lg font-medium"
               style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
             >
@@ -114,7 +121,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/ucretsiz-araclar"
-            onClick={() => setMenuOpen(false)}
+            onClick={() => { setMenuOpen(false); trackNavClick("Ücretsiz Araçlar", "/ucretsiz-araclar"); }}
             className="text-white text-lg font-medium"
             style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
           >

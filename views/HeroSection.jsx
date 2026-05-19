@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
 import Link from "next/link";
+import { trackCtaClick } from "@/lib/analytics";
 
 export default function HeroSection() {
   return (
@@ -52,7 +54,10 @@ export default function HeroSection() {
             düzeltici egzersizler, performans testleri planlar.
           </p>
 
-          <Link href="/iletisim">
+          <Link
+            href="/iletisim"
+            onClick={() => trackCtaClick("Özel Ders Al", "hero_ana_buton")}
+          >
             <button
               className="font-semibold bg-[#D2000C] text-white px-8 py-3 hover:bg-opacity-90 "
               style={{
@@ -74,7 +79,10 @@ export default function HeroSection() {
             />
 
             <div className="cursor-pointer group hero-app-actions z-20 flex flex-col items-start">
-              <Link href="/#app">
+              <Link
+                href="/performanslab-app"
+                onClick={() => trackCtaClick("Uygulamamız Yakında", "hero_uygulama_etiketi")}
+              >
                 <span
                   className="select-none cursor-pointer hero-app-label whitespace-nowrap px-4 py-2 text-sm font-semibold text-white"
                   style={{
@@ -87,7 +95,8 @@ export default function HeroSection() {
               </Link>
               <div className="group-hover:opacity-50">
                 <Link
-                  href="/#app"
+                  href="/performanslab-app"
+                  onClick={() => trackCtaClick("Erken Kayıt Ol", "hero_uygulama_link")}
                   className="hero-app-link mt-1 flex items-center gap-1 whitespace-nowrap font-semibold hover:opacity-50"
                   style={{
                     color: "#fff",

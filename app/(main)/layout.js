@@ -5,6 +5,8 @@ import Footer from "@/components/composite/Footer";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import WhatsAppPanel from "@/components/WhatsAppContact";
+import RouteChangeTracker from "@/components/RouteChangeTracker";
+import { Suspense } from "react";
 
 const montserratFont = Montserrat({
   subsets: ["latin"],
@@ -21,15 +23,33 @@ const interFont = Inter({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://performanslab.com"),
   title: "PerformansLab — Personal Training",
   description:
     "PerformansLab, fonksiyonel antrenmanlar düzenler, beslenme programları oluşturur ve postür düzeltici egzersizler oluşturur.",
-  twitter: { card: "summary_large_image" },
   openGraph: {
     siteName: "PerformansLab",
     locale: "tr_TR",
     type: "website",
     url: "https://performanslab.com/",
+    title: "PerformansLab — Personal Training",
+    description:
+      "PerformansLab, fonksiyonel antrenmanlar düzenler, beslenme programları oluşturur ve postür düzeltici egzersizler oluşturur.",
+    images: [
+      {
+        url: "/plab.jpeg",
+        width: 1600,
+        height: 1067,
+        alt: "PerformansLab Personal Training",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PerformansLab — Personal Training",
+    description:
+      "PerformansLab, fonksiyonel antrenmanlar düzenler, beslenme programları oluşturur ve postür düzeltici egzersizler oluşturur.",
+    images: ["/plab.jpeg"],
   },
 };
 
@@ -65,6 +85,9 @@ gtag('js', new Date());
 gtag('config', 'G-90GN5TNZVK');`}
         </Script>
         <WhatsAppPanel />
+        <Suspense fallback={null}>
+          <RouteChangeTracker />
+        </Suspense>
       </body>
     </html>
   );

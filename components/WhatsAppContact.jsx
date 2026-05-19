@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { trackWhatsAppPanelClick } from "@/lib/analytics";
 
 export default function WhatsAppPanel() {
   const [visible, setVisible] = useState(false);
@@ -21,7 +22,7 @@ export default function WhatsAppPanel() {
   return (
     <div className="fixed bottom-4 right-4 max-sm:right-10 z-50 max-h-16 flex backdrop-blur-sm">
       <div
-        onClick={() => window.open(whatsappUrl, "_blank")}
+        onClick={() => { trackWhatsAppPanelClick(); window.open(whatsappUrl, "_blank"); }}
         className="bg-green-500 bg-opacity-40  px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 animate-fade-in max-w-[90vw] sm:max-w-xs cursor-pointer"
       >
         <svg

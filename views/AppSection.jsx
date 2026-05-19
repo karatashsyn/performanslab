@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
 import Link from "next/link";
+import { trackCtaClick } from "@/lib/analytics";
 
 const features = ["Postür Analizi", "Kişiye Özel Program", "Antrenman Takibi"];
 
@@ -104,7 +106,7 @@ export default function AppSection() {
 
         {/* CTA */}
         <div className="flex justify-center mt-12">
-          <Link href="/iletisim">
+          <Link href="/performanslab-app" onClick={() => trackCtaClick("Erken Kayıt Ol", "app_section")}>
             <button
               className="text-white font-semibold px-10 py-3.5 text-sm flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all"
               style={{
@@ -112,7 +114,7 @@ export default function AppSection() {
                 fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
               }}
             >
-              Erkenden Kayıt Ol →
+              Erken Kayıt Ol →
             </button>
           </Link>
         </div>

@@ -8,6 +8,7 @@ import ShareButton from "@/components/ShareButton";
 import BlogSuggestion from "@/components/BlogSuggestion";
 import { NotoSerif } from "@/util/fonts";
 import PaddedContainer from "@/components/composite/PaddedContainer";
+import BlogReadTracker from "@/components/BlogReadTracker";
 
 export const revalidate = 3600;
 
@@ -22,6 +23,7 @@ export async function generateMetadata({ params }) {
     notFound();
   }
   return {
+    metadataBase: new URL("https://performanslab.com"),
     title: blog ? blog.title : "Spor ve Performans",
     description: blog?.description
       ? blog.description
@@ -52,6 +54,16 @@ export async function generateMetadata({ params }) {
         },
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: blog ? blog.title : "Spor ve Performans",
+      description: blog ? blog.description : "antrenman spor",
+      images: [
+        blog?.titleImage
+          ? blog.titleImage
+          : "https://performanslab.com/plab.jpeg",
+      ],
+    },
     article: {
       modifiedTime: blog?.date ? blog.date : "",
     },
@@ -79,6 +91,7 @@ export default async function BlogDetail({ params }) {
 
   return (
     <>
+      <BlogReadTracker title={blog.title} slug={blog.slug} />
       <PaddedContainer className={"md:px-0"}>
         <article>
           <script
@@ -104,7 +117,7 @@ export default async function BlogDetail({ params }) {
                   Instagram
                 </span>
               </a>
-              <ShareButton />
+              <ShareButton blogTitle={blog.title} blogSlug={blog.slug} />
             </div>
           </div>
           <div className={"mt-12  flex justify-start " + Inter.className}>

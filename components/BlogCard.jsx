@@ -1,12 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
 import { cropText } from "@/util";
 import Link from "next/link";
 import React from "react";
+import { trackBlogCardClick } from "@/lib/analytics";
 
 export default function BlogCard({ blog }) {
   return (
     <Link
       href={`/${blog.slug}`}
+      onClick={() => trackBlogCardClick(blog.title, blog.slug)}
       className="hover:translate-x-1 transition-all duration-200 flex gap-4 items-start cursor-pointer arial"
     >
       <div

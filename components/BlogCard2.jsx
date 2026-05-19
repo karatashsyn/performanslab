@@ -1,15 +1,16 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import { Inter } from "@/app/(main)/layout";
-import { cropText, getFormattedDate } from "@/util";
-import Image from "next/image";
+"use client";
+import { getFormattedDate } from "@/util";
 import Link from "next/link";
 import React from "react";
+import { trackBlogCardClick } from "@/lib/analytics";
 
 export default function BlogCard2({ blog, className }) {
   return (
     <Link
       href={`/${blog.slug}`}
+      onClick={() => trackBlogCardClick(blog.title, blog.slug)}
       className={`${className} animate-fade-in bg-white hover:shadow-lg  overflow-hidden rounded-md border-[1px] transition-all duration-200 flex flex-col gap-4 items-start cursor-pointer`}
     >
       <div
@@ -31,7 +32,7 @@ export default function BlogCard2({ blog, className }) {
               lineHeight: "1",
             }}
             className={`
-        
+
             font-medium  text-[#09090b] tracking-tight  transition-opacity duration-100  text-[1.2rem] lg:text-[1.3rem]`}
           >
             {blog.title}

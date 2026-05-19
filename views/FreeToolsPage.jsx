@@ -1,7 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {
+  trackToolSwitch,
+  trackToolCalculate,
+  trackQuizStepComplete,
+  trackQuizComplete,
+  trackCtaClick,
+} from "@/lib/analytics";
 
 const tools = [
   { id: "tdee", label: "TDEE / Kalori" },
@@ -180,10 +187,11 @@ function StatBox({ label, value, unit, red }) {
   );
 }
 
-function CtaCard({ children }) {
+function CtaCard({ children, toolId }) {
   return (
     <a
       href="/iletisim"
+      onClick={() => trackCtaClick("tool_cta", toolId ?? "free_tools")}
       className="animate-fade-in mt-4 flex items-center justify-between gap-5 rounded-[20px] bg-[#D2000C] p-7 no-underline transition-colors hover:bg-[#a50009]"
     >
       <div>{children}</div>
@@ -229,14 +237,16 @@ function TdeeTool() {
           ? "Kas kazanımı (+300 kcal fazla)"
           : "İdame - kilo koru";
 
-    setResult({
+    const resultData = {
       tdee,
       target,
       label,
       protein: Math.round(w * 2),
       fat: Math.round((target * 0.25) / 9),
       gauge: Math.min(Math.round((tdee - 1200) / 28), 100),
-    });
+    };
+    setResult(resultData);
+    trackToolCalculate("tdee", { goal: form.goal, gender: form.gender, tdee, target });
   }
 
   return (
@@ -412,6 +422,7 @@ function BodyFatTool() {
           ? "Kompozisyon programı için Fatih ile görüş"
           : "Yağ yakma programı için hemen başla",
     });
+    trackToolCalculate("bodyfat", { gender: form.gender, body_fat_percent: bf, category });
   }
 
   return (
@@ -519,10 +530,12 @@ function BodyFatTool() {
 
 function BmiTool() {
   const [form, setForm] = useState({ height: "", weight: "", age: "" });
+  const hadResult = useRef(false);
   const result = useMemo(() => {
     const h = Number(form.height) / 100;
     const w = Number(form.weight);
     if (!h || !w || h < 0.5) return null;
+
     const bmi = Math.round((w / (h * h)) * 10) / 10;
     const category =
       bmi < 18.5
@@ -552,6 +565,13 @@ function BmiTool() {
       gauge,
     };
   }, [form]);
+
+  useEffect(() => {
+    if (result && !hadResult.current) {
+      hadResult.current = true;
+      trackToolCalculate("bmi", { bmi: result.bmi, category: result.category });
+    }
+  }, [result]);
 
   return (
     <ToolLayout
@@ -718,9 +738,10 @@ function TrainingTool() {
                   <button
                     key={value}
                     type="button"
-                    onClick={() =>
-                      setAnswers((existing) => ({ ...existing, [step]: value }))
-                    }
+                    onClick={() => {
+                      setAnswers((existing) => ({ ...existing, [step]: value }));
+                      trackQuizStepComplete(step, current.question, value);
+                    }}
                     className="flex w-full items-center gap-3.5 rounded-xl border p-4 text-left transition hover:translate-x-1"
                     style={{
                       background:
@@ -754,11 +775,14 @@ function TrainingTool() {
                 )}
                 <button
                   disabled={!answers[step]}
-                  onClick={() =>
-                    step === quizSteps.length - 1
-                      ? setDone(true)
-                      : setStep(step + 1)
-                  }
+                  onClick={() => {
+                    if (step === quizSteps.length - 1) {
+                      setDone(true);
+                      trackQuizComplete(result?.type ?? "unknown");
+                    } else {
+                      setStep(step + 1);
+                    }
+                  }}
                   className="flex-1 rounded-xl bg-[#D2000C] px-5 py-3 font-montserrat text-sm font-bold text-white disabled:opacity-40"
                 >
                   {step === quizSteps.length - 1 ? "Sonucu Gör →" : "Devam →"}
@@ -878,6 +902,8 @@ export default function FreeToolsPage() {
     const params = new URLSearchParams(searchParams.toString());
     params.set("tool", toolId);
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    const tool = tools.find((t) => t.id === toolId);
+    trackToolSwitch(toolId, tool?.label ?? toolId);
   }
 
   return (
