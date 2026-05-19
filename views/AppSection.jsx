@@ -106,7 +106,10 @@ export default function AppSection() {
 
         {/* CTA */}
         <div className="flex justify-center mt-12">
-          <Link href="/performanslab-app" onClick={() => trackCtaClick("Erken Kayıt Ol", "app_section")}>
+          <Link
+            href="/performanslab-app"
+            onClick={() => trackCtaClick("Erken Kayıt Ol", "app_section")}
+          >
             <button
               className="text-white font-semibold px-10 py-3.5 text-sm flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all"
               style={{
