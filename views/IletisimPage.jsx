@@ -1,11 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { useRef, useState } from "react";
-import {
-  trackContactClick,
-  trackFormStart,
-  trackFormSubmit,
-} from "@/lib/analytics";
+import { trackContactClick, trackFormStart, trackFormSubmit } from "@/lib/analytics";
 
 const channels = [
   {
@@ -93,45 +89,12 @@ const channels = [
   },
 ];
 
-function Loader({ className }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-    >
-      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-    </svg>
-  );
-}
 
-function Check() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M20 6 9 17l-5-5" />
-    </svg>
-  );
-}
+const inputClass =
+  "w-full rounded-[6px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-white/25 disabled:opacity-50";
 
 function ContactForm() {
-  const [fields, setFields] = useState({ name: "", email: "", message: "" });
+  const [fields, setFields] = useState({ name: "", phone: "", message: "" });
   const [status, setStatus] = useState("idle");
   const formStarted = useRef(false);
 
@@ -146,58 +109,86 @@ function ContactForm() {
     setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (status !== "idle") return;
+    if (status === "loading" || status === "success") return;
     setStatus("loading");
-    // TODO: wire up actual form submission (email service / API route)
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fields),
+      });
+      if (!res.ok) throw new Error("server_error");
       setStatus("success");
       trackFormSubmit("contact_mail", true);
-    }, 1000);
+    } catch {
+      setStatus("error");
+      trackFormSubmit("contact_mail", false);
+    }
   }
 
-  const inputClass =
-    "w-full rounded-[6px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-white/25 disabled:opacity-50";
-
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-      <input
-        name="name"
-        type="text"
-        required
-        placeholder="Adınız"
-        value={fields.name}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        disabled={status === "success"}
-        className={inputClass}
-        style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
-      />
-      <input
-        name="email"
-        type="email"
-        required
-        placeholder="E-posta adresiniz"
-        value={fields.email}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        disabled={status === "success"}
-        className={inputClass}
-        style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
-      />
-      <textarea
-        name="message"
-        required
-        rows={5}
-        placeholder="Mesajınız"
-        value={fields.message}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        disabled={status === "success"}
-        className={`${inputClass} resize-none`}
-        style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
-      />
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3" noValidate>
+      <div>
+        <label htmlFor="contact-name" className="sr-only">Adınız</label>
+        <input
+          id="contact-name"
+          name="name"
+          type="text"
+          required
+          autoComplete="name"
+          placeholder="Adınız"
+          value={fields.name}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          disabled={status === "success"}
+          className={inputClass}
+          style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
+        />
+      </div>
+      <div>
+        <label htmlFor="contact-phone" className="sr-only">Telefon numaranız</label>
+        <input
+          id="contact-phone"
+          name="phone"
+          type="tel"
+          required
+          autoComplete="tel"
+          placeholder="Telefon numaranız"
+          value={fields.phone}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          disabled={status === "success"}
+          className={inputClass}
+          style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
+        />
+      </div>
+      <div>
+        <label htmlFor="contact-message" className="sr-only">Mesajınız</label>
+        <textarea
+          id="contact-message"
+          name="message"
+          rows={5}
+          placeholder="Mesajınız"
+          value={fields.message}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          disabled={status === "success"}
+          className={`${inputClass} resize-none`}
+          style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
+        />
+      </div>
+
+      {status === "error" && (
+        <p
+          className="text-sm text-red-400"
+          style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
+        >
+          Mesaj gönderilemedi. Lütfen tekrar deneyin veya bize doğrudan ulaşın.
+        </p>
+      )}
+
       <button
         type="submit"
         disabled={status === "loading" || status === "success"}
@@ -208,17 +199,9 @@ function ContactForm() {
           opacity: status === "loading" ? 0.8 : 1,
         }}
       >
-        {status === "idle" && "Mesaj Gönder →"}
-        {status === "loading" && (
-          <>
-            <Loader className="animate-spin" /> Gönderiliyor...
-          </>
-        )}
-        {status === "success" && (
-          <>
-            <Check /> Mesajınız İletildi!
-          </>
-        )}
+        {status === "idle" || status === "error" ? "Mesaj Gönder →" : null}
+        {status === "loading" ? "Gönderiliyor..." : null}
+        {status === "success" ? "✓ Mesajınız İletildi!" : null}
       </button>
     </form>
   );
@@ -324,9 +307,7 @@ export default function IletisimPage() {
           >
             <p
               className="mb-1 text-base font-bold text-white"
-              style={{
-                fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
-              }}
+              style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
             >
               Mesaj Gönder
             </p>

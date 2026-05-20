@@ -69,7 +69,7 @@ function Check({ className }) {
 
 function EarlySignupForm() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("idle"); // idle | loading | success
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const formStarted = useRef(false);
 
   function handleFocus() {
@@ -79,14 +79,23 @@ function EarlySignupForm() {
     }
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (!email || status !== "idle") return;
+    if (!email || status === "loading" || status === "success") return;
     setStatus("loading");
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/early-signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error("server_error");
       setStatus("success");
       trackFormSubmit("erken_kayit", true);
-    }, 1000);
+    } catch {
+      setStatus("error");
+      trackFormSubmit("erken_kayit", false);
+    }
   }
 
   return (
@@ -113,7 +122,7 @@ function EarlySignupForm() {
           opacity: status === "loading" ? 0.85 : 1,
         }}
       >
-        {status === "idle" && "Erken Kayıt Ol →"}
+        {(status === "idle" || status === "error") && "Erken Kayıt Ol →"}
         {status === "loading" && (
           <>
             <Loader2 className="animate-spin" />

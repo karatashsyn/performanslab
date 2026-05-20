@@ -4,7 +4,6 @@ import Navbar from "@/components/composite/Navbar";
 import Footer from "@/components/composite/Footer";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
-import WhatsAppPanel from "@/components/WhatsAppContact";
 import RouteChangeTracker from "@/components/RouteChangeTracker";
 import { Suspense } from "react";
 
@@ -67,6 +66,7 @@ export default function RootLayout({ children }) {
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
           crossOrigin="anonymous"
+          strategy="lazyOnload"
         />
         <header>
           <Navbar />
@@ -84,7 +84,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-90GN5TNZVK');`}
         </Script>
-        <WhatsAppPanel />
         <Suspense fallback={null}>
           <RouteChangeTracker />
         </Suspense>

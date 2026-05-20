@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
@@ -22,13 +22,10 @@ export default function Navbar() {
     function handleScroll() {
       const currentScrollY = window.scrollY;
       const isScrollingDown = currentScrollY > lastScrollY.current;
-
       setIsHidden(isScrollingDown && currentScrollY > 80 && !menuOpen);
       lastScrollY.current = currentScrollY;
     }
-
     window.addEventListener("scroll", handleScroll, { passive: true });
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, [menuOpen]);
 
@@ -46,11 +43,13 @@ export default function Navbar() {
     >
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 grid grid-cols-[auto_1fr_auto] items-center h-16">
         <Link href="/" className="flex-shrink-0">
-          <img
-            loading="eager"
+          <Image
             src="/new-logo.png"
             alt="PerformansLab"
-            className="h-9 w-auto"
+            width={180}
+            height={36}
+            style={{ height: "36px", width: "auto" }}
+            priority
           />
         </Link>
 
@@ -79,7 +78,10 @@ export default function Navbar() {
           onClick={() => trackNavClick("Ücretsiz Araçlar", "/ucretsiz-araclar")}
           className="hidden md:block justify-self-end text-sm font-semibold transition-colors"
           style={{
-            color: pathName === "/ucretsiz-araclar" ? "#ffffff" : "rgba(255,255,255,0.72)",
+            color:
+              pathName === "/ucretsiz-araclar"
+                ? "#ffffff"
+                : "rgba(255,255,255,0.72)",
             fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
           }}
         >
@@ -95,10 +97,12 @@ export default function Navbar() {
           }}
           aria-label="Toggle menu"
         >
-          <img
+          <Image
             src={menuOpen ? "/x.svg" : "/menu.svg"}
-            alt="menu"
-            className="w-6 h-6 invert"
+            alt={menuOpen ? "Menüyü kapat" : "Menüyü aç"}
+            width={24}
+            height={24}
+            className="invert"
           />
         </button>
       </div>
@@ -106,13 +110,19 @@ export default function Navbar() {
       {menuOpen && (
         <div
           className="md:hidden flex flex-col gap-6 px-8 py-8"
-          style={{ background: "#090A0D", borderTop: "1px solid rgba(255,255,255,0.06)" }}
+          style={{
+            background: "#090A0D",
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+          }}
         >
           {navLinks.map((nl, i) => (
             <Link
               key={i}
               href={nl.href}
-              onClick={() => { setMenuOpen(false); trackNavClick(nl.label, nl.href); }}
+              onClick={() => {
+                setMenuOpen(false);
+                trackNavClick(nl.label, nl.href);
+              }}
               className="text-white text-lg font-medium"
               style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
             >
@@ -121,7 +131,10 @@ export default function Navbar() {
           ))}
           <Link
             href="/ucretsiz-araclar"
-            onClick={() => { setMenuOpen(false); trackNavClick("Ücretsiz Araçlar", "/ucretsiz-araclar"); }}
+            onClick={() => {
+              setMenuOpen(false);
+              trackNavClick("Ücretsiz Araçlar", "/ucretsiz-araclar");
+            }}
             className="text-white text-lg font-medium"
             style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
           >

@@ -1,6 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import Link from "next/link";
-import { getBlogs } from "@/services/blog";
+import { getFeaturedBlogs } from "@/services/blog";
 import { getFormattedDate, cropText } from "@/util";
 
 function ArrowRight() {
@@ -31,10 +31,12 @@ function FeaturedCard({ blog }) {
     >
       {/* Image */}
       <div className="absolute inset-0">
-        <img
+        <Image
+          fill
           src={blog.titleImage}
           alt={blog.title}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          sizes="(max-width: 1024px) 100vw, calc(100vw - 400px)"
         />
         {/* Bottom gradient */}
         <div
@@ -104,10 +106,12 @@ function SideCard({ blog }) {
     >
       {/* Thumbnail */}
       <div className="relative h-[72px] w-[72px] flex-shrink-0 overflow-hidden rounded-[6px] sm:h-20 sm:w-20">
-        <img
+        <Image
+          fill
           src={blog.titleImage}
           alt={blog.title}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="80px"
         />
       </div>
 
@@ -144,12 +148,11 @@ function SideCard({ blog }) {
 }
 
 export default async function HomeBlogSection() {
-  const blogs = await getBlogs();
-  const visible = blogs.slice(0, 3);
+  const blogs = await getFeaturedBlogs(4);
 
-  if (visible.length === 0) return null;
+  if (blogs.length === 0) return null;
 
-  const [featured, ...rest] = visible;
+  const [featured, ...rest] = blogs;
 
   return (
     <section className="py-20 lg:py-28" style={{ background: "#0f0f0f" }}>
@@ -192,29 +195,15 @@ export default async function HomeBlogSection() {
 
         {/* Grid */}
         <div className="grid gap-4 lg:grid-cols-[1fr_360px]">
-          {/* Featured */}
+          {/* Featured — largest card */}
           <FeaturedCard blog={featured} />
 
-          {/* Side cards */}
+          {/* Side cards — remaining up to 3 */}
           {rest.length > 0 && (
             <div className="flex flex-col gap-4">
               {rest.map((blog) => (
                 <SideCard key={blog.slug} blog={blog} />
               ))}
-              {/* Filler card if only 1 side post */}
-              {rest.length < 2 && (
-                <Link
-                  href="/arsiv"
-                  className="flex flex-1 items-center justify-center gap-2 rounded-[8px] border border-white/[0.07] text-sm font-semibold text-white/40 transition-all hover:border-white/15 hover:text-white/70"
-                  style={{
-                    fontFamily:
-                      "var(--font-montserrat), Montserrat, sans-serif",
-                    minHeight: "96px",
-                  }}
-                >
-                  Tüm Yazıları Gör <ArrowRight />
-                </Link>
-              )}
             </div>
           )}
         </div>

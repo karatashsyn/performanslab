@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { trackCtaClick } from "@/lib/analytics";
 
@@ -9,13 +9,14 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ background: "#090A0D" }}
     >
-      {/* Background hero image at 40% opacity */}
+      {/* Background hero image */}
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/hero-image.png"
           alt=""
-          className="w-full h-full object-cover"
-          style={{ opacity: 1 }}
+          fill
+          className="object-cover"
+          priority
         />
         {/* Gradient overlay for text legibility */}
         <div
@@ -31,14 +32,16 @@ export default function HeroSection() {
         {/* Left: text content */}
         <div className="lg:absolute lg:bottom-[min(17vh,200px)]">
           <h1
-            className="text-white leading-none mb-4 text-[clamp(2.6rem,12vw,4.25rem)] tracking-[-4%]"
+            className="text-white leading-none mb-4 text-[clamp(2.6rem,12vw,4.25rem)] tracking-[-0.04em]"
             style={{
               fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
             }}
           >
             Sana Özel <br className="max-sm:hidden" />
-            <span className="sm:whitespace-nowrap text-[clamp(2.6rem,12vw,4.25rem)]">
-              <span className="font-semibold text-[clamp(2.6rem,12vw,4.25rem)]">Sonuç Odaklı</span>{" "}
+            <span className="lg:whitespace-nowrap text-[clamp(2.6rem,12vw,4.25rem)]">
+              <span className="font-semibold text-[clamp(2.6rem,12vw,4.25rem)]">
+                Sonuç Odaklı
+              </span>{" "}
               Antrenman
             </span>
           </h1>
@@ -59,7 +62,7 @@ export default function HeroSection() {
             onClick={() => trackCtaClick("Özel Ders Al", "hero_ana_buton")}
           >
             <button
-              className="font-semibold bg-[#D2000C] text-white px-8 py-3 hover:bg-opacity-90 "
+              className="font-semibold bg-[#D2000C] text-white px-8 py-3 hover:bg-opacity-90"
               style={{
                 fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
               }}
@@ -72,6 +75,7 @@ export default function HeroSection() {
         {/* Right: iPhone mockup + actions */}
         <div className="relative flex-shrink-0 hidden w-[320px] md:block lg:absolute lg:right-16 lg:top-1/2 lg:-translate-y-[50%]">
           <div className="hero-app-fragment flex flex-col items-center gap-9">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/mockup-hero.png"
               alt="PerformansLab App"
@@ -81,7 +85,9 @@ export default function HeroSection() {
             <div className="cursor-pointer group hero-app-actions z-20 flex flex-col items-start">
               <Link
                 href="/performanslab-app"
-                onClick={() => trackCtaClick("Uygulamamız Yakında", "hero_uygulama_etiketi")}
+                onClick={() =>
+                  trackCtaClick("Uygulamamız Yakında", "hero_uygulama_etiketi")
+                }
               >
                 <span
                   className="select-none cursor-pointer hero-app-label whitespace-nowrap px-4 py-2 text-sm font-semibold text-white"
@@ -96,7 +102,9 @@ export default function HeroSection() {
               <div className="group-hover:opacity-50">
                 <Link
                   href="/performanslab-app"
-                  onClick={() => trackCtaClick("Erken Kayıt Ol", "hero_uygulama_link")}
+                  onClick={() =>
+                    trackCtaClick("Erken Kayıt Ol", "hero_uygulama_link")
+                  }
                   className="hero-app-link mt-1 flex items-center gap-1 whitespace-nowrap font-semibold hover:opacity-50"
                   style={{
                     color: "#fff",

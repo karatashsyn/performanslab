@@ -10,7 +10,14 @@ export const metadata = {
     description:
       "PerformansLab uygulaması ile postür analizi, kişiye özel programlar ve antrenman takibini tek yerden yönetin.",
     url: "https://performanslab.com/performanslab-app",
-    images: [{ url: "/mockup-app-section.png", alt: "PerformansLab Uygulaması" }],
+    images: [
+      {
+        url: "/mockup-app-section.png",
+        width: 1200,
+        height: 630,
+        alt: "PerformansLab Uygulaması",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",

@@ -1,75 +1,166 @@
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { getBlogs } from "@/services/blog";
-import BlogCard2 from "@/components/BlogCard2";
-import { Inter } from "../layout";
-import ContactSection from "@/views/ContactSection";
+import Image from "next/image";
+import Link from "next/link";
+import { getFeaturedBlogs, getLatestBlogs } from "@/services/blog";
+import BlogCardFull from "@/components/BlogCardFull";
 import { notFound } from "next/navigation";
+import { cropText } from "@/util";
 
 export const revalidate = 3600;
 
-export default async function Blog({ searchParams }) {
-  const blogs = await getBlogs(searchParams.s);
-  if (!blogs.length) {
-    notFound();
-  }
+export const metadata = {
+  title: "Blog Arşivi — PerformansLab",
+  description:
+    "Spor bilimi, antrenman ve beslenme üzerine gerekli, anlaşılabilir ve bilimsel yazılar.",
+  alternates: {
+    canonical: "https://performanslab.com/arsiv",
+  },
+};
+
+function FeaturedHero({ blog }) {
+  return (
+    <Link
+      href={`/${blog.slug}`}
+      className="group relative flex flex-col justify-end overflow-hidden rounded-[10px] bg-[#1a1a1a]"
+      style={{ minHeight: "340px" }}
+    >
+      <div className="absolute inset-0">
+        <Image
+          fill
+          src={blog.titleImage}
+          alt={blog.title}
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          sizes="(max-width: 1024px) 100vw, 60vw"
+          priority
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0.05) 100%)",
+          }}
+        />
+      </div>
+      <div className="relative z-10 p-6 sm:p-8">
+        {blog.categories?.[0] && (
+          <span
+            className="inline-block mb-3 rounded-[4px] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-white"
+            style={{
+              background: "#D2000C",
+              fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+            }}
+          >
+            {blog.categories[0].title}
+          </span>
+        )}
+        <h2
+          className="text-xl font-bold leading-[1.2] text-white sm:text-2xl"
+          style={{
+            fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+          }}
+        >
+          {cropText(blog.title, 90)}
+        </h2>
+      </div>
+    </Link>
+  );
+}
+
+function DiscoverCard({ blog, isLast }) {
+  return (
+    <Link
+      href={`/${blog.slug}`}
+      className={`group flex items-center gap-4 py-4 ${!isLast ? "border-b border-[#eee]" : ""}`}
+    >
+      <div className="relative h-[72px] w-[72px] flex-shrink-0 overflow-hidden rounded-[6px]">
+        <Image
+          fill
+          src={blog.titleImage}
+          alt={blog.title}
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="72px"
+        />
+      </div>
+      <p
+        className="text-[0.9rem] font-semibold leading-[1.35] text-[#111] group-hover:text-[#D2000C] transition-colors duration-200"
+        style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+      >
+        {cropText(blog.title, 80)}
+      </p>
+    </Link>
+  );
+}
+
+export default async function ArchivePage() {
+  const [featured, latest] = await Promise.all([
+    getFeaturedBlogs(5),
+    getLatestBlogs(),
+  ]);
+
+  const featuredSlugs = new Set(featured.map((b) => b.slug));
+  const filteredLatest = latest.filter((b) => !featuredSlugs.has(b.slug));
+
+  if (filteredLatest.length === 0 && featured.length === 0) notFound();
+
+  const [hero, ...discoverRest] = featured;
 
   return (
     <>
-      <div className="w-full flex justify-between  mt-8">
-        <form className="w-[50%] max-sm:w-[80%] ">
-          <div className=" max-lg:w-full  flex h-[48px] max-sm:h-[36px] items-center text-black justify-between p-0 pl-2  border-[0.4px] shadowsm border-neutral-400 rounded-[3px]">
-            <input
-              required
-              defaultValue={searchParams.s}
-              name="s"
-              className=" 
-         
-              h-full arial font-medium placeholder:font-normal placeholder:text-gray-600 placeholder:transition-opacity placeholder:duration-200 focus:placeholder:opacity-0 focus:opacity-100 transition-all duration-300 w-[80%] outline-none"
-              type="text"
-              placeholder="Merak ettiğin konuyu ara..."
-            />
-            <button
-              type="submit"
-              className=" bg-gray-100 cursor-pointer rounded-l-none  rounded-sm h-full gap-1 w-24 py-2 flex items-center justify-center"
+      {/* ── Featured Section ── */}
+      {featured.length > 0 && (
+        <section className="mt-8 grid gap-6 lg:grid-cols-[1fr_360px]">
+          {/* Left: big hero card */}
+          <FeaturedHero blog={hero} />
+
+          {/* Right: "Daha fazla keşfet" */}
+          <div className="flex flex-col">
+            <h2
+              className="text-[1.1rem] font-bold text-[#111] mb-1"
+              style={{
+                fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+              }}
             >
-              <img
-                src="/search.svg"
-                alt="Search Icon"
-                className="w-4 h-4  inline-block opacity-70 "
-              />
-              <span className="arial text-gray-600">Ara</span>
-            </button>
+              Daha fazla keşfet
+            </h2>
+            <div>
+              {discoverRest.map((blog, i) => (
+                <DiscoverCard
+                  key={blog.slug}
+                  blog={blog}
+                  isLast={i === discoverRest.length - 1}
+                />
+              ))}
+            </div>
           </div>
-        </form>
-        <div className="flex gap-4">
-          <a
-            target="_blank"
-            href="https://www.instagram.com/performanslab/"
-            className="flex max-sm:h-[36px] max-sm:py-0 max-sm:px-2 cursor-pointer items-center border-[1px] px-4 shadow-sm py-3 rounded-sm gap-2"
+        </section>
+      )}
+
+      {/* ── Son Eklenenler Section ── */}
+      <section className="mt-14">
+        <div className="flex items-center justify-between mb-6">
+          <h2
+            className="text-[1.4rem] font-bold text-[#111]"
+            style={{
+              fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+            }}
           >
-            <img width={24} height={30} alt="instagram" src={"/icon2.svg"} />
-
-            <span className="arial text-gray-800 max-sm:hidden">Instagram</span>
-          </a>
+            Son Eklenenler
+          </h2>
+          <Link
+            href="/tum-yazilar"
+            className="border border-[#E6E6E6] rounded-lg py-2 px-5 text-[1rem] text-[#595959] font-medium hover:border-[#aaa] transition-colors"
+            style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
+          >
+            Tüm Yazılar
+          </Link>
         </div>
-      </div>
 
-      <div
-        className={
-          "w-full mt-12 grid grid-cols-4 max-md:grid-cols-2 max-lg:grid-cols-3 gap-3 " +
-          Inter.className
-        }
-      >
-        {blogs.map((b, index) => (
-          <BlogCard2 key={index} blog={b} />
-        ))}
-      </div>
-      <ContactSection
-        titleHidden={true}
-        textClass={"text-[#333]"}
-        lightMode={true}
-      />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+          {filteredLatest.map((blog) => (
+            <BlogCardFull key={blog.slug} blog={blog} />
+          ))}
+        </div>
+      </section>
     </>
   );
 }

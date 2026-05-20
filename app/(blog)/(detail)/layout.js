@@ -4,7 +4,6 @@ import Navbar from "@/components/composite/Navbar";
 import Footer from "@/components/composite/Footer";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
-import WhatsAppPanel from "@/components/WhatsAppContact";
 import RouteChangeTracker from "@/components/RouteChangeTracker";
 import { Suspense } from "react";
 
@@ -39,50 +38,35 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="tr"
-      style={{
-        background: "rgb(254, 254, 254)",
-      }}
-    >
-      <WhatsAppPanel />
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
-        crossorigin="anonymous"
-      ></Script>
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
-        crossorigin="anonymous"
-      ></Script>
+    <html lang="tr" style={{ background: "rgb(254, 254, 254)" }}>
       <body className={Inter.className}>
-        {/* <header className="fixed top-0 z-[20]"> */}
-        <header className="">
+        <header>
           <Navbar transparent={false} />
         </header>
-        <div className="!min-h-[100vh]">
-          <main>
-            <article className="text-left">{children}</article>
-          </main>
+        <div className="!min-h-[100vh] pt-20">
+          <main>{children}</main>
         </div>
         <Footer darkMode={true} />
         <Analytics />
-        <Suspense fallback={null}>
-          <RouteChangeTracker />
-        </Suspense>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-90GN5TNZVK"
-        ></Script>
+        />
         <Script id="gAnalyticsScript" strategy="afterInteractive">
-          {`
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-90GN5TNZVK');`}
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-90GN5TNZVK');`}
         </Script>
+        <Suspense fallback={null}>
+          <RouteChangeTracker />
+        </Suspense>
       </body>
     </html>
   );
