@@ -15,7 +15,7 @@ export default function Navbar() {
     { href: "/", label: "Anasayfa" },
     { href: "/arsiv", label: "Blog" },
     { href: "/iletisim", label: "İletişim" },
-    { href: "/performanslab-app", label: "Uygulamamız" },
+    { href: "/uygulamamiz", label: "Uygulamamız" },
   ];
 
   useEffect(() => {
@@ -55,7 +55,9 @@ export default function Navbar() {
 
         <ul
           className="hidden md:flex items-center justify-center gap-10"
-          style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+          style={{
+            fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+          }}
         >
           {navLinks.map((nl, i) => (
             <li key={i}>
@@ -64,7 +66,8 @@ export default function Navbar() {
                 onClick={() => trackNavClick(nl.label, nl.href)}
                 className="text-sm font-medium transition-colors"
                 style={{
-                  color: pathName === nl.href ? "#ffffff" : "rgba(255,255,255,0.7)",
+                  color:
+                    pathName === nl.href ? "#ffffff" : "rgba(255,255,255,0.7)",
                 }}
               >
                 {nl.label}
@@ -124,7 +127,9 @@ export default function Navbar() {
                 trackNavClick(nl.label, nl.href);
               }}
               className="text-white text-lg font-medium"
-              style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+              style={{
+                fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+              }}
             >
               {nl.label}
             </Link>
@@ -136,7 +141,9 @@ export default function Navbar() {
               trackNavClick("Ücretsiz Araçlar", "/ucretsiz-araclar");
             }}
             className="text-white text-lg font-medium"
-            style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+            style={{
+              fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+            }}
           >
             Ücretsiz Araçlar
           </Link>
