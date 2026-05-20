@@ -36,11 +36,13 @@ function ReviewCard({ review }) {
         </p>
       </div>
       <div className="flex items-center gap-3 mt-auto pt-8">
-        <img
-          src="/fake-img.png"
-          alt=""
-          className="w-8 h-8 rounded-full flex-shrink-0 object-cover"
-        />
+        {review.image && (
+          <img
+            src={review.image}
+            alt={review.name}
+            className="w-8 h-8 rounded-full flex-shrink-0 object-cover"
+          />
+        )}
         <div>
           <p
             className="text-sm font-bold leading-[1.125rem] tracking-[-1%] text-black"
@@ -68,8 +70,9 @@ function ReviewCard({ review }) {
 export default function ReviewsSection() {
   return (
     <section
+      id="yorumlar"
       style={{ background: "#F8F3EB" }}
-      className="py-20 overflow-hidden"
+      className="pt-8 md:pt-16 pb-20 overflow-hidden"
     >
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 mb-10">
         {/* Top row: heading + Google Reviews badge */}
@@ -91,7 +94,7 @@ export default function ReviewsSection() {
 
           {/* Google Reviews badge */}
           <div className="flex flex-col items-start md:items-end gap-1">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-sm">
               <svg width="20" height="20" viewBox="0 0 24 24">
                 <path
                   fill="#4285F4"

@@ -1,6 +1,7 @@
 export const reviews = [
   {
     name: "Giray",
+    image: "/giray.png",
     text: "Sosyal medya soytarılarından sıkıldıysanız, bilimsel temeli olan ve amaca yönelik etkili bir antrenman yapmak istiyorsanız gidilecek en doğru adres. Fatih hoca alanında uzman ve bilimsel temelli çalışma yapan bir insan. Doğru antrenman yüksek performans için PerformansLab 💯",
     stars: 5,
   },
@@ -16,6 +17,7 @@ export const reviews = [
   },
   {
     name: "Begüm Dura",
+    image: "/begum-dura.png",
     text: "Ön çapraz bağ diz ameliyatımdan sonra arkadaşımın tavsiyesi ile başlamıştım ve iyi ki başlamışım diyorum çünkü çok geniş bir bilgi haznesine sahip, durumuma özel fizik tedavi tadında çalışmalar yapıyoruz. Dersler hem çok bilinçli hem de güzel enerjisi sayesinde çok keyifli geçiyor iyi ki başlamışım ve tanımışım kendisini :)",
     stars: 5,
   },

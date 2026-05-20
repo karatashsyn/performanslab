@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
   trackToolSwitch,
   trackToolCalculate,
@@ -16,6 +16,29 @@ const tools = [
   { id: "bodyfat", label: "Vücut Yağ %" },
   { id: "bmi", label: "BMI" },
 ];
+
+const toolMeta = {
+  tdee: {
+    h1: "TDEE ve Günlük Kalori İhtiyacı Hesaplayıcı",
+    description:
+      "Toplam günlük enerji harcamanızı (TDEE) ve kalori ihtiyacınızı ücretsiz hesaplayın. Hedeflerinize göre kilo verme, kilo alma veya koruma için gereken kalori miktarını öğrenin.",
+  },
+  training: {
+    h1: "Antrenman Seviyesi ve Program Testi",
+    description:
+      "Spor geçmişinizi, hedeflerinizi ve antrenman koşullarınızı analiz ederek size en uygun programı öneren ücretsiz antrenman testi.",
+  },
+  bodyfat: {
+    h1: "Vücut Yağ Oranı Hesaplayıcı",
+    description:
+      "Navy ölçüm metoduyla vücut yağ yüzdenizi ücretsiz hesaplayın. Cinsiyet, boy, bel ve kalça ölçüleriyle vücut kompozisyonunuzu analiz edin.",
+  },
+  bmi: {
+    h1: "BMI — Vücut Kitle İndeksi Hesaplayıcı",
+    description:
+      "Boy ve kilonuza göre BMI değerinizi ve sağlık kategorinizi (zayıf, normal, fazla kilolu, obez) ücretsiz hesaplayın.",
+  },
+};
 
 const quizSteps = [
   {
@@ -891,33 +914,58 @@ function Gauge({ value }) {
   );
 }
 
-export default function FreeToolsPage() {
+export default function FreeToolsPage({ tool = "tdee" }) {
   const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const toolParam = searchParams.get("tool");
-  const active = tools.some((tool) => tool.id === toolParam) ? toolParam : "tdee";
+  const active = tools.some((t) => t.id === tool) ? tool : "tdee";
 
   function setActiveTool(toolId) {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("tool", toolId);
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    const tool = tools.find((t) => t.id === toolId);
-    trackToolSwitch(toolId, tool?.label ?? toolId);
+    router.push(`/ucretsiz-araclar/${toolId}`);
+    const t = tools.find((t) => t.id === toolId);
+    trackToolSwitch(toolId, t?.label ?? toolId);
   }
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] pt-16 text-[#f5f3ef]">
-      <section className="mx-auto max-w-[1100px] px-8 pb-4 pt-8 max-md:px-5">
+      <header className="mx-auto max-w-[1100px] px-8 pb-4 pt-8 max-md:px-5">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#D2000C]">
+          Ücretsiz Araçlar
+        </p>
         <h1 className="max-w-[620px] text-4xl font-montserrat font-extrabold leading-[1.05] tracking-[-0.03em] text-[#f5f3ef]">
-          Kendinizi{" "}
-          <em className="not-italic text-[#D2000C] text-[1em]">tanıyın,</em>
-          <br />
-          daha iyi antrenman yapın
+          {toolMeta[active].h1}
         </h1>
-      </section>
+        <p className="mt-3 max-w-[520px] text-sm leading-relaxed text-[#666]">
+          {toolMeta[active].description}
+        </p>
+      </header>
 
-      <nav className="mx-auto flex max-w-[1100px] gap-1 overflow-x-auto border-b border-[#2e2e2e] px-8 max-md:px-5 overflow-y-hidden">
+      {/* Mobile: dropdown */}
+      <div className="md:hidden mx-auto max-w-[1100px] px-5 pb-4 border-b border-[#2e2e2e]">
+        <div className="relative">
+          <select
+            value={active}
+            onChange={(e) => setActiveTool(e.target.value)}
+            className="w-full appearance-none rounded-[8px] border border-[#2e2e2e] bg-[#1a1a1a] px-4 py-3 pr-10 text-[14px] font-semibold text-[#f5f3ef] outline-none"
+            style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+          >
+            {tools.map((tool) => (
+              <option key={tool.id} value={tool.id} style={{ background: "#1a1a1a" }}>
+                {tool.label}
+              </option>
+            ))}
+          </select>
+          <svg
+            className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-[#888]"
+            width="16" height="16" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" strokeWidth="2"
+            strokeLinecap="round" strokeLinejoin="round"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Desktop: tab bar */}
+      <nav className="hidden md:flex mx-auto max-w-[1100px] gap-1 border-b border-[#2e2e2e] px-8 overflow-y-hidden">
         {tools.map((tool) => (
           <button
             key={tool.id}

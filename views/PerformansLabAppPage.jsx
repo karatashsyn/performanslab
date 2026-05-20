@@ -191,7 +191,7 @@ export default function PerformansLabAppPage() {
             {/* Row 1 · Right: mockup — hidden on mobile */}
             <div className="hidden lg:flex items-end justify-center">
               <img
-                src="/mockup-app-section.png"
+                src="/mockup-duo.png"
                 alt="PerformansLab uygulaması"
                 className="w-full max-w-[300px] drop-shadow-2xl"
               />

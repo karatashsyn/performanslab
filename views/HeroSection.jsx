@@ -6,7 +6,7 @@ import { trackCtaClick } from "@/lib/analytics";
 export default function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-start lg:items-center overflow-hidden"
       style={{ background: "#090A0D" }}
     >
       {/* Background hero image */}
@@ -15,8 +15,11 @@ export default function HeroSection() {
           src="/hero-image.png"
           alt=""
           fill
+          sizes="100vw"
           className="object-cover"
           priority
+          fetchPriority="high"
+          loading="eager"
         />
         {/* Gradient overlay for text legibility */}
         <div
@@ -28,7 +31,7 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 pt-28 pb-[min(17vh,200px)] lg:absolute lg:inset-0 lg:mx-auto lg:pt-0 lg:pb-0">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 pt-28 pb-[min(17vh,200px)] md:flex md:flex-col md:gap-10 lg:block lg:absolute lg:inset-0 lg:mx-auto lg:pt-0 lg:pb-0">
         {/* Left: text content */}
         <div className="lg:absolute lg:bottom-[min(17vh,200px)]">
           <h1
@@ -57,32 +60,56 @@ export default function HeroSection() {
             düzeltici egzersizler, performans testleri planlar.
           </p>
 
-          <Link
-            href="/iletisim"
-            onClick={() => trackCtaClick("Özel Ders Al", "hero_ana_buton")}
-          >
-            <button
-              className="font-semibold bg-[#D2000C] text-white px-10 border-[1.5px] border-[#850008] py-3 hover:bg-opacity-90 rounded-sm"
-              style={{
-                fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
-              }}
+          <div className="flex flex-col gap-3">
+            <Link
+              href="/iletisim"
+              onClick={() => trackCtaClick("Özel Ders Al", "hero_ana_buton")}
+              className="w-full sm:w-auto"
             >
-              Özel Ders Al
-            </button>
-          </Link>
+              <button
+                className="w-full sm:w-auto font-semibold bg-[#D2000C] text-white px-10 border-[1.5px] border-[#850008] py-3 hover:bg-opacity-90 rounded-sm"
+                style={{
+                  fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+                }}
+              >
+                Özel Ders Al
+              </button>
+            </Link>
+
+            <Link
+              href="/performanslab-app"
+              onClick={() => trackCtaClick("Uygulamamızı İndir", "hero_uygulama_indir")}
+              className="w-full sm:hidden"
+            >
+              <button
+                className="w-full font-semibold bg-transparent text-white px-10 border-[1.5px] border-white py-3 hover:bg-white/10 rounded-sm"
+                style={{
+                  fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+                }}
+              >
+                Uygulamamızı İndir
+              </button>
+            </Link>
+          </div>
         </div>
 
         {/* Right: iPhone mockup + actions */}
-        <div className="relative flex-shrink-0 hidden w-[320px] md:block lg:absolute lg:right-16 lg:top-1/2 lg:-translate-y-[50%]">
+        <div className="hidden md:flex md:justify-center md:w-full lg:block lg:w-[320px] lg:absolute lg:right-16 lg:top-1/2 lg:-translate-y-[50%]">
           <div className="hero-app-fragment flex flex-col items-center gap-9">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/mockup-hero.png"
+            <Image
+              src="/mockup-single.png"
               alt="PerformansLab App"
-              className="hero-app-mockup z-10 w-[200px] max-w-[200px]"
+              width={6440}
+              height={8176}
+              sizes="384px"
+              priority
+              fetchPriority="high"
+              loading="eager"
+              className="hero-app-mockup z-10 w-[20rem] max-w-[24rem] h-auto"
+              style={{ transform: "rotate(-10deg)" }}
             />
 
-            <div className="cursor-pointer group hero-app-actions z-20 flex flex-col items-start">
+            <div className="cursor-pointer group hero-app-actions z-20 flex flex-col items-center lg:items-start">
               <Link
                 href="/performanslab-app"
                 onClick={() =>
@@ -105,7 +132,7 @@ export default function HeroSection() {
                   onClick={() =>
                     trackCtaClick("Erken Kayıt Ol", "hero_uygulama_link")
                   }
-                  className="hero-app-link mt-1 flex items-center gap-1 whitespace-nowrap font-semibold hover:opacity-50"
+                  className="hero-app-link mt-1 flex items-center gap-1 whitespace-nowrap font-semibold hover:opacity-50 text-sm"
                   style={{
                     color: "#fff",
                     fontFamily: "var(--font-inter), Inter, sans-serif",
@@ -133,6 +160,33 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Mobile: scroll-to-reviews hint */}
+      <div
+        className="sm:hidden absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 cursor-pointer"
+        onClick={() => document.getElementById("yorumlar")?.scrollIntoView({ behavior: "smooth" })}
+      >
+        <span
+          className="text-sm font-semibold text-white whitespace-nowrap"
+          style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+        >
+          Yorumları Gör
+        </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-white"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
       </div>
     </section>
   );

@@ -112,10 +112,15 @@ html {
 }
 
 .hero-app-label {
-  background-image: linear-gradient(90deg, #d2000c 0%, rgba(210, 0, 12, 0) 100%);
+  background-image: linear-gradient(
+    90deg,
+    #d2000caa 0%,
+    rgba(210, 0, 12, 0) 100%
+  );
   background-repeat: no-repeat;
   background-size: 0% 100%;
-  animation: activateHeroAppLabel 0.62s cubic-bezier(0.33, 1, 0.68, 1) 1.08s forwards;
+  animation: activateHeroAppLabel 0.62s cubic-bezier(0.33, 1, 0.68, 1) 1.08s
+    forwards;
 }
 
 .hero-app-link {

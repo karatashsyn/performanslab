@@ -35,7 +35,7 @@ export default function AppSection() {
       id="app"
       className="py-24 overflow-hidden"
       style={{
-        background: "linear-gradient(180deg, #343434 0%, #000000 100%)",
+        background: "linear-gradient(180deg, #1f0000 0%, #000000 100%)",
       }}
     >
       <div className="max-w-[1415px] mx-auto px-5 sm:px-8 lg:px-0">
@@ -67,7 +67,7 @@ export default function AppSection() {
           {/* Center: app mockup */}
           <div className="flex-[100] flex min-w-0 justify-center">
             <img
-              src="/mockup-app-section.png"
+              src="/mockup-duo.png"
               alt="PerformansLab App"
               className="w-full max-w-[420px] lg:max-w-[566px] drop-shadow-2xl"
             />
@@ -84,7 +84,7 @@ export default function AppSection() {
         </div>
 
         {/* Mobile feature tags */}
-        <div className="flex lg:hidden flex-wrap justify-center gap-3 mt-8">
+        <div className="hidden sm:flex lg:hidden flex-wrap justify-center gap-3 mt-8">
           {features.map((f, i) => (
             <div
               key={i}

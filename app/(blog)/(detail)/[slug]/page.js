@@ -6,7 +6,6 @@ import { notFound } from "next/navigation";
 import { Inter } from "../../(search)/layout";
 import ShareButton from "@/components/ShareButton";
 import BlogSuggestion from "@/components/BlogSuggestion";
-import { NotoSerif } from "@/util/fonts";
 import PaddedContainer from "@/components/composite/PaddedContainer";
 import BlogReadTracker from "@/components/BlogReadTracker";
 
@@ -167,7 +166,7 @@ export default async function BlogDetail({ params }) {
                   sizes="(max-width: 640px) 100vw, 70vw"
                 />
               </div>
-              <div className={`text-left ${NotoSerif.className}`}>
+              <div className={`text-left ${Inter.className}`}>
                 <BlogText blog={blog} />
               </div>
             </div>
