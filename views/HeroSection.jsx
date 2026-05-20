@@ -62,7 +62,7 @@ export default function HeroSection() {
             onClick={() => trackCtaClick("Özel Ders Al", "hero_ana_buton")}
           >
             <button
-              className="font-semibold bg-[#D2000C] text-white px-8 py-3 hover:bg-opacity-90"
+              className="font-semibold bg-[#D2000C] text-white px-10 border-[1.5px] border-[#850008] py-3 hover:bg-opacity-90 rounded-sm"
               style={{
                 fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
               }}
