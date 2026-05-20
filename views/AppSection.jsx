@@ -107,7 +107,7 @@ export default function AppSection() {
         {/* CTA */}
         <div className="flex justify-center mt-12">
           <Link
-            href="/performanslab-app"
+            href="/uygulamamiz"
             onClick={() => trackCtaClick("Erken Kayıt Ol", "app_section")}
           >
             <button

@@ -77,8 +77,10 @@ export default function HeroSection() {
             </Link>
 
             <Link
-              href="/performanslab-app"
-              onClick={() => trackCtaClick("Uygulamamızı İndir", "hero_uygulama_indir")}
+              href="/uygulamamiz"
+              onClick={() =>
+                trackCtaClick("Uygulamamızı İndir", "hero_uygulama_indir")
+              }
               className="w-full sm:hidden"
             >
               <button
@@ -111,7 +113,7 @@ export default function HeroSection() {
 
             <div className="cursor-pointer group hero-app-actions z-20 flex flex-col items-center lg:items-start">
               <Link
-                href="/performanslab-app"
+                href="/uygulamamiz"
                 onClick={() =>
                   trackCtaClick("Uygulamamız Yakında", "hero_uygulama_etiketi")
                 }
@@ -128,7 +130,7 @@ export default function HeroSection() {
               </Link>
               <div className="group-hover:opacity-50">
                 <Link
-                  href="/performanslab-app"
+                  href="/uygulamamiz"
                   onClick={() =>
                     trackCtaClick("Erken Kayıt Ol", "hero_uygulama_link")
                   }
@@ -165,11 +167,17 @@ export default function HeroSection() {
       {/* Mobile: scroll-to-reviews hint */}
       <div
         className="sm:hidden absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 cursor-pointer"
-        onClick={() => document.getElementById("yorumlar")?.scrollIntoView({ behavior: "smooth" })}
+        onClick={() =>
+          document
+            .getElementById("yorumlar")
+            ?.scrollIntoView({ behavior: "smooth" })
+        }
       >
         <span
           className="text-sm font-semibold text-white whitespace-nowrap"
-          style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+          style={{
+            fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+          }}
         >
           Yorumları Gör
         </span>

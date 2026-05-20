@@ -9,7 +9,7 @@ export const metadata = {
     title: "PerformansLab Uygulaması — Yakında",
     description:
       "PerformansLab uygulaması ile postür analizi, kişiye özel programlar ve antrenman takibini tek yerden yönetin.",
-    url: "https://performanslab.com/performanslab-app",
+    url: "https://performanslab.com/uygulamamiz",
     images: [
       {
         url: "/mockup-app-section.png",
