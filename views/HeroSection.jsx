@@ -61,20 +61,22 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-col gap-3">
-            <Link
-              href="/iletisim"
-              onClick={() => trackCtaClick("Özel Ders Al", "hero_ana_buton")}
-              className="w-full sm:w-auto"
-            >
+            <div className="w-full sm:w-auto">
               <button
+                onClick={() => {
+                  trackCtaClick("Özel Ders Al", "hero_ana_buton");
+                  document
+                    .getElementById("takvim")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
                 className="w-full sm:w-auto font-semibold bg-[#D2000C] text-white px-10 border-[1.5px] border-[#850008] py-3 hover:bg-opacity-90 rounded-sm"
                 style={{
                   fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
                 }}
               >
-                Özel Ders Al
+                Ücretsiz Deneme Dersi
               </button>
-            </Link>
+            </div>
 
             <Link
               href="/uygulamamiz"

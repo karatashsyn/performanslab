@@ -3,7 +3,7 @@ import Cal from "@/components/cal";
 
 export default function CalendarSection() {
   return (
-    <section className="py-16 pb-8" style={{ background: "#fff" }}>
+    <section id="takvim" className="py-16 pb-8" style={{ background: "#fff" }}>
       <div className="max-w-[1400px] mx-auto px-8 md:px-16">
         {/* Heading */}
         <div className="text-center mb-8 md:mb-4">

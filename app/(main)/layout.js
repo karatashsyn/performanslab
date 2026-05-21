@@ -5,6 +5,7 @@ import Footer from "@/components/composite/Footer";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import RouteChangeTracker from "@/components/RouteChangeTracker";
+import AdsenseScript from "@/components/AdsenseScript";
 import { Suspense } from "react";
 
 const montserratFont = Montserrat({
@@ -62,12 +63,7 @@ export default function RootLayout({ children }) {
         className={interFont.className}
         style={{ background: "#090A0D", overflowX: "hidden" }}
       >
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
-          crossOrigin="anonymous"
-          strategy="lazyOnload"
-        />
+        <AdsenseScript />
         <header>
           <Navbar />
         </header>

@@ -1,11 +1,17 @@
 import crypto from "crypto";
 
 const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-const PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+const PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY
+  ?.replace(/^"|"$/g, "")
+  ?.replace(/\\n/g, "\n");
 const SHEET_ID = process.env.GOOGLE_SHEET_ID;
 const SHEET_TAB = "Erken Kayit Listesi";
 
 async function getAccessToken() {
+  if (!SERVICE_ACCOUNT_EMAIL || !PRIVATE_KEY) {
+    throw new Error("Missing GOOGLE_SERVICE_ACCOUNT_EMAIL or GOOGLE_PRIVATE_KEY env vars");
+  }
+
   const now = Math.floor(Date.now() / 1000);
 
   const header = Buffer.from(JSON.stringify({ alg: "RS256", typ: "JWT" })).toString("base64url");
@@ -35,52 +41,64 @@ async function getAccessToken() {
     }),
   });
 
-  const { access_token } = await res.json();
-  return access_token;
+  const data = await res.json();
+  if (!data.access_token) {
+    throw new Error(`OAuth token exchange failed: ${JSON.stringify(data)}`);
+  }
+  return data.access_token;
 }
 
 export async function POST(request) {
-  let body;
   try {
-    body = await request.json();
-  } catch {
-    return Response.json({ error: "invalid_body" }, { status: 400 });
-  }
-
-  const { email } = body ?? {};
-
-  if (!email) {
-    return Response.json({ error: "missing_email" }, { status: 400 });
-  }
-
-  const emailStr = String(email).trim().slice(0, 254);
-  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailStr);
-  if (!emailValid) {
-    return Response.json({ error: "invalid_email" }, { status: 400 });
-  }
-
-  const token = await getAccessToken();
-  const range = `${SHEET_TAB}!A:B`;
-
-  const res = await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}:append?valueInputOption=USER_ENTERED`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        values: [[emailStr, new Date().toISOString()]],
-      }),
+    let body;
+    try {
+      body = await request.json();
+    } catch {
+      return Response.json({ error: "invalid_body" }, { status: 400 });
     }
-  );
 
-  if (!res.ok) {
-    const detail = await res.text();
-    console.error("Sheets API error:", detail);
-    return Response.json({ error: "save_failed", detail }, { status: 500 });
+    const { email } = body ?? {};
+
+    if (!email) {
+      return Response.json({ error: "missing_email" }, { status: 400 });
+    }
+
+    const emailStr = String(email).trim().slice(0, 254);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailStr)) {
+      return Response.json({ error: "invalid_email" }, { status: 400 });
+    }
+
+    if (!SHEET_ID) {
+      console.error("Missing GOOGLE_SHEET_ID env var");
+      return Response.json({ error: "server_misconfigured" }, { status: 500 });
+    }
+
+    const token = await getAccessToken();
+    const range = `${SHEET_TAB}!A:B`;
+
+    const res = await fetch(
+      `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}:append?valueInputOption=USER_ENTERED`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          values: [[emailStr, new Date().toISOString()]],
+        }),
+      }
+    );
+
+    if (!res.ok) {
+      const detail = await res.text();
+      console.error("Sheets API error:", detail);
+      return Response.json({ error: "save_failed", detail }, { status: 500 });
+    }
+
+    return Response.json({ success: true });
+  } catch (err) {
+    console.error("early-signup route error:", err?.message ?? err);
+    return Response.json({ error: "internal_error" }, { status: 500 });
   }
-
-  return Response.json({ success: true });
 }
