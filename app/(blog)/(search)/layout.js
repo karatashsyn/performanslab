@@ -61,12 +61,6 @@ export default function RootLayout({ children }) {
         <Analytics />
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696090202286990"
-          crossOrigin="anonymous"
-          strategy="lazyOnload"
-        />
-        <Script
-          async
           src="https://www.googletagmanager.com/gtag/js?id=G-90GN5TNZVK"
         />
         <Script id="gAnalyticsScript" strategy="afterInteractive">

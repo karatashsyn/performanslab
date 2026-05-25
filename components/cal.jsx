@@ -44,7 +44,7 @@ export default function Cal() {
         useSlotsViewOnSmallScreen: "true",
         theme: "light",
       },
-      calLink: "fatih-ozkan/15min",
+      calLink: "fatih-ozkan-sbeh7q/ucretsiz-deneme-dersi",
     });
     window.Cal.ns["15min"]("ui", {
       theme: "light",
