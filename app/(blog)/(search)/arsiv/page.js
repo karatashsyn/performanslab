@@ -25,14 +25,16 @@ function FeaturedHero({ blog }) {
       style={{ minHeight: "340px" }}
     >
       <div className="absolute inset-0">
-        <Image
-          fill
-          src={blog.titleImage}
-          alt={blog.title}
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-          sizes="(max-width: 1024px) 100vw, 60vw"
-          priority
-        />
+        {blog.titleImage && (
+          <Image
+            fill
+            src={blog.titleImage}
+            alt={blog.title}
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            sizes="(max-width: 1024px) 100vw, 60vw"
+            priority
+          />
+        )}
         <div
           className="absolute inset-0"
           style={{
@@ -73,13 +75,15 @@ function DiscoverCard({ blog, isLast }) {
       className={`group flex items-center gap-4 py-4 ${!isLast ? "border-b border-[#eee]" : ""}`}
     >
       <div className="relative h-[72px] w-[72px] flex-shrink-0 overflow-hidden rounded-[6px]">
-        <Image
-          fill
-          src={blog.titleImage}
-          alt={blog.title}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="72px"
-        />
+        {blog.titleImage && (
+          <Image
+            fill
+            src={blog.titleImage}
+            alt={blog.title}
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="72px"
+          />
+        )}
       </div>
       <p
         className="text-[0.9rem] font-semibold leading-[1.35] text-[#111] group-hover:text-[#D2000C] transition-colors duration-200"

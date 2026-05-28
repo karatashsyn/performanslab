@@ -12,15 +12,17 @@ export default function BlogCardFull({ blog }) {
       className="group flex flex-col cursor-pointer"
     >
       {/* Image */}
-      <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[8px] mb-4">
-        <Image
-          fill
-          src={blog.titleImage}
-          alt={blog.title}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
+      {blog.titleImage && (
+        <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[8px] mb-4">
+          <Image
+            fill
+            src={blog.titleImage}
+            alt={blog.title}
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+      )}
 
       {/* Title */}
       <h3

@@ -17,13 +17,15 @@ export default function BlogCard({ blog }) {
           className="absolute inset-0 bg-red-500"
           style={{ transitionDuration: "500ms" }}
         />
-        <Image
-          fill
-          src={blog.titleImage}
-          alt={blog.title}
-          className="object-center object-cover"
-          sizes="96px"
-        />
+        {blog.titleImage && (
+          <Image
+            fill
+            src={blog.titleImage}
+            alt={blog.title}
+            className="object-center object-cover"
+            sizes="96px"
+          />
+        )}
       </div>
       <div className="flex items-start h-full">
         <span className="max-w-[196px] font-normal tracking-[-0px] text-black transition-opacity duration-100 md:text-[1.1rem]">
