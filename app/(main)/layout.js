@@ -25,7 +25,7 @@ const interFont = Inter({
 export const metadata = {
   metadataBase: new URL("https://performanslab.com"),
   verification: {
-    google: "129448e06e2dee77",
+    google: "6d6a72defedd8c94",
   },
   title: "PerformansLab — Personal Training",
   description:
