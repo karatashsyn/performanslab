@@ -158,16 +158,18 @@ export default async function BlogDetail({ params }) {
                   {blog.title}
                 </h1>
               </header>
-              <div className="relative sm:w-[70%] mx-auto rounded-md overflow-hidden aspect-[4/3]">
-                <Image
-                  fill
-                  className="object-cover object-center"
-                  src={blog.titleImage}
-                  alt={blog.titleImageAlt || blog.title}
-                  priority
-                  sizes="(max-width: 640px) 100vw, 70vw"
-                />
-              </div>
+              {blog.titleImage && (
+                <div className="relative sm:w-[70%] mx-auto rounded-md overflow-hidden aspect-[4/3]">
+                  <Image
+                    fill
+                    className="object-cover object-center"
+                    src={blog.titleImage}
+                    alt={blog.titleImageAlt || blog.title}
+                    priority
+                    sizes="(max-width: 640px) 100vw, 70vw"
+                  />
+                </div>
+              )}
               <div className={`text-left ${Inter.className}`}>
                 <BlogText blog={blog} />
               </div>

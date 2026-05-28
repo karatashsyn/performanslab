@@ -29,11 +29,11 @@ export default function BlogText({ blog }) {
       checkmarks: ({ children }) => <li>✅ {children}</li>,
     },
     types: {
-      youTube: ({ value }) => <Player url={value.url} />,
-      image: ({ value }) => (
+      youTube: ({ value }) => value?.url ? <Player url={value.url} /> : null,
+      image: ({ value }) => value?.url ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={value.url} alt={value.alt || ""} />
-      ),
+      ) : null,
     },
   };
   return (
