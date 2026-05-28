@@ -15,6 +15,9 @@ export const Inter = secondaryFont({
 
 export const metadata = {
   metadataBase: new URL("https://performanslab.com"),
+  verification: {
+    google: "129448e06e2dee77",
+  },
   title: "Blog — PerformansLab",
   description:
     "Spor bilimi, antrenman ve beslenme üzerine gerekli, anlaşılabilir ve bilimsel yazılar.",
