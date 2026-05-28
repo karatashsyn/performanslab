@@ -29,9 +29,11 @@ export async function generateMetadata({ params }) {
     )[0]?.children[0]?.text ||
     "";
 
+  const seoTitle = blog.seoTitle || blog.title;
+
   return {
     metadataBase: new URL("https://performanslab.com"),
-    title: blog.title,
+    title: seoTitle,
     description,
     alternates: {
       canonical: `https://performanslab.com/${blog.slug}`,
@@ -40,7 +42,7 @@ export async function generateMetadata({ params }) {
       siteName: "Gerekli, Anlaşılabilir, Bilimsel Bilgi",
       locale: "tr_TR",
       type: "article",
-      title: blog.title,
+      title: seoTitle,
       description: blog.seoDescription || blog.description || "",
       url: `https://performanslab.com/${blog.slug}`,
       publishedTime: blog.publishedAt || blog.date || "",
@@ -60,7 +62,7 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: "summary_large_image",
-      title: blog.title,
+      title: seoTitle,
       description: blog.seoDescription || blog.description || "",
       images: [blog.titleImage || "https://performanslab.com/plab.jpeg"],
     },

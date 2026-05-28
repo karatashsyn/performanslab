@@ -23,6 +23,7 @@ export const getBlogBySlug = cache(async (slug) => {
   const res = await sanityClient.fetch(
     `*[_type=='blog' && slug.current == $slug] {
       title,
+      seoTitle,
       description,
       seoDescription,
       "titleImage": titleImage.asset->url,
