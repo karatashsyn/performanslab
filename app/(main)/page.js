@@ -9,8 +9,8 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "PerformansLab",
-  url: "https://performanslab.com",
-  logo: "https://performanslab.com/new-logo.png",
+  url: "https://www.performanslab.com",
+  logo: "https://www.performanslab.com/new-logo.png",
   description:
     "PerformansLab, fonksiyonel antrenmanlar düzenler, beslenme programları oluşturur ve postür düzeltici egzersizler oluşturur.",
   sameAs: ["https://www.instagram.com/performanslab/"],

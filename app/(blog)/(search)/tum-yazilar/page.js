@@ -17,12 +17,12 @@ export async function generateMetadata({ searchParams }) {
     title,
     description,
     alternates: {
-      canonical: "https://performanslab.com/tum-yazilar",
+      canonical: "https://www.performanslab.com/tum-yazilar",
     },
     openGraph: {
       title,
       description,
-      url: "https://performanslab.com/tum-yazilar",
+      url: "https://www.performanslab.com/tum-yazilar",
       siteName: "PerformansLab",
       locale: "tr_TR",
       type: "website",

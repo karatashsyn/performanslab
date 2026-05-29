@@ -2,7 +2,7 @@ import IletisimPage from "@/views/IletisimPage";
 import Script from "next/script";
 
 export const metadata = {
-  metadataBase: new URL("https://performanslab.com"),
+  metadataBase: new URL("https://www.performanslab.com"),
   title: "İletişim — PerformansLab",
   description:
     "PerformansLab ile iletişime geçin. WhatsApp, Instagram, e-posta veya telefon yoluyla bize ulaşabilirsiniz.",
@@ -10,7 +10,7 @@ export const metadata = {
     title: "İletişim — PerformansLab",
     description:
       "PerformansLab ile iletişime geçin. WhatsApp, Instagram, e-posta veya telefon yoluyla bize ulaşabilirsiniz.",
-    url: "https://performanslab.com/iletisim",
+    url: "https://www.performanslab.com/iletisim",
     images: [{ url: "/plab.jpeg", width: 1600, height: 1067, alt: "PerformansLab İletişim" }],
   },
   twitter: {
@@ -26,13 +26,13 @@ const contactPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   name: "İletişim — PerformansLab",
-  url: "https://performanslab.com/iletisim",
+  url: "https://www.performanslab.com/iletisim",
   description:
     "PerformansLab ile iletişime geçin. WhatsApp, Instagram, e-posta veya telefon yoluyla bize ulaşabilirsiniz.",
   mainEntity: {
     "@type": "ProfessionalService",
     name: "PerformansLab",
-    url: "https://performanslab.com",
+    url: "https://www.performanslab.com",
     telephone: "+905447320331",
     email: "ozkanmf@hotmail.com",
     sameAs: ["https://www.instagram.com/performanslab.levent/"],

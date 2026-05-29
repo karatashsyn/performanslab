@@ -13,7 +13,7 @@ export const Inter = secondaryFont({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://performanslab.com"),
+  metadataBase: new URL("https://www.performanslab.com"),
   title: "PerformansLab — Blog",
   description:
     "Spor bilimi, antrenman ve beslenme üzerine gerekli, anlaşılabilir ve bilimsel yazılar.",

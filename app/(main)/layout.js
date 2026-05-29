@@ -23,7 +23,7 @@ const interFont = Inter({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://performanslab.com"),
+  metadataBase: new URL("https://www.performanslab.com"),
   verification: {
     google: "6d6a72defedd8c94",
   },
@@ -34,7 +34,7 @@ export const metadata = {
     siteName: "PerformansLab",
     locale: "tr_TR",
     type: "website",
-    url: "https://performanslab.com/",
+    url: "https://www.performanslab.com/",
     title: "PerformansLab — Personal Training",
     description:
       "PerformansLab, fonksiyonel antrenmanlar düzenler, beslenme programları oluşturur ve postür düzeltici egzersizler oluşturur.",

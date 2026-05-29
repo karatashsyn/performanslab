@@ -32,19 +32,19 @@ export async function generateMetadata({ params }) {
   const seoTitle = blog.seoTitle || blog.title;
 
   return {
-    metadataBase: new URL("https://performanslab.com"),
+    metadataBase: new URL("https://www.performanslab.com"),
     title: seoTitle,
     description,
     alternates: {
-      canonical: `https://performanslab.com/${blog.slug}`,
+      canonical: `https://www.performanslab.com/${blog.slug}`,
     },
     openGraph: {
-      siteName: "Gerekli, Anlaşılabilir, Bilimsel Bilgi",
+      siteName: "PerformansLab",
       locale: "tr_TR",
       type: "article",
       title: seoTitle,
       description: blog.seoDescription || blog.description || "",
-      url: `https://performanslab.com/${blog.slug}`,
+      url: `https://www.performanslab.com/${blog.slug}`,
       publishedTime: blog.publishedAt || blog.date || "",
       modifiedTime: blog.date || "",
       article: {
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }) {
       },
       images: [
         {
-          url: blog.titleImage || "https://performanslab.com/opengraph-image.png",
+          url: blog.titleImage || "https://www.performanslab.com/opengraph-image.png",
           width: 800,
           height: 600,
           alt: blog.titleImageAlt || blog.title,
@@ -64,7 +64,7 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: seoTitle,
       description: blog.seoDescription || blog.description || "",
-      images: [blog.titleImage || "https://performanslab.com/plab.jpeg"],
+      images: [blog.titleImage || "https://www.performanslab.com/plab.jpeg"],
     },
   };
 }
@@ -75,7 +75,7 @@ export default async function BlogDetail({ params }) {
     notFound();
   }
 
-  const pageUrl = `https://performanslab.com/${blog.slug}`;
+  const pageUrl = `https://www.performanslab.com/${blog.slug}`;
 
   const blogJsonLd = {
     "@context": "https://schema.org",
@@ -85,11 +85,17 @@ export default async function BlogDetail({ params }) {
     url: pageUrl,
     mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
     author: { "@type": "Person", name: "Fatih Özkan" },
+    publisher: {
+      "@type": "Organization",
+      name: "PerformansLab",
+      logo: { "@type": "ImageObject", url: "https://www.performanslab.com/new-logo.png" },
+    },
     datePublished: blog.publishedAt || blog.date,
     dateModified: blog.date,
     image: blog.titleImage,
     description: blog.seoDescription || blog.description,
   };
+
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -99,13 +105,13 @@ export default async function BlogDetail({ params }) {
         "@type": "ListItem",
         position: 1,
         name: "Anasayfa",
-        item: "https://performanslab.com/",
+        item: "https://www.performanslab.com/",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Blog",
-        item: "https://performanslab.com/arsiv",
+        item: "https://www.performanslab.com/arsiv",
       },
       {
         "@type": "ListItem",

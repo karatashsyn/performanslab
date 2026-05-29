@@ -40,16 +40,16 @@ export async function generateMetadata({ params }) {
   if (!validTools.includes(tool)) return {};
   const meta = toolMeta[tool];
   return {
-    metadataBase: new URL("https://performanslab.com"),
+    metadataBase: new URL("https://www.performanslab.com"),
     title: meta.title,
     description: meta.description,
     alternates: {
-      canonical: `https://performanslab.com/ucretsiz-araclar/${tool}`,
+      canonical: `https://www.performanslab.com/ucretsiz-araclar/${tool}`,
     },
     openGraph: {
       title: meta.title,
       description: meta.description,
-      url: `https://performanslab.com/ucretsiz-araclar/${tool}`,
+      url: `https://www.performanslab.com/ucretsiz-araclar/${tool}`,
       images: [{ url: "/plab.jpeg", width: 1600, height: 1067, alt: meta.h1 }],
     },
     twitter: {
@@ -71,21 +71,21 @@ export default async function Page({ params }) {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: meta.h1,
-    url: `https://performanslab.com/ucretsiz-araclar/${tool}`,
+    url: `https://www.performanslab.com/ucretsiz-araclar/${tool}`,
     applicationCategory: "HealthApplication",
     operatingSystem: "Web",
     description: meta.description,
     offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" },
-    provider: { "@type": "Organization", name: "PerformansLab", url: "https://performanslab.com" },
+    provider: { "@type": "Organization", name: "PerformansLab", url: "https://www.performanslab.com" },
   };
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Anasayfa", item: "https://performanslab.com" },
-      { "@type": "ListItem", position: 2, name: "Ücretsiz Araçlar", item: "https://performanslab.com/ucretsiz-araclar" },
-      { "@type": "ListItem", position: 3, name: meta.h1, item: `https://performanslab.com/ucretsiz-araclar/${tool}` },
+      { "@type": "ListItem", position: 1, name: "Anasayfa", item: "https://www.performanslab.com" },
+      { "@type": "ListItem", position: 2, name: "Ücretsiz Araçlar", item: "https://www.performanslab.com/ucretsiz-araclar" },
+      { "@type": "ListItem", position: 3, name: meta.h1, item: `https://www.performanslab.com/ucretsiz-araclar/${tool}` },
     ],
   };
 

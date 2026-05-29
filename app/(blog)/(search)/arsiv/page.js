@@ -9,11 +9,16 @@ import { cropText } from "@/util";
 export const revalidate = 21600;
 
 export const metadata = {
-  title: "Blog Arşivi — PerformansLab",
+  title: "Spor Bilimi ve Beslenme Yazıları — PerformansLab",
   description:
     "Spor bilimi, antrenman ve beslenme üzerine gerekli, anlaşılabilir ve bilimsel yazılar.",
+  openGraph: {
+    siteName: "PerformansLab",
+    locale: "tr_TR",
+    type: "website",
+  },
   alternates: {
-    canonical: "https://performanslab.com/arsiv",
+    canonical: "https://www.performanslab.com/arsiv",
   },
 };
 
