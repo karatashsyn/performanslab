@@ -4,7 +4,7 @@ import { getBlogs } from "@/services/blog";
 import BlogCardFull from "@/components/BlogCardFull";
 import { notFound } from "next/navigation";
 
-export const revalidate = 3600;
+export const revalidate = 21600;
 
 export async function generateMetadata({ searchParams }) {
   const q = searchParams.s;

@@ -6,7 +6,7 @@ import BlogCardFull from "@/components/BlogCardFull";
 import { notFound } from "next/navigation";
 import { cropText } from "@/util";
 
-export const revalidate = 3600;
+export const revalidate = 21600;
 
 export const metadata = {
   title: "Blog Arşivi — PerformansLab",

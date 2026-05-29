@@ -6,7 +6,7 @@ import { Inter } from "./layout";
 import ContactSection from "@/views/ContactSection";
 import { shuffleArray } from "@/util";
 
-export const revalidate = 10800;
+export const revalidate = 21600;
 
 export default async function NotFound() {
   const blogs = await getBlogs();

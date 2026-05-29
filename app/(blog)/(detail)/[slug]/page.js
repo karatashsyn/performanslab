@@ -9,7 +9,7 @@ import BlogSuggestion from "@/components/BlogSuggestion";
 import PaddedContainer from "@/components/composite/PaddedContainer";
 import BlogReadTracker from "@/components/BlogReadTracker";
 
-export const revalidate = 3600;
+export const revalidate = 21600;
 
 export async function generateStaticParams() {
   const blogs = await getBlogs();

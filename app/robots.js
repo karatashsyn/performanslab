@@ -4,7 +4,7 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
-        disallow: "/admin",
+        disallow: ["/admin", "/tum-yazilar?"],
       },
     ],
     sitemap: "https://performanslab.com/sitemap.xml",
