@@ -1,7 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { useRef, useState } from "react";
-import { trackContactClick, trackFormStart, trackFormSubmit } from "@/lib/analytics";
+import {
+  trackContactClick,
+  trackFormStart,
+  trackFormSubmit,
+} from "@/lib/analytics";
 
 const channels = [
   {
@@ -66,7 +70,7 @@ const channels = [
   },
   {
     label: "Instagram",
-    value: "@performanslab.levent",
+    value: "@performanslab",
     href: "https://www.instagram.com/performanslab.levent/",
     channel: "instagram",
     icon: (
@@ -88,7 +92,6 @@ const channels = [
     ),
   },
 ];
-
 
 const inputClass =
   "w-full rounded-[6px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-white/25 disabled:opacity-50";
@@ -131,7 +134,9 @@ function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3" noValidate>
       <div>
-        <label htmlFor="contact-name" className="sr-only">Adınız</label>
+        <label htmlFor="contact-name" className="sr-only">
+          Adınız
+        </label>
         <input
           id="contact-name"
           name="name"
@@ -148,7 +153,9 @@ function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="contact-phone" className="sr-only">Telefon numaranız</label>
+        <label htmlFor="contact-phone" className="sr-only">
+          Telefon numaranız
+        </label>
         <input
           id="contact-phone"
           name="phone"
@@ -165,7 +172,9 @@ function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="contact-message" className="sr-only">Mesajınız</label>
+        <label htmlFor="contact-message" className="sr-only">
+          Mesajınız
+        </label>
         <textarea
           id="contact-message"
           name="message"
@@ -307,7 +316,9 @@ export default function IletisimPage() {
           >
             <p
               className="mb-1 text-base font-bold text-white"
-              style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+              style={{
+                fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+              }}
             >
               Mesaj Gönder
             </p>
