@@ -1,7 +1,111 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import Image from "next/image";
 import Link from "next/link";
 import { trackCtaClick } from "@/lib/analytics";
+import { useEffect, useState } from "react";
+
+const slides = [
+  {
+    before: "/ayse-demir-before.png",
+    after: "/ayse-demir-after.png",
+    name: "Ayşe Demir, 31",
+  },
+  {
+    before: "/elif-yilmaz-before.png",
+    after: "/elif-yilmaz-after.png",
+    name: "Elif Yılmaz, 29",
+  },
+  {
+    before: "/murat-kilic-before.png",
+    after: "/murat-kilic-after.png",
+    name: "Murat Kılıç, 30",
+  },
+  {
+    before: "/serkan-arslan-before.png",
+    after: "/serkan-arslan-after.png",
+    name: "Serkan Öztürk, 40",
+  },
+  {
+    before: "/hakan-arslan-before.png",
+    after: "/hakan-arslan-after.png",
+    name: "Hakan Arslan, 48",
+  },
+];
+
+function BeforeAfterSlider({ imgHeight, showName = false }) {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((c) => (c + 1) % slides.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative">
+      <div className="relative overflow-hidden" style={{ height: imgHeight }}>
+        {slides.map((slide, i) => (
+          <div
+            key={i}
+            className="absolute inset-0 flex items-center justify-center gap-1 transition-opacity duration-700"
+            style={{ opacity: i === current ? 1 : 0 }}
+          >
+            {[
+              { src: slide.before, label: "Önce", bg: "rgba(0,0,0,0.6)" },
+              { src: slide.after, label: "Sonra", bg: "rgba(210,0,12,0.85)" },
+            ].map(({ src, label, bg }) => (
+              <div key={label} className="relative flex-shrink-0">
+                <img
+                  src={src}
+                  alt={label}
+                  style={{ height: imgHeight, width: "auto" }}
+                />
+                <span
+                  className="absolute bottom-2 right-2 text-white text-[10px] font-semibold px-2 py-0.5 rounded-sm"
+                  style={{
+                    background: bg,
+                    fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+                  }}
+                >
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      {showName && (
+        <p
+          className="text-center text-white/70 text-xs mt-2"
+          style={{
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            minHeight: "1rem",
+          }}
+        >
+          {slides[current].name}
+        </p>
+      )}
+
+      <div className="flex justify-center gap-1.5 mt-2.5">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className="rounded-full transition-all duration-300"
+            style={{
+              width: i === current ? "16px" : "6px",
+              height: "6px",
+              background: i === current ? "#fff" : "rgba(255,255,255,0.3)",
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function HeroSection() {
   return (
@@ -35,29 +139,26 @@ export default function HeroSection() {
         {/* Left: text content */}
         <div className="lg:absolute lg:bottom-[min(17vh,200px)]">
           <h1
-            className="text-white leading-none mb-4 text-[clamp(2.6rem,12vw,4.25rem)] tracking-[-0.04em]"
+            className="text-white leading-none mb-4 max-sm:text-5xl text-[clamp(2.6rem,12vw,4.25rem)] tracking-[-0.04em]"
             style={{
               fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
             }}
           >
-            Sana Özel <br className="max-sm:hidden" />
-            <span className="lg:whitespace-nowrap text-[clamp(2.6rem,12vw,4.25rem)]">
-              <span className="font-semibold text-[clamp(2.6rem,12vw,4.25rem)]">
-                Sonuç Odaklı
-              </span>{" "}
-              Antrenman
+            Postürünü test et. <br />
+            <span className="max-sm:text-5xl font-semibold text-[clamp(2.6rem,12vw,4.25rem)]">
+              Ücretsiz dene.
             </span>
           </h1>
 
           <p
-            className="mb-8 max-w-[38rem] lg:max-w-[60vw] !font-normal text-[#D8D8D8] text-base sm:text-xl leading-[1.45rem] sm:leading-[1.5rem] tracking-[-0%]"
+            className="mb-8 max-w-[38rem] lg:max-w-[60vw] !font-normal text-[#D8D8D8] text-base sm:text-lg leading-[1.45rem] sm:leading-[1.5rem] tracking-[-0%]"
             style={{
               fontFamily: "var(--font-inter), Inter, sans-serif",
             }}
           >
-            Size uygun Fonksiyonel antrenmanlar, atletik antrenmanlar, postür{" "}
+            Kişiye özel postür analizi, fonksiyonel antrenman ve performans{" "}
             <br className="hidden sm:block" />
-            düzeltici egzersizler, performans testleri planlar.
+            testleriyle vücudunu yeniden hizala
           </p>
 
           <div className="flex flex-col gap-3">
@@ -95,74 +196,16 @@ export default function HeroSection() {
               </button>
             </Link>
           </div>
+
+          {/* Mobile / tablet: before-after slider below CTA buttons */}
+          <div className="lg:hidden mt-10 w-full">
+            <BeforeAfterSlider imgHeight="190px" showName={false} />
+          </div>
         </div>
 
-        {/* Right: iPhone mockup + actions */}
-        <div className="hidden md:flex md:justify-center md:w-full lg:block lg:w-[320px] lg:absolute lg:right-16 lg:top-1/2 lg:-translate-y-[50%]">
-          <div className="hero-app-fragment flex flex-col items-center gap-9">
-            <Image
-              src="/mockup-single.png"
-              alt="PerformansLab App"
-              width={6440}
-              height={8176}
-              sizes="384px"
-              priority
-              fetchPriority="high"
-              loading="eager"
-              className="hero-app-mockup z-10 w-[20rem] max-w-[24rem] h-auto"
-              style={{ transform: "rotate(-10deg)" }}
-            />
-
-            <div className="cursor-pointer group hero-app-actions z-20 flex flex-col items-center lg:items-start">
-              <Link
-                href="/uygulamamiz"
-                onClick={() =>
-                  trackCtaClick("Uygulamamız Yakında", "hero_uygulama_etiketi")
-                }
-              >
-                <span
-                  className="select-none cursor-pointer hero-app-label whitespace-nowrap px-4 py-2 text-sm font-semibold text-white"
-                  style={{
-                    fontFamily:
-                      "var(--font-montserrat), Montserrat, sans-serif",
-                  }}
-                >
-                  Uygulamamız Yakında !
-                </span>
-              </Link>
-              <div className="group-hover:opacity-50">
-                <Link
-                  href="/uygulamamiz"
-                  onClick={() =>
-                    trackCtaClick("Erken Kayıt Ol", "hero_uygulama_link")
-                  }
-                  className="hero-app-link mt-1 flex items-center gap-1 whitespace-nowrap font-semibold hover:opacity-50 text-sm"
-                  style={{
-                    color: "#fff",
-                    fontFamily: "var(--font-inter), Inter, sans-serif",
-                    textShadow: "0 1px 10.9px rgba(255,255,255,0.6)",
-                  }}
-                >
-                  Erken Kayıt Ol{" "}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"
-                  >
-                    <path d="M7 7h10v10" />
-                    <path d="M7 17 17 7" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </div>
+        {/* Right: before-after auto-sliding panel (desktop only) */}
+        <div className="hidden lg:block lg:w-[480px] lg:absolute lg:right-16 lg:top-1/2 lg:-translate-y-[50%]">
+          <BeforeAfterSlider imgHeight="320px" showName />
         </div>
       </div>
 
