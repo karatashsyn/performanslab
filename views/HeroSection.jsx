@@ -56,11 +56,15 @@ function BeforeAfterSlider({ imgHeight, showName = false }) {
               { src: slide.before, label: "Önce", bg: "rgba(0,0,0,0.6)" },
               { src: slide.after, label: "Sonra", bg: "rgba(210,0,12,0.85)" },
             ].map(({ src, label, bg }) => (
-              <div key={label} className="relative flex-shrink-0">
+              <div
+                key={label}
+                className="relative flex-1 min-w-0 overflow-hidden"
+                style={{ height: imgHeight }}
+              >
                 <img
                   src={src}
                   alt={label}
-                  style={{ height: imgHeight, width: "auto" }}
+                  className="w-full h-full object-cover object-top"
                 />
                 <span
                   className="absolute bottom-2 right-2 text-white text-[10px] font-semibold px-2 py-0.5 rounded-sm"
