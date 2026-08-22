@@ -51,6 +51,10 @@ export default function PhotoUploadStep({ angle, title, hint, onConfirm, onBack 
   const [captured, setCaptured] = useState(null); // { url, source, landmarks, aspect }
   const [insufficient, setInsufficient] = useState(null); // { reason }
   const [detecting, setDetecting] = useState(false);
+  // Bumped every time a fresh stream is obtained (initial open + each flip) so the
+  // attach-effect below re-runs even when `phase` itself doesn't change (flip keeps
+  // phase === "camera" the whole time).
+  const [streamTick, setStreamTick] = useState(0);
 
   const videoRef = useRef(null);
   const streamRef = useRef(null);
@@ -73,6 +77,19 @@ export default function PhotoUploadStep({ angle, title, hint, onConfirm, onBack 
       if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
     };
   }, []);
+
+  // Attaches the current stream to the <video> element once it's actually in the
+  // DOM. Doing this inline inside openCamera() races the very first open: phase is
+  // still "idle" at that point in the function, so the <video> for phase==="camera"
+  // hasn't mounted yet and videoRef.current is null — the stream would silently be
+  // dropped. Running it here, after React commits the phase==="camera" render,
+  // guarantees the node exists. streamTick covers the flip-camera case, where phase
+  // stays "camera" throughout but a new stream needs to be reattached.
+  useEffect(() => {
+    if (phase !== "camera" || !videoRef.current || !streamRef.current) return;
+    videoRef.current.srcObject = streamRef.current;
+    videoRef.current.play().catch(() => {});
+  }, [phase, streamTick]);
 
   async function openCamera(mode = facingMode) {
     setCameraError(null);
@@ -108,10 +125,7 @@ export default function PhotoUploadStep({ angle, title, hint, onConfirm, onBack 
         }
       }
       streamRef.current = stream;
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        await videoRef.current.play().catch(() => {});
-      }
+      setStreamTick((t) => t + 1);
       setPhase("camera");
       trackPostureCameraOpen(angle);
     } catch (err) {
@@ -228,10 +242,10 @@ export default function PhotoUploadStep({ angle, title, hint, onConfirm, onBack 
             className="flex items-center justify-center rounded-[10px] border border-dashed border-white/15 aspect-[3/4] max-h-[420px]"
             style={{ background: "rgba(255,255,255,0.03)" }}
           >
-            <div className="flex flex-col items-center gap-2 text-white/30">
+            <div className="flex flex-col items-center gap-2 text-white/30 px-6 text-center">
               <CameraIcon />
               <span className="text-xs" style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}>
-                Fotoğraf bekleniyor
+                {title} bekleniyor
               </span>
             </div>
           </div>
@@ -300,7 +314,7 @@ export default function PhotoUploadStep({ angle, title, hint, onConfirm, onBack 
         <div className="flex flex-col items-center justify-center gap-3 rounded-[10px] border border-white/10 aspect-[3/4] max-h-[420px]" style={{ background: "rgba(255,255,255,0.03)" }}>
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/20 border-t-[#D2000C]" />
           <span className="text-xs text-white/40" style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}>
-            Analiz ediliyor…
+            {title} analiz ediliyor…
           </span>
         </div>
       )}

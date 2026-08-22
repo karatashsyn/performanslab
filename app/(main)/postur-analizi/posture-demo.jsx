@@ -7,9 +7,7 @@ import IntroStep from "@/components/posture/IntroStep";
 import PhotoUploadStep from "@/components/posture/PhotoUploadStep";
 import AnalyzingStep from "@/components/posture/AnalyzingStep";
 import ResultStep from "@/components/posture/ResultStep";
-
-const STEP_ORDER = ["intro", "front", "side", "analyzing", "result"];
-const STEP_LABELS = { front: "Ön fotoğraf", side: "Yan fotoğraf", result: "Sonuç" };
+import StepHeader from "@/components/posture/StepHeader";
 
 export default function PostureDemo() {
   const [step, setStep] = useState("intro");
@@ -44,6 +42,15 @@ export default function PostureDemo() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);
 
+  // Confirming a photo happens near the bottom of the step (the "Kullan" button).
+  // Without this, the next step mounts off-screen below the fold and only the
+  // sticky header is visible on transition — easy to misread as nothing happened.
+  useEffect(() => {
+    if (step === "front" || step === "side") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [step]);
+
   function restart() {
     setFrontData(null);
     setSideData(null);
@@ -52,24 +59,12 @@ export default function PostureDemo() {
     setStep("intro");
   }
 
-  const stepIndex = STEP_ORDER.indexOf(step);
   const showProgress = step === "front" || step === "side";
 
   return (
-    <main className="min-h-screen bg-[#090A0D] pt-24 pb-20">
-      <div className="mx-auto max-w-xl px-5 sm:px-8">
-        {showProgress && (
-          <div className="mb-8 flex items-center gap-2">
-            {["front", "side"].map((s, i) => (
-              <div key={s} className="flex flex-1 items-center gap-2">
-                <div
-                  className="h-1.5 flex-1 rounded-full"
-                  style={{ background: STEP_ORDER.indexOf(s) <= stepIndex ? "#D2000C" : "rgba(255,255,255,0.1)" }}
-                />
-              </div>
-            ))}
-          </div>
-        )}
+    <main className="min-h-screen bg-[#090A0D] pb-20">
+      <div className="mx-auto max-w-xl px-5 sm:px-8 pt-24">
+        {showProgress && <StepHeader currentStep={step} />}
 
         {error && step !== "analyzing" && (
           <p className="mb-4 text-sm text-amber-400" style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}>
