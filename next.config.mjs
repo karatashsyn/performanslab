@@ -23,6 +23,16 @@ const nextConfig = {
           },
         ],
       },
+      {
+        // Postür testi kendi kamerasını kullanır — sadece bu route'ta izin ver.
+        source: "/postur-analizi",
+        headers: [
+          {
+            key: "Permissions-Policy",
+            value: "camera=(self), microphone=(), geolocation=()",
+          },
+        ],
+      },
     ];
   },
 };

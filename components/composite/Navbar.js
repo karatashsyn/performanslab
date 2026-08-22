@@ -13,6 +13,7 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/", label: "Anasayfa" },
+    { href: "/postur-analizi", label: "Postür Testi" },
     { href: "/arsiv", label: "Blog" },
     { href: "/iletisim", label: "İletişim" },
     { href: "/uygulamamiz", label: "Uygulamamız" },

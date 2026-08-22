@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:https": "next dev --experimental-https",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@mediapipe/tasks-vision": "^1.0.1",
     "@portabletext/react": "^3.0.18",
     "@sanity/client": "^6.15.20",
     "@sanity/image-url": "^1.0.2",

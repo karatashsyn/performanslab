@@ -1,12 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { useRef, useState } from "react";
-import { trackFormStart, trackFormSubmit } from "@/lib/analytics";
+import Link from "next/link";
+import { trackFormStart, trackFormSubmit, trackCtaClick } from "@/lib/analytics";
 
 const featureGroups = [
   {
     title: "Postür Analizi",
     desc: "Görsel değerlendirme, hareket kalitesi notları ve düzeltici egzersiz önerileri.",
+    href: "/postur-analizi",
   },
   {
     title: "Kişiye Özel Program",
@@ -227,25 +229,33 @@ export default function PerformansLabAppPage() {
 
             {/* Row 2 · Right: feature cards — same grid row as form box = same height */}
             <div className="grid grid-cols-2 gap-3">
-              {featureGroups.map((f) => (
-                <div
-                  key={f.title}
-                  className="flex flex-col rounded-[8px] border border-[#333] bg-[#222] p-4"
-                >
-                  <p
-                    className="text-sm font-semibold text-white"
-                    style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+              {featureGroups.map((f) => {
+                const CardTag = f.href ? Link : "div";
+                return (
+                  <CardTag
+                    key={f.title}
+                    {...(f.href
+                      ? { href: f.href, onClick: () => trackCtaClick(f.title, "uygulamamiz_feature_kart") }
+                      : {})}
+                    className="flex flex-col rounded-[8px] border border-[#333] bg-[#222] p-4 transition-colors"
+                    style={f.href ? { cursor: "pointer" } : undefined}
                   >
-                    {f.title}
-                  </p>
-                  <p
-                    className="mt-1 text-xs leading-5 text-white/45"
-                    style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
-                  >
-                    {f.desc}
-                  </p>
-                </div>
-              ))}
+                    <p
+                      className="text-sm font-semibold text-white"
+                      style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+                    >
+                      {f.title}
+                      {f.href && " →"}
+                    </p>
+                    <p
+                      className="mt-1 text-xs leading-5 text-white/45"
+                      style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
+                    >
+                      {f.desc}
+                    </p>
+                  </CardTag>
+                );
+              })}
             </div>
 
           </div>
