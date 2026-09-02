@@ -55,11 +55,14 @@ export default function PhotoUploadStep({ angle, title, hint, onConfirm, onBack 
   // attach-effect below re-runs even when `phase` itself doesn't change (flip keeps
   // phase === "camera" the whole time).
   const [streamTick, setStreamTick] = useState(0);
+  // null while not counting down; 5..1 while the pre-capture countdown is running.
+  const [countdown, setCountdown] = useState(null);
 
   const videoRef = useRef(null);
   const streamRef = useRef(null);
   const fileInputRef = useRef(null);
   const objectUrlRef = useRef(null);
+  const countdownTimeoutRef = useRef(null);
 
   useEffect(() => {
     preloadPoseLandmarker();
@@ -141,10 +144,35 @@ export default function PhotoUploadStep({ angle, title, hint, onConfirm, onBack 
   }
 
   function flipCamera() {
+    clearCountdown();
     const next = facingMode === "environment" ? "user" : "environment";
     setFacingMode(next);
     openCamera(next);
   }
+
+  function clearCountdown() {
+    if (countdownTimeoutRef.current) {
+      clearTimeout(countdownTimeoutRef.current);
+      countdownTimeoutRef.current = null;
+    }
+    setCountdown(null);
+  }
+
+  // Counts 5 -> 1 on screen so the user has time to get in position, then fires
+  // the actual capture.
+  useEffect(() => {
+    if (countdown === null) return;
+    if (countdown === 0) {
+      captureStill();
+      setCountdown(null);
+      return;
+    }
+    countdownTimeoutRef.current = setTimeout(() => {
+      setCountdown((c) => (c === null ? null : c - 1));
+    }, 1000);
+    return () => clearTimeout(countdownTimeoutRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [countdown]);
 
   async function runDetection(imageSource, dataUrl, source, aspect) {
     setDetecting(true);
@@ -282,15 +310,27 @@ export default function PhotoUploadStep({ angle, title, hint, onConfirm, onBack 
             <video ref={videoRef} playsInline muted autoPlay className="h-full w-full object-cover" />
             <button
               onClick={flipCamera}
-              className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur"
+              disabled={countdown !== null}
+              className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur disabled:opacity-40"
               aria-label="Kamerayı çevir"
             >
               <FlipIcon />
             </button>
+            {countdown !== null && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                <span
+                  className="text-white font-bold"
+                  style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif", fontSize: "5rem" }}
+                >
+                  {countdown}
+                </span>
+              </div>
+            )}
           </div>
           <div className="flex gap-3">
             <button
               onClick={() => {
+                clearCountdown();
                 stopStream();
                 setPhase("idle");
               }}
@@ -300,11 +340,11 @@ export default function PhotoUploadStep({ angle, title, hint, onConfirm, onBack 
               Vazgeç
             </button>
             <button
-              onClick={captureStill}
+              onClick={() => (countdown !== null ? clearCountdown() : setCountdown(5))}
               className="flex-1 rounded-[6px] bg-[#D2000C] px-6 py-3 text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
               style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
             >
-              Çek
+              {countdown !== null ? "İptal" : "Çek"}
             </button>
           </div>
         </div>
