@@ -46,7 +46,7 @@ function FlipIcon() {
 // angle: 'front' | 'side'
 export default function PhotoUploadStep({ angle, title, hint, onConfirm, onBack }) {
   const [phase, setPhase] = useState("idle"); // idle | camera | detecting | review
-  const [facingMode, setFacingMode] = useState("environment");
+  const [facingMode, setFacingMode] = useState("user");
   const [cameraError, setCameraError] = useState(null);
   const [captured, setCaptured] = useState(null); // { url, source, landmarks, aspect }
   const [insufficient, setInsufficient] = useState(null); // { reason }
