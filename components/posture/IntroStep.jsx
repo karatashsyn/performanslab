@@ -1,3 +1,6 @@
+"use client";
+import { useState } from "react";
+import Link from "next/link";
 import { PHOTO_RULES_TEXT } from "@/lib/posture/copy";
 import Disclaimer from "./Disclaimer";
 
@@ -8,6 +11,9 @@ const STEPS = [
 ];
 
 export default function IntroStep({ onStart }) {
+  const [consentRead, setConsentRead] = useState(false);
+  const [serverConsent, setServerConsent] = useState(false);
+
   return (
     <div className="flex flex-col gap-8">
       <div>
@@ -70,9 +76,47 @@ export default function IntroStep({ onStart }) {
         </p>
       </div>
 
+      <div
+        className="flex flex-col gap-3 rounded-[8px] border border-white/10 p-4"
+        style={{ background: "rgba(255,255,255,0.04)", fontFamily: "var(--font-inter), Inter, sans-serif" }}
+      >
+        <label className="flex cursor-pointer items-start gap-3 text-sm leading-6 text-white/80">
+          <input
+            type="checkbox"
+            checked={consentRead}
+            onChange={(e) => setConsentRead(e.target.checked)}
+            className="mt-1 h-4 w-4 shrink-0 accent-[#D2000C]"
+          />
+          <span>
+            <Link
+              href="/postur-analizi/acik-riza"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-white hover:text-white/80"
+            >
+              Açık rıza metnini
+            </Link>{" "}
+            okudum, onaylıyorum.
+          </span>
+        </label>
+        <label className="flex cursor-pointer items-start gap-3 text-sm leading-6 text-white/60">
+          <input
+            type="checkbox"
+            checked={serverConsent}
+            onChange={(e) => setServerConsent(e.target.checked)}
+            className="mt-1 h-4 w-4 shrink-0 accent-[#D2000C]"
+          />
+          <span>
+            Fotoğraflarımın analiz için PerformansLab sunucularına aktarılmasına izin veriyorum{" "}
+            <span className="text-white/40">(isteğe bağlı)</span>.
+          </span>
+        </label>
+      </div>
+
       <button
-        onClick={onStart}
-        className="w-full sm:w-auto self-start rounded-[6px] bg-[#D2000C] px-10 py-3.5 text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
+        onClick={() => onStart({ serverConsent })}
+        disabled={!consentRead}
+        className="w-full sm:w-auto self-start rounded-[6px] bg-[#D2000C] px-10 py-3.5 text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
         style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
       >
         Teste Başla →

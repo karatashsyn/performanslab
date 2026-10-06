@@ -10,7 +10,6 @@ import PhotoUploadStep from "@/components/posture/PhotoUploadStep";
 import AnalyzingStep from "@/components/posture/AnalyzingStep";
 import ResultStep from "@/components/posture/ResultStep";
 import StepHeader from "@/components/posture/StepHeader";
-import ConsentStep from "@/components/posture/ConsentStep";
 
 export default function PostureDemo() {
   const [step, setStep] = useState("intro");
@@ -119,17 +118,8 @@ export default function PostureDemo() {
 
         {step === "intro" && (
           <IntroStep
-            onStart={() => {
+            onStart={({ serverConsent: optedIn }) => {
               trackPostureDemoStart();
-              setStep("consent");
-            }}
-          />
-        )}
-
-        {step === "consent" && (
-          <ConsentStep
-            onBack={() => setStep("intro")}
-            onContinue={({ serverConsent: optedIn }) => {
               setServerConsent(optedIn);
               setStep("front");
             }}
