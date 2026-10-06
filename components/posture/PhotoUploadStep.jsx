@@ -12,6 +12,20 @@ import {
 import SkeletonOverlay from "./SkeletonOverlay";
 
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
+const UPLOAD_MAX_SIDE_PX = 1600;
+
+// Re-encodes to JPEG at a bounded size: the upload API only accepts JPEG/PNG
+// up to 5 MB, and phone galleries can hand us HEIC or 12 MP originals.
+function toJpegBlob(source) {
+  const srcW = source.videoWidth || source.naturalWidth || source.width;
+  const srcH = source.videoHeight || source.naturalHeight || source.height;
+  const scale = Math.min(1, UPLOAD_MAX_SIDE_PX / Math.max(srcW, srcH));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(srcW * scale);
+  canvas.height = Math.round(srcH * scale);
+  canvas.getContext("2d").drawImage(source, 0, 0, canvas.width, canvas.height);
+  return new Promise((resolve) => canvas.toBlob(resolve, "image/jpeg", 0.85));
+}
 
 function CameraIcon() {
   return (
@@ -177,27 +191,28 @@ export default function PhotoUploadStep({ angle, title, hint, onConfirm, onBack 
   async function runDetection(imageSource, dataUrl, source, aspect) {
     setDetecting(true);
     setPhase("detecting");
+    const blob = await toJpegBlob(imageSource);
     try {
       const { landmarks, personCount } = await detectPoseInImage(imageSource);
       if (personCount === 0 || !landmarks) {
         setInsufficient({ reason: "no_pose" });
-        setCaptured({ url: dataUrl, source, landmarks: null, aspect });
+        setCaptured({ url: dataUrl, source, landmarks: null, aspect, blob });
         trackPostureAngleResult(angle, false, "no_pose");
       } else {
         const analysis = angle === "front" ? analyzeFront(landmarks) : analyzeSide(landmarks);
         if (analysis.insufficient) {
           setInsufficient({ reason: analysis.reason });
-          setCaptured({ url: dataUrl, source, landmarks, aspect });
+          setCaptured({ url: dataUrl, source, landmarks, aspect, blob });
           trackPostureAngleResult(angle, false, analysis.reason);
         } else {
           setInsufficient(null);
-          setCaptured({ url: dataUrl, source, landmarks, aspect });
+          setCaptured({ url: dataUrl, source, landmarks, aspect, blob });
           trackPostureAngleResult(angle, true);
         }
       }
     } catch (err) {
       setInsufficient({ reason: "no_pose" });
-      setCaptured({ url: dataUrl, source, landmarks: null, aspect });
+      setCaptured({ url: dataUrl, source, landmarks: null, aspect, blob });
     } finally {
       setDetecting(false);
       setPhase("review");
@@ -247,7 +262,7 @@ export default function PhotoUploadStep({ angle, title, hint, onConfirm, onBack 
 
   function confirm() {
     if (!captured?.landmarks || insufficient) return;
-    onConfirm({ landmarks: captured.landmarks, previewUrl: captured.url });
+    onConfirm({ landmarks: captured.landmarks, previewUrl: captured.url, blob: captured.blob });
   }
 
   return (

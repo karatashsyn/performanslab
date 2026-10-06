@@ -3,13 +3,14 @@ import { useEffect, useRef, useState } from "react";
 import { analyzeCombined } from "@/lib/posture/analyze";
 import { evaluate } from "@/lib/posture/rules";
 import { trackPostureDemoStart, trackPostureResult } from "@/lib/analytics";
-import { mintGuestToken, createPostureAnalysis, getPostureAnalysis } from "@/lib/posture/api";
+import { mintGuestToken, createPostureAnalysis, uploadPosturePhotos, getPostureAnalysis } from "@/lib/posture/api";
 import { buildAnalysisPayload } from "@/lib/posture/apiPayload";
 import IntroStep from "@/components/posture/IntroStep";
 import PhotoUploadStep from "@/components/posture/PhotoUploadStep";
 import AnalyzingStep from "@/components/posture/AnalyzingStep";
 import ResultStep from "@/components/posture/ResultStep";
 import StepHeader from "@/components/posture/StepHeader";
+import ConsentStep from "@/components/posture/ConsentStep";
 
 export default function PostureDemo() {
   const [step, setStep] = useState("intro");
@@ -17,18 +18,12 @@ export default function PostureDemo() {
   const [sideData, setSideData] = useState(null);
   const [result, setResult] = useState(null); // { metrics, evaluation }
   const [error, setError] = useState(null);
+  const [serverConsent, setServerConsent] = useState(false);
 
   // Guest token is session-scoped, not persisted (a fresh mint can't reopen
-  // an old anonymous analysis) — kept in a ref, minted once per page visit,
-  // and re-minted only if it expires before an analysis is created.
+  // an old anonymous analysis). Minted lazily, only when the user opted in to
+  // server transfer and an analysis is about to be submitted.
   const guestTokenRef = useRef(null); // { accessToken, expiresAt }
-
-  useEffect(() => {
-    ensureGuestToken().catch((err) => {
-      console.error("posture guest-token mint failed:", err);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   async function ensureGuestToken() {
     const existing = guestTokenRef.current;
@@ -41,16 +36,24 @@ export default function PostureDemo() {
     return token;
   }
 
-  // Persists the already-rendered local result to the backend. Runs in the
-  // background: the result screen is driven entirely by on-device scoring,
-  // so a slow or failed API call never blocks or changes what the user sees.
-  async function submitAnalysis(metrics, evaluation) {
+  // Sends the already-rendered local result to the backend, only if the user
+  // opted in to server transfer. Runs in the background: the result screen is
+  // driven entirely by on-device scoring, so a slow or failed API call never
+  // blocks or changes what the user sees.
+  async function submitAnalysis(metrics, evaluation, photos) {
+    if (!serverConsent) return;
     try {
       const token = await ensureGuestToken();
       const payload = buildAnalysisPayload(metrics, evaluation, ["front", "side"]);
       const created = await createPostureAnalysis(token.accessToken, payload);
-      if (created?.analysis_id) {
-        await getPostureAnalysis(token.accessToken, created.analysis_id);
+      const analysisId = created?.analysis_id;
+      if (analysisId) {
+        try {
+          await uploadPosturePhotos(token.accessToken, analysisId, photos);
+        } catch (err) {
+          console.error("posture photo upload failed:", err);
+        }
+        await getPostureAnalysis(token.accessToken, analysisId);
       }
     } catch (err) {
       console.error("posture analysis submit failed:", err);
@@ -77,7 +80,7 @@ export default function PostureDemo() {
       setResult({ metrics: analysis.metrics, evaluation });
       trackPostureResult(evaluation.score, evaluation.focusAreas.length, evaluation.focusAreas[0]?.id);
       setStep("result");
-      submitAnalysis(analysis.metrics, evaluation);
+      submitAnalysis(analysis.metrics, evaluation, { front: frontData.blob, side: sideData.blob });
     }, 700);
 
     return () => clearTimeout(timer);
@@ -118,6 +121,16 @@ export default function PostureDemo() {
           <IntroStep
             onStart={() => {
               trackPostureDemoStart();
+              setStep("consent");
+            }}
+          />
+        )}
+
+        {step === "consent" && (
+          <ConsentStep
+            onBack={() => setStep("intro")}
+            onContinue={({ serverConsent: optedIn }) => {
+              setServerConsent(optedIn);
               setStep("front");
             }}
           />
