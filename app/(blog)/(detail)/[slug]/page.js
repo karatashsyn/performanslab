@@ -8,6 +8,7 @@ import ShareButton from "@/components/ShareButton";
 import BlogSuggestion from "@/components/BlogSuggestion";
 import PaddedContainer from "@/components/composite/PaddedContainer";
 import BlogReadTracker from "@/components/BlogReadTracker";
+import PostureCtaBox from "@/components/PostureCtaBox";
 
 export const revalidate = 21600;
 
@@ -76,6 +77,10 @@ export default async function BlogDetail({ params }) {
   }
 
   const pageUrl = `https://www.performanslab.com/${blog.slug}`;
+
+  const postureCta = blog.postureCta?.enabled ? blog.postureCta : null;
+  const showPostureCtaTop = postureCta && (postureCta.placement ?? "both") !== "bottom";
+  const showPostureCtaBottom = postureCta && (postureCta.placement ?? "both") !== "top";
 
   const blogJsonLd = {
     "@context": "https://schema.org",
@@ -176,9 +181,27 @@ export default async function BlogDetail({ params }) {
                   />
                 </div>
               )}
+              {showPostureCtaTop && (
+                <PostureCtaBox
+                  heading={postureCta.heading}
+                  text={postureCta.text}
+                  buttonText={postureCta.buttonText}
+                  blogSlug={blog.slug}
+                  position="top"
+                />
+              )}
               <div className={`text-left ${Inter.className}`}>
                 <BlogText blog={blog} />
               </div>
+              {showPostureCtaBottom && (
+                <PostureCtaBox
+                  heading={postureCta.heading}
+                  text={postureCta.text}
+                  buttonText={postureCta.buttonText}
+                  blogSlug={blog.slug}
+                  position="bottom"
+                />
+              )}
             </div>
           </div>
         </article>

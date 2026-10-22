@@ -1,0 +1,29 @@
+"use client";
+import Link from "next/link";
+import { trackCtaClick } from "@/lib/analytics";
+
+const DEFAULT_HEADING = "Duruşunu 1 dakikada ölç";
+const DEFAULT_TEXT = "İki fotoğrafla omuz, pelvis, baş ve gövde hizanı ücretsiz analiz et.";
+const DEFAULT_BUTTON_LABEL = "Ücretsiz Postür Testi";
+
+// Renders a Sanity-configured CTA to /postur-analizi inside blog content
+// (lib/posture/copy.js owns the demo's own copy; this box is blog-editorial,
+// so its text comes from the blog's `postureCta` field with static fallbacks).
+export default function PostureCtaBox({ heading, text, buttonText, blogSlug, position }) {
+  const label = buttonText || DEFAULT_BUTTON_LABEL;
+  return (
+    <Link
+      href="/postur-analizi"
+      onClick={() => trackCtaClick(label, `blog_${position}_${blogSlug || "unknown"}`)}
+      className="not-prose my-8 flex items-center justify-between gap-5 rounded-[14px] bg-[#D2000C] p-6 sm:p-7 no-underline transition-colors hover:bg-[#a50009]"
+    >
+      <div>
+        <p className="font-montserrat text-base sm:text-lg font-bold text-white">{heading || DEFAULT_HEADING}</p>
+        <p className="mt-1 text-sm text-white/85">{text || DEFAULT_TEXT}</p>
+      </div>
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 text-xl text-white">
+        →
+      </span>
+    </Link>
+  );
+}

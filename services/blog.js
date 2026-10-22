@@ -31,6 +31,7 @@ export const getBlogBySlug = cache(async (slug) => {
       "slug": slug.current,
       "date": _updatedAt,
       publishedAt,
+      postureCta,
       "content": content[]{
         ...,
         _type == 'image' => {
