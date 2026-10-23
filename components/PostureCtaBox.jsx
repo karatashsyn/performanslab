@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { trackCtaClick } from "@/lib/analytics";
 
-const DEFAULT_HEADING = "Duruşunu 1 dakikada ölç";
+const DEFAULT_HEADING = "Postürünü Test Et";
 const DEFAULT_TEXT = "İki fotoğrafla omuz, pelvis, baş ve gövde hizanı ücretsiz analiz et.";
 const DEFAULT_BUTTON_LABEL = "Ücretsiz Postür Testi";
 
